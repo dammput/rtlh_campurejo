@@ -54,17 +54,11 @@
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username">
+                                            <input type="text" name="username" class="form-control form-control-user" id="" placeholder="Enter Username">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user" id="" placeholder="Password">
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-                                            </div>
-                                        </div> -->
                                         <br>
                                         <input type="button" class="btn btn-info btn-user btn-block" value="Login">
                                 
@@ -84,6 +78,29 @@
         </div>
 
     </div>
+
+    <?php
+    if (isset($_GET['pesan'])) {
+        if ($_GET['pesan'] == "gagal") {
+            echo '<script type="text/javascript">';
+            echo 'alert("Login gagal! username dan password salah!")';
+            echo '</script>';
+        } else if ($_GET['pesan'] == "logout") {
+            echo '<script type="text/javascript">';
+            echo 'alert("Berhasil Logout.")';
+            echo '</script>';
+        } else if ($_GET['pesan'] == "belum_login") {
+            echo '<script type="text/javascript">';
+            echo 'alert("Silakhan login dulu.")';
+            echo '</script>';
+        }
+    }
+    ?>
+
+
+
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
