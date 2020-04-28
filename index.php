@@ -52,16 +52,12 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">LOGIN SISTEM</h1>
                                     </div>
-                                    <form class="user">
+                                    <form action="cek_koneksi.php" method="post" class="user">
                                         <div class="form-group">
-                                            <input type="text" name="username" class="form-control form-control-user" id="" placeholder="Enter Username">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user" id="" placeholder="Password">
-                                        </div>
-                                        <br>
-                                        <input type="button" class="btn btn-info btn-user btn-block" value="Login">
-                                
+                                            <input type="text" name="username" class="form-control form-control-user" id="" placeholder="Enter Username"><br>
+                                            <input type="password" name="password" class="form-control form-control-user" id="" placeholder="Password"><br>
+                                            <input type="submit" class="btn btn-info btn-user btn-block" value="Login">
+                                        </div>  
                                      
                                     </form>
                                     

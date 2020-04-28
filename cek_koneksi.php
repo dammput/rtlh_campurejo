@@ -13,11 +13,11 @@ $password = md5($_POST['password']);
 $login = mysqli_query($koneksi,"select * from user where username='$username' and password='$password'");
 //menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($login);
-
+// print_r($cek);
 if($cek > 0){
-
+    // echo 'masuk';
     $data = mysqli_fetch_assoc($login);
-
+    // print_r($data);
     // cek jika user login sebagai admin
     if($data['level'] =="admin"){
 
