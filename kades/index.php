@@ -1,3 +1,21 @@
+	<!-- cek apakah sudah login -->
+	<?php 
+	session_start();
+	if($_SESSION['level']==""){
+		header("location:../index.php?pesan=belum_login");
+	}
+	?>
+    <?php
+    	if($_SESSION['logged'] == 1)
+    	{
+        echo '<script type="text/javascript">';
+        echo 'alert("Berhasil Login.")';
+        echo '</script>';
+        $_SESSION['logged'] = '';
+        }
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -392,7 +410,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="">Logout</a>
+          <a class="btn btn-primary" href="../logout.php">Logout</a>
         </div>
       </div>
     </div>

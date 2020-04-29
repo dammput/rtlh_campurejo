@@ -2,7 +2,7 @@
 	<?php 
 	session_start();
 	if($_SESSION['level']==""){
-		header("location:../index.php?pesan=gagal");
+		header("location:../index.php?pesan=belum_login");
 	}
 	?>
     <?php

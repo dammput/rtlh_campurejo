@@ -83,7 +83,7 @@
             echo '</script>';
         } else if ($_GET['pesan'] == "logout") {
             echo '<script type="text/javascript">';
-            echo 'alert("Berhasil Logout.")';
+            echo 'alert("Silahkan login kembali untuk masuk.")';
             echo '</script>';
         } else if ($_GET['pesan'] == "belum_login") {
             echo '<script type="text/javascript">';
