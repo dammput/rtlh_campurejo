@@ -1,7 +1,7 @@
 	<!-- cek apakah sudah login -->
 	<?php 
 	session_start();
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!=="petugas"){
 		header("location:../index.php?pesan=belum_login");
 	}
 	?>
@@ -206,8 +206,13 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+            <!-- 404 Error Text -->
+            <div class="text-center"><br><br>
+                <div class="error mx-auto" data-text="404">404</div>
+                <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                <p class="text-gray-500 mb-0">Belum ada konten yang tersedia</p>
+                <a href="index.php">&larr; Back</a>
+            </div>
 
         </div>
         <!-- /.container-fluid -->
