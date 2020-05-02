@@ -5,7 +5,7 @@ if($_SESSION['level']==""){
     header("location:index.php");
 }
 
-$koneksi = mysqli_connect('localhost','root','','rtlh_campurejo');
+$koneksi = mysqli_connect('localhost','root','damm','rtlh_campurejo');
 
 if (mysqli_connect_errno()){
     echo "koneksi database gagal : " . mysqli_connect_errno();

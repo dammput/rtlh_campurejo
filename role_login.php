@@ -10,7 +10,7 @@ $username = $_POST['username'];
 $password = md5($_POST['password']);
 
 //menyeleksi data yang masuk
-$login = mysqli_query($koneksi,"select * from user where username='$username' and password='$password'");
+$login = mysqli_query($koneksi,"select * from tabel_user where username='$username' and password='$password'");
 //menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($login);
 // print_r($cek);
