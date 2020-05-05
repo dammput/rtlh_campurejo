@@ -39,7 +39,7 @@
 
 	<body id="page-top">
 
-		<!-- Page Wrapper -->
+		<!-- begin main content -->
 		<div id="wrapper">
 
 			<!-- Sidebar -->
@@ -111,7 +111,7 @@
 
 					<!-- Topbar -->
 					<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+						<h6 class="m-3 font-weight-bold text-primary">FORM INPUT DATA RESPONDEN</h6>
 						<!-- Sidebar Toggle (Topbar) -->
 						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 							<i class="fa fa-bars"></i>
@@ -201,75 +201,894 @@
 
 					</nav>
 					<!-- End of Topbar -->
-
-					<!-- Begin Page Content -->
+					<!-- Content Row -->
 					<div class="container-fluid">
-						<div class="col-xl-12 col-lg-5">
-							<div class="card shadow mb-4">
-								<!-- Card Header - Dropdown -->
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Form Input Data</h6>
-								</div>
-								<!-- Card Body -->
-								<div class="card-body">
-									<form>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="contoh1">Nama</label>
-												<input type="text" class="form-control" id="contoh1" placeholder="Nama">
-											</div>
-											<div class="form-group col-md-6">
-												<label for="contoh2">Username</label>
-												<input type="text" class="form-control" id="contoh2" placeholder="Username">
-											</div>
-										</div>
+						<!-- form input data -->
+						<form action="input.php" method="post" class="needs-validation" novalidate>
 
-										<div class="form-row">
-											<div class="form-group col-md-4">
-												<label for="contoh1">Nama Ayah</label>
-												<input type="text" class="form-control" id="contoh1" placeholder="Nama Ayah">
-											</div>
-											<div class="form-group col-md-4">
-												<label for="contoh2">Pekerjaan Ayah</label>
-												<input type="text" class="form-control" id="contoh2" placeholder="Pekerjaan Ayah">
-											</div>
-											<div class="form-group col-md-4">
-												<label for="contoh2">Alamat Ayah</label>
-												<input type="text" class="form-control" id="contoh2" placeholder="Alamat Ayah">
-											</div>
+							<!-- identitas responden -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-3 font-weight-bold text-primary">IDENTITAS RESPONDEN</h6>
 										</div>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label for="contoh1">Judul Buku</label>
-												<input type="text" class="form-control" id="contoh1" placeholder="Nama">
-											</div>
-											<div class="form-group col-md-6">
-												<label >File</label><br>
-												<input type="file" name="" class="" id="contoh2" placeholder="Username">
-											</div>
-										</div>
-										<input type="submit" class="form-control btn btn-primary" value="submit" name="submit">
-									</form>
+									</div>
 								</div>
 							</div>
-						</div>
+							<!-- row 1-->
+							<div class="row">
+								<div class="col-xl-6 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Identitas Responden</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
 
-					</div>
+											<div class="form-row">
+												<div class="form-group col-md-5">
+													<label>Nama Lengkap</label>
+													<input type="text" class="form-control" placeholder="nama responden.." name="nama_lengkap" required>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>NIK</label>
+													<input type="text" class="form-control" placeholder="01672.." name="nik" required>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Gender</label>
+													<select class="form-control" name="jenis_kelamin" required>
+														<option value="laki-laki" selected="selected">LK</option>
+														<option value="perempuan">PR</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-row">
+												<div class="form-group col-md-5">
+													<label>Nomer Telp.</label>
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="basic-addon1">+62</span>
+														<input type="text" class="form-control" placeholder="nomer telp" name="no_telp" required>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Koordinat Rumah</label>
+													<input type="text" class="form-control" placeholder="isi jika ada.." name="kordinat">
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Sumber Data</label>
+													<select class="form-control" name="sumber_data" required>
+														<option value="bdt">BDT</option>
+														<option value="non bdt">NON BDT</option>
+													</select>
+												</div>
+											</div>
+
+										</div>
+
+									</div>
+								</div>
+								<!-- end input-->
+
+								<div class="col-xl-6 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Upload Foto</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+											<label>Foto KTP</label>
+											<div class="form-row">
+												<div class="input-group mb-3">
+
+													<div class="input-group-prepend">
+														<span class="input-group-text">Upload</span>
+													</div>
+													<div class="custom-file">
+														<input type="file" class="custom-file-input" id="inputGroupFile01" name="foto_ktp">
+														<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+													</div>
+												</div>
+											</div>
+											<label>Foto Rumah</label>
+											<div class="form-row">
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text">Upload</span>
+													</div>
+													<div class="custom-file">
+														<input type="file" class="custom-file-input" id="inputGroupFile01" name="foto_rumah">
+														<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+									<!-- end -->
+								</div>
+								<!-- end pengisian foto-->
+							</div>
+							<!-- end row 1 -->
+
+							<!-- row 2 -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Alamat Responden</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+
+											<div class="form-row">
+												<div class="form-group col-md-5">
+													<label>Alamat</label>
+													<input type="text" class="form-control" placeholder="jl. namajalan" name="jalan" required>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Dusun</label>
+													<select class="form-control" name="dusun" required>
+														<option value="campurejo" selected="selected">Campurejo</option>
+														<option value="rejodadi">Dusun Rejodadi</option>
+														<option value="sidorejo">Dusun Sidorejo</option>
+														<option value="karang tumpuk"> Dusun Karang Tumpuk</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+
+												<div class="form-group col-md-2">
+													<label>Desa</label>
+													<input type="text" name="desa" class="form-control" value="campurejo" disabled>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+
+												<div class="form-group col-md-2">
+													<label>Kecamatan</label>
+													<input type="text" name="kecamatan" class="form-control" value="panceng" disabled>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+
+												<div class="form-group col-md-8	">
+
+												</div>
+
+												<div class="form-group col-md-4">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text" id="">RT</span>
+														</div>
+														<select class="form-control" name="rt" required>
+															<option value="1" selected="selected">01</option>
+															<option value="2">02</option>
+															<option value="3">03</option>
+															<option value="4">04</option>
+															<option value="5">05</option>
+															<option value="6">06</option>
+															<option value="7">07</option>
+															<option value="8">08</option>
+															<option value="9">09</option>
+															<option value="10">10</option>
+														</select>
+														<div class="input-group-prepend">
+															<span class="input-group-text" id="">RW</span>
+														</div>
+														<select class="form-control" name="rw" required>
+															<option value="1" selected="selected">01</option>
+															<option value="2">02</option>
+															<option value="3">03</option>
+															<option value="4">04</option>
+															<option value="5">05</option>
+															<option value="6">06</option>
+															<option value="7">07</option>
+															<option value="8">08</option>
+															<option value="9">09</option>
+															<option value="10">10</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+
+													</div>
+												</div>
+
+
+
+											</div>
+											<!-- end row  -->
+
+										</div>
+									</div>
+									<!-- end input-->
+								</div>
+							</div>
+							<!-- end row 2 -->
+
+							<!-- start row 3 -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Detail Responden</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+
+											<div class="form-row">
+												<div class="form-group col-md-2">
+													<label>Jumlah Tabungan</label>
+													<div class="input-group-prepend">
+														<span class="input-group-text">Rp.</span>
+														<input type="text" class="form-control" placeholder="1000000.." name="jumlah_tabungan" required>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Tabungan Perbulan</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="tabungan_perbulan" required>
+															<option value="1" selected="selected">0 - 1.2 Juta</option>
+															<option value="2">1.3 - 1.8 Juta</option>
+															<option value="3">1.9 - 2.1 Juta</option>
+															<option value="4">2.2 - 2.6 Juta</option>
+															<option value="5">2.7 - 3.1 Juta</option>
+															<option value="6">3.2 - 3.6 Juta</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Jumlah KK dalam 1 rumah</label>
+													<div class="input-group-prerend">
+														<input type="number" class="form-control" name="jumlah_kk" placeholder="1">
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Pekerjaan Utama</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="pekerjaan_utama" required>
+															<option value="1" selected="selected">Lainnya</option>
+															<option value="2">Tidak Bekerja</option>
+															<option value="3">Wirausaha</option>
+															<option value="4">Petani</option>
+															<option value="5">Tukang/Montir</option>
+															<option value="6">Buruh harian</option>
+															<option value="7">karyawan</option>
+															<option value="8">Honorer</option>
+															<option value="9">Ojek/Supir</option>
+															<option value="10">Pramuwisma</option>
+															<option value="11">Nelayan</option>
+															<option value="12">PNS</option>
+															<option value="13">Pensiunan</option>
+															<option value="14">BUMN/D</option>
+															<option value="15">TNI/Polri</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Range Penghasilan</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="range_penghasilan" required>
+															<option value="1" selected="selected">0 - 1.2 Juta</option>
+															<option value="2">1.3 - 1.8 Juta</option>
+															<option value="3">1.9 - 2.1 Juta</option>
+															<option value="4">2.2 - 2.6 Juta</option>
+															<option value="5">2.7 - 3.1 Juta</option>
+															<option value="6">3.2 - 3.6 Juta</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-groub col-md-2">
+													<label>Jumlah Penghasilan</label>
+													<div class="input-group-prepend">
+														<span class="input-group-text">Rp.</span>
+														<input type="text" class="form-control" name="jumlah_penghasilan" placeholder="1000000.." required>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Pendidikan Terakhir</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="pendidikan_terakhir" required>
+															<option value="1">Tidak Punya Ijazah</option>
+															<option value="2">SD/Sederajat</option>
+															<option value="3" selected="selected">SMP/Sederajat</option>
+															<option value="4">SMA/Sederajat</option>
+															<option value="5">D1/D2/D3</option>
+															<option value="6">D4/S1</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Status Perkawinan</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="status_perkawinan" required>
+															<option value="1">Belum Menikah</option>
+															<option value="2" selected="selected">Menikah</option>
+															<option value="3">Janda/Duda</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Status Fisik</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="status_fisik" required>
+															<option value="1" selected="selected">Sehat</option>
+															<option value="2">Sakit</option>
+															<option value="3">Disabilita</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Sts Kepemilikan Tanah</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="status_kepemilikan_tanah" required>
+															<option value="1" selected="selected">Milik Sendiri</option>
+															<option value="2">Bukan Milik Sendiri</option>
+															<option value="3">Tanah Negara</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Sts Kepemilikan Rumah</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="status_kepemilikan_rumah" required>
+															<option value="1" selected="selected">Milik Sendiri</option>
+															<option value="2">Bukan Milik Sendiri</option>
+															<option value="3">Kontrak/Sewa</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Aset Rumah Lain</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="aset_rumah_lain" required>
+															<option value="1" selected="selected">Ada</option>
+															<option value="2">Tidak Ada</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Aset Tanah Lain</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="aset_tanah_lain" required>
+															<option value="1" selected="selected">Ada</option>
+															<option value="2">Tidak Ada</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Pernah Dapat bantuan Lain</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="bantuan_lain" required>
+															<option value="1">Ya > 5 Tahun Yang Lalu</option>
+															<option value="2">Ya < 5 Tahun Yang Lalu</option> <option value="3" selected="selected">Belum Pernah</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Nama bantuan Lain</label>
+													<div class="input-group-prepend">
+														<input type="text" class="form-control" name="nama_bantuan_lain" placeholder="isi jika dapat">
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Jenis Kawasan Rumah</label>
+													<div class="input-group-prepend">
+														<select class="form-control" name="jenis_kawasan_rumah" required>
+															<option value="1">Lainnya</option>
+															<option value="2">Kawasan Rawan Air</option>
+															<option value="3" selected="selected">Kawasan Pesisir/Nelayan</option>
+															<option value="4">Kawasan Perbatasan</option>
+															<option value="5">Daerah Tertinggal/Terpencil</option>
+															<option value="6">Kawasan Ekonomi Khusus</option>
+															<option value="7">Kawasan Kumuh</option>
+														</select>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+
+									</div>
+									<!-- end card  -->
+								</div>
+								<!-- end cols -->
+							</div>
+							<!-- end row 3-->
+
+							<!-- konisi fisik rumah -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-3 font-weight-bold text-primary">KONDISI FISIK RUMAH</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- row 4 -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Aspek Keselamatan</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label>Material Pondasi</label>
+													<select class="form-control" name="pondasi_material" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Kayu</option>
+														<option value="3">Batu Kali</option>
+														<option value="4">Batu Kambung</option>
+														<option value="5">Bambu</option>
+														<option value="6">Beton</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Kondisi Pondasi</label>
+													<select class="form-control" name="pondasi_kondisi" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Material Sloof</label>
+													<select class="form-control" name="sloof_material" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Kayu</option>
+														<option value="3">Beton Bertulang</option>
+														<option value="4">Batu Bata</option>
+														<option value="5">Bambu</option>
+														<option value="6">Semen</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Kondisi Sloof</label>
+													<select class="form-control" name="sloof_kondisi" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Material Kolom Dan Ring Balok</label>
+													<select class="form-control" name="material_kolom_ring" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Kayu</option>
+														<option value="3">Beton Bertulang</option>
+														<option value="4">Baja Ringan</option>
+														<option value="5">Bambu</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Kondisi Kolom Dan Ring Balok</label>
+													<select class="form-control" name="kondisi_kolom_ring" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Material Rangka Atap</label>
+													<select class="form-control" name="material_rangka_atap" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Kayu</option>
+														<option value="3">Beton Bertulang</option>
+														<option value="4">Baja Ringan</option>
+														<option value="5">Bambu</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Kondisi Rangka Atap</label>
+													<select class="form-control" name="kondisi_rangka_atap" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Proteksi Kebakaran</label>
+													<select class="form-control" name="proteksi_kebakaran" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Ada</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Sarana Proteksi</label>
+													<select class="form-control" name="sarana_proteksi_kebakaran" required>
+														<option value="1" selected="selected">Lainnya</option>
+														<option value="2">PMK/APAR</option>
+														<option value="3">Detektor Asap</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Prasarana Proteksi</label>
+													<select class="form-control" name="prasarana_proteksi_kebakaran" required>
+														<option value="1" selected="selected">Lainnya</option>
+														<option value="2">Hidran/Tangki/Sumber Air</option>
+														<option value="3">Jalan Untuk Damkar</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+								<!-- end input-->
+							</div>
+							<!-- end row 4 -->
+
+							<!-- row 5 -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Aspek Kesehatan</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+											<div class="form-row">
+												<div class="form-group col-md-1">
+													<label>Kusen</label>
+													<select class="form-control" name="kusen" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Ada</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Jendela Dan Ventilasi</label>
+													<select class="form-control" name="jendela" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Memenuhi, Kondisi Baik</option>
+														<option value="3">Memenuhi, Kondisi Rusak</option>
+														<option value="4">Tidak Memenuhi, Kondisi Baik</option>
+														<option value="5">Tidak Memenuhi, Kondisi Rusak</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-1">
+													<label>Daun Pintu</label>
+													<select class="form-control" name="pintu" required>
+														<option value="1">Tidak Ada</option>
+														<option value="2" selected="selected">Ada</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Kamar Mandi</label>
+													<select class="form-control" name="kamar_mandi" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Sendiri</option>
+														<option value="3">Bersama/Umum</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Saluran Air Kotor</label>
+													<select class="form-control" name="saluran_air" required>
+														<option value="1" selected="selected">Tidak Ada</option>
+														<option value="2">Sendiri</option>
+														<option value="3">Bersama/Umum</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Pembuangan Akhir Tinja</label>
+													<select class="form-control" name="pembuangan" required>
+														<option value="1" selected="selected">Lainnya</option>
+														<option value="2">Septictank</option>
+														<option value="3">SPAL</option>
+														<option value="4">Lubang Tanah</option>
+														<option value="5">Kolam/Sawah/Sungai/Daun</option>
+														<option value="6">Pantai/Tanah Lapang/Kebun</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Drainase</label>
+													<select class="form-control" name="drainase" required>
+														<option value="1" selected="selected">Ada, Kondisi Baik</option>
+														<option value="2">Ada, Kondisi Rusak</option>
+														<option value="3">Tidak Ada</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Tempat Sampah</label>
+													<select class="form-control" name="tempat_sampah" required>
+														<option value="1">Tidak Ada</option>
+														<option value="2" selected="selected">Ada</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Sumber Air Minum</label>
+													<select class="form-control" name="sumber_air_minum" required>
+														<option value="1" selected="selected">Air Kemasan/Isi Ulang</option>
+														<option value="2">PDAM</option>
+														<option value="3">Sumur</option>
+														<option value="4">Mat Air</option>
+														<option value="5">Lainnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-2">
+													<label>Jarak Sumber Air Minum</label>
+													<select class="form-control" name="jarak_air_minum" required>
+														<option value="1" selected="selected">> 10m</option>
+														<option value="2">< 10m</option>
+													</select> 
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label>Sumber Listrik</label>
+													<select class="form-control" name="sumber_listrik" required>
+														<option value="1" selected="selected">Listrik PLN Dengan Meteran</option>
+														<option value="2">Listrik PLN Tanpa Meteran</option>
+														<option value="3">Listrik Non PLN</option>
+														<option value="4">Bukan Listrik</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end row 5 -->
+
+							<!-- row 6 -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Aspek Persyaratan Luas & Kebutuhan Rumah</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+											<div class="form-row">
+												<div class="form-group col-md-6	">
+													<label>Luas Rumah</label>
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="basic-addon1">M<sup>2</sup></span>
+														<input type="text" name="luas_rumah" class="form-control" required>
+														<div class="invalid-feedback">Data harus diisi.</div>
+													</div>
+												</div>
+												<div class="form-group col-md-6	">
+													<label>Jumlah Penghuni Rumah</label>
+													<input type="number" name="jumlah_penghuni" class="form-control" required>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+											</div>
+											<!-- end row  -->
+										</div>
+									</div>
+									<!-- end input-->
+								</div>
+							</div>
+							<!-- end row 6 -->
+
+							<!-- row 7 -->
+							<div class="row">
+								<div class="col-xl-12 col-lg-5">
+									<!-- kuisioner pengisian -->
+									<div class="card shadow mb-4">
+										<!-- Card Header-->
+										<div class="card-header py-3">
+											<h6 class="m-0 font-weight-bold text-primary">Aspek Komponen Bahan Bangunan Sesuai Konteks Lokal</h6>
+										</div>
+										<!-- isi kuisioner -->
+										<div class="card-body">
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label>Material Penutup Atap</label>
+													<select class="form-control" name="material_atap" required>
+														<option value="1" selected="selected">Genteng</option>
+														<option value="2">Esbes</option>
+														<option value="3">Seng</option>
+														<option value="4">Jerami/Rumbia</option>
+														<option value="5">Metal Sheets</option>
+														<option value="6">Sirap</option>
+														<option value="7">Trileks</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Kondisi Penutup Atap</label>
+													<select class="form-control" name="kondisi_atap" required>
+														<option value="1" selected="selected">Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Material Dinding Pengisi</label>
+													<select class="form-control" name="material_dinding" required>
+														<option value="1" selected="selected">Tembok</option>
+														<option value="2">GRC(Esbes)</option>
+														<option value="3">Papan/Tripleks</option>
+														<option value="4">Anyaman Bambu</option>
+														<option value="5">Kayu</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label>Kondisi Dinding Pengisi</label>
+													<select class="form-control" name="kondisi_dinding" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Material Penutup Lantai</label>
+													<select class="form-control" name="material_lantai" required>
+														<option value="1" selected="selected">Keramik</option>
+														<option value="2">Marmer/Granit</option>
+														<option value="3">Ubin/Tegel</option>
+														<option value="4">Plesteran</option>
+														<option value="5">Bambu</option>
+														<option value="6">Kayu</option>
+														<option value="7">Tanah</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Kondisi Penutup Lantai</label>
+													<select class="form-control" name="kondisi_lantai" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label>Struktur Bawah Lantai</label>
+													<select class="form-control" name="struktur_lantai" required>
+														<option value="1" selected="selected">Kondisi Baik</option>
+														<option value="2">Rusak Ringan</option>
+														<option value="3">Rusak Sedang/Sebagian</option>
+														<option value="4">Rusak Berat/Seluruhnya</option>
+													</select>
+													<div class="invalid-feedback">Data harus diisi.</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end input-->
+							</div>
+							<!-- end row 7 -->
+
+							<!-- input button -->
+							<div class="col-xl-6 col-lg-5">
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+									Simpan Data
+								</button>
+
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Simpan Data</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												Periksa lagi, apakah data yang dimasukkan sudah benar. <br>
+												tekan save untuk melanjutkan.
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- end button -->
+							<?php
+							include '../koneksi.php';
+							if (isset($_POST['submit'])) {
+
+								$nama_lengkap	= $_POST['nama_lengkap'];
+								$nik			= $_POST['nik'];
+								$no_telp		= $_POST['no_telp'];
+								$kordinat		= $_POST['sumber_data'];
+								$jenis_kelamin	= $_POST['jenis_kelamin'];
+								$sumber_data	= $_POST['sumber_data'];
+
+								$query = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
+																			VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
+								$hasil = mysqli_query($koneksi, $query);
+
+								//validasi data masuk
+								if ($hasil) {
+									echo "<script>alert('input data berhasil');</script>";
+									echo '<meta http-equiv="refresh" content="0;url=input.php" />';
+								} else {
+									echo "input data gagal";
+								}
+							}
+							?>
+						</form>
+						<!-- end form -->
+						<br>	
 				</div>
-				<!-- End of Main Content -->
-
-				<!-- Footer -->
-				<footer class="sticky-footer bg-white">
-					<div class="container my-auto">
-						<div class="copyright text-center my-auto">
-							<span>Copyright &copy; RTLH Campurejo</span>
-						</div>
-					</div>
-				</footer>
-				<!-- End of Footer -->
-
 			</div>
-			<!-- End of Content Wrapper -->
+		</div>
+		<!-- End of Main Content -->
+
+		</div>
+		<!-- End of Content Wrapper -->
 
 		</div>
 		<!-- End of Page Wrapper -->
@@ -317,6 +1136,29 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- validasi JS -->
+		<script>
+			// Disable form submissions if there are invalid fields
+			(function() {
+				'use strict';
+				window.addEventListener('load', function() {
+					// Get the forms we want to add validation styles to
+					var forms = document.getElementsByClassName('needs-validation');
+					// Loop over them and prevent submission
+					var validation = Array.prototype.filter.call(forms, function(form) {
+						form.addEventListener('submit', function(event) {
+							if (form.checkValidity() === false) {
+								event.preventDefault();
+								event.stopPropagation();
+							}
+							form.classList.add('was-validated');
+						}, false);
+					});
+				}, false);
+			})();
+		</script>
+		<!-- end validasi js -->
 
 
 
