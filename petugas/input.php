@@ -1059,12 +1059,87 @@
 							include '../koneksi.php';
 							if (isset($_POST['submit'])) {
 
+								// tabel identitas responden
 								$nama_lengkap	= $_POST['nama_lengkap'];
 								$nik			= $_POST['nik'];
 								$no_telp		= $_POST['no_telp'];
 								$kordinat		= $_POST['sumber_data'];
 								$jenis_kelamin	= $_POST['jenis_kelamin'];
 								$sumber_data	= $_POST['sumber_data'];
+								$jenis_kelamin	= $_POST['jenis_kelamin'];
+								// tabel responden
+								$jumlah_tabungan	= $_POST['jumlah_tabungan'];
+								$jumlah_kk			= $_POST['jumlah_kk'];
+								$pekerjaan_utama	= $_POST['pekerjaan_utama'];
+								$jumlah_penghasilan	= $_POST['jumlah_penghasilan'];
+								$range_penghasilan	= $_POST['range_penghasilan'];
+								$pendidikan_terakhir= $_POST['pendidikan_terakhir'];
+								$status_perkawinan	= $_POST['status_perkawinan'];
+								$status_fisik		= $_POST['status_fisik'];
+								$status_kepemilikan_tanah= $_POST['status_kepemilikan_tanah'];
+								$status_kepemilikan_rumah= $_POST['status_kepemilikan_rumah'];
+								$aset_rumah_lain	= $_POST['aset_rumah_lain'];
+								$aset_tanah_lain	= $_POST['aset_tanah_lain'];
+								$bantuan_lain		= $_POST['bantuan_lain'];
+								$nama_bantuan_lain	= $_POST['nama_bantuan_lain'];
+								$jenis_kawasan_rumah= $_POST['jenis_kawasan_rumah'];
+								//tabel alamat responden
+								$jalan		= $_POST['jalan'];
+								$dusun		= $_POST['dusun'];
+								$rt			= $_POST['rt'];
+								$rw			= $_POST['rw'];
+								$desa		= $_POST['desa'];
+								$kecamatan	= $_POST['kecamatan'];
+								//tabel foto ktp
+								$nama_pemilik	= $_POST['nama_pemilik'];
+								$nama_file		= $_POST['nama_file'];
+								$size			= $_POST['size'];
+								//tabel foto rumah
+								$nama_pemilik	= $_POST['nama_pemilik'];
+								$nama_file		= $_POST['nama_file'];
+								$size			= $_POST['size'];
+								//tabel aspek persyaratan
+								$luas_rumah		= $_POST['luas_rumah'];
+								$jumlah_penghuni= $_POST['jumlah_penghuni'];
+								//tabel aspek kesehatan
+								$kusen			= $_POST['kusen'];
+								$jendela		= $_POST['jendela'];
+								$pintu			= $_POST['pintu'];
+								$kamar_mandi	= $_POST['kamar_mandi'];
+								$saluran_air	= $_POST['saluran_air'];
+								$pembuangan		= $_POST['pembuangan'];
+								$drainase		= $_POST['drainase'];
+								$tempat_sampah	= $_POST['tempat_sampah'];
+								$sumber_air_minum	= $_POST['sumber_air_minum'];
+								$jarak_air_minum	= $_POST['jarak_air_minum'];
+								$jarak_sumber		= $_POST['jarak_sumber'];
+								//tabel aspek bangunan
+								$material_atap	= $_POST['material_atap'];
+								$kondisi_atap	= $_POST['kondisi_atap'];
+								$material_dinding = $_POST['material_dinding'];
+								$kondisi_dinding  = $_POST['kondisi_dinding'];
+								$material_lantai  = $_POST['material_lantai'];
+								$penutup_lantai   = $_POST['penutup_lantai'];
+								$struktur_lantai  = $_POST['struktur_lantai'];
+								//tabel aspek keselamatan
+								$pondasi_material		= $_POST['kondisi_material'];
+								$pondasi_kondisi		= $_POST['pondasi_kondisi'];
+								$sloof_material			= $_POST['sloof_material'];
+								$sloof_kondisi			= $_POST['sloof_kondisi'];
+								$material_kolom_ring	= $_POST['material_kolom_ring'];
+								$kondisi_kolom_ring		= $_POST['kondisi_kolom_ring'];
+								$material_rangka_atap	= $_POST['material_rangka_atap'];
+								$kondisi_rangka_atap	= $_POST['kondisi_rangka_atap'];
+								$proteksi_kebakaran		= $_POST['proteksi_kebakaran'];
+								$sarana_proteksi_kebakaran		= $_POST['sarana_proteksi'];
+								$prasarana_proteksi_kebakaran	= $_POST['prasarana_proteksi'];
+								//waktu
+								$tanggal_surve	= ['tanggal_surve'];
+
+
+
+
+
 
 								$query = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
 																			VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
