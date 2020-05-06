@@ -353,13 +353,13 @@
 
 												<div class="form-group col-md-2">
 													<label>Desa</label>
-													<input type="text" name="desa" class="form-control" value="campurejo" disabled>
+													<input type="text" name="desa" class="form-control" value="campurejo">
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 
 												<div class="form-group col-md-2">
 													<label>Kecamatan</label>
-													<input type="text" name="kecamatan" class="form-control" value="panceng" disabled>
+													<input type="text" name="kecamatan" class="form-control" value="panceng">
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 
@@ -1138,15 +1138,15 @@
 
 
 
-
-
-
-								$query = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
+								$query_tabel_identitas_responden = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
 																			VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
-								$hasil = mysqli_query($koneksi, $query);
+								$query_tabel_alamat_responden = "INSERT INTO tabel_alamat_responden (jalan,dusun,rt,rw,desa,kecamatan)
+																			VALUE ('$jalan','$dusun','$rt','$rw','$desa','$kecamatan')";
+								$hasil1 = mysqli_query($koneksi, $query_tabel_identitas_responden);
+								$hasil2 = mysqli_query($koneksi, $query_tabel_alamat_responden);
 
 								//validasi data masuk
-								if ($hasil) {
+								if ($hasil && $hasil2) {
 									echo "<script>alert('input data berhasil');</script>";
 									echo '<meta http-equiv="refresh" content="0;url=input.php" />';
 								} else {
