@@ -231,7 +231,13 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tanggal</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Tanggal sekarang</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                          <?php
+                            date_default_timezone_set('Asia/Jakarta');
+                            echo  date('d-m-Y');
+                            // echo '<br>' . date('H:i:s');
+                          ?>
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -250,7 +256,15 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Diproses</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                          <?php
+                            include '../koneksi.php';
+                            $query_jumlah_data = "SELECT id_responden FROM tabel_identitas_responden";
+                            $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
+                            $total_id_responden = mysqli_num_rows($hasil_id_responden);
+                            echo $total_id_responden;
+                          ?>
+                          </div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
@@ -276,11 +290,15 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Layak</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">40</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                          <?php
+                            echo $total_id_responden;
+                          ?>
+                          </div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 100% " aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -302,11 +320,15 @@
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Kurang Layak</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">10</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                          <?php
+                            echo $total_id_responden;
+                          ?>
+                          </div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width:100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
