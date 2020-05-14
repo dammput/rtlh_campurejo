@@ -82,11 +82,9 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Permintaan edit :</h6>
-            <a class="collapse-item" href="edit_data.php">Data Edit Permintaan</a>
 
             <h6 class="collapse-header">Data Akun :</h6>
-            <a class="collapse-item" href="user_data.php">Akun User</a>
+            <a class="collapse-item" href="edit_data.php">Akun User</a>
 
             <h6 class="collapse-header">Keamanan Data :</h6>
             <a class="collapse-item" href="view.php">Lihat Data</a>
@@ -194,9 +192,6 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-
 
             <!-- Content Row -->
             <div class="row">
@@ -208,7 +203,13 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tanggal</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Tanggal sekarang</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        <?php
+                            date_default_timezone_set('Asia/Jakarta');
+                            echo  date('d-m-Y');
+                            // echo '<br>' . date('H:i:s');
+                          ?>
+                        </div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -227,7 +228,15 @@
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Diproses</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                            <?php
+                            include '../koneksi.php';
+                            $query_jumlah_data = "SELECT id_responden FROM tabel_identitas_responden";
+                            $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
+                            $total_id_responden = mysqli_num_rows($hasil_id_responden);
+                            echo $total_id_responden;
+                            ?>
+                            </div>
                           </div>
                           <div class="col">
                             <div class="progress progress-sm mr-2">
@@ -253,7 +262,11 @@
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Layak</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">40</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                            <?php
+                            echo $total_id_responden;
+                            ?>
+                            </div>
                           </div>
                           <div class="col">
                             <div class="progress progress-sm mr-2">
@@ -279,7 +292,11 @@
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Kurang Layak</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">10</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                            <?php
+                            echo $total_id_responden;
+                            ?>
+                            </div>
                           </div>
                           <div class="col">
                             <div class="progress progress-sm mr-2">
@@ -335,10 +352,6 @@
                 </div>
               </div>
             </div>
-
-
-          </div>
-          <!-- End of Main Content -->
 
 
         </div>

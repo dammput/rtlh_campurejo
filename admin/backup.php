@@ -72,11 +72,9 @@
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Permintaan edit :</h6>
-            <a class="collapse-item " href="edit_data.php">Data Edit Permintaan</a>
 
             <h6 class="collapse-header">Data Akun :</h6>
-            <a class="collapse-item " href="user_data.php">Akun User</a>
+            <a class="collapse-item " href="edit_data.php">Akun User</a>
 
             <h6 class="collapse-header">Keamanan Data :</h6>
             <a class="collapse-item " href="view.php">Lihat Data</a>
@@ -135,14 +133,14 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
                 <img class="img-profile rounded-circle" src="../assets/img/60x60.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Admin
+                  ADMIN
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
