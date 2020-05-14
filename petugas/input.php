@@ -111,7 +111,7 @@
 
 					<!-- Topbar -->
 					<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-						<h6 class="m-3 font-weight-bold text-primary">FORM INPUT DATA RESPONDEN</h6>
+						<h6 class="m-3 font-weight-bold text">FORM INPUT DATA RESPONDEN</h6>
 						<!-- Sidebar Toggle (Topbar) -->
 						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 							<i class="fa fa-bars"></i>
@@ -138,34 +138,6 @@
 							</li>
 
 
-
-							<!-- Nav Item - Messages -->
-							<li class="nav-item dropdown no-arrow mx-1">
-								<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-envelope fa-fw"></i>
-									<!-- Counter - Messages -->
-									<span class="badge badge-danger badge-counter">1</span>
-								</a>
-								<!-- Dropdown - Messages -->
-								<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-									<h6 class="dropdown-header">
-										Message Center
-									</h6>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<div class="dropdown-list-image mr-3">
-											<img class="rounded-circle" src="../assets/img/60x60.png" alt="">
-											<div class="status-indicator bg-success"></div>
-										</div>
-										<div class="font-weight-bold">
-											<div class="text-truncate">bakal diisi dengan pesan dari kades</div>
-											<div class="small text-gray-500">menunjukan waktu pesan</div>
-										</div>
-									</a>
-
-									<a class="dropdown-item text-center small text-gray-500" href="pesan.php">Read More Messages</a>
-								</div>
-							</li>
-
 							<div class="topbar-divider d-none d-sm-block"></div>
 
 							<!-- Nav Item - User Information -->
@@ -180,15 +152,6 @@
 										<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 										Petugas
 									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-										Edit Profile
-									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-										Pesan
-									</a>
-
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
 										<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -204,16 +167,16 @@
 					<!-- Content Row -->
 					<div class="container-fluid">
 						<!-- form input data -->
-						<form action="input.php" method="post" class="needs-validation" novalidate>
+						<form action="input.php" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
 
 							<!-- identitas responden -->
 							<div class="row">
 								<div class="col-xl-12 col-lg-5">
 									<!-- kuisioner pengisian -->
-									<div class="card shadow mb-4">
+									<div class="card shadow mb-1">
 										<!-- Card Header-->
-										<div class="card-header py-3">
-											<h6 class="m-3 font-weight-bold text-primary">IDENTITAS RESPONDEN</h6>
+										<div class="card py-1 bg-gray-600 accordion">
+											<h6 class="m-3 font-weight-bold text-white">IDENTITAS RESPONDEN</h6>
 										</div>
 									</div>
 								</div>
@@ -294,9 +257,9 @@
 														<span class="input-group-text">Upload</span>
 													</div>
 													<div class="custom-file" id="customFile" lang="es">
-													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp"> -->
+													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='ktp'> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
-													Select file...
+													Select file ktp...
 													</label>
 													</label>
 													</div>
@@ -309,9 +272,9 @@
 														<span class="input-group-text">Upload</span>
 													</div>
 													<div class="custom-file" id="customFile" lang="es">
-													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp"> -->
+													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='rumah'> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
-													Select file...
+													Select file rumah...
 													</label>
 													</label>
 													</div>
@@ -478,7 +441,7 @@
 													</div>
 												</div>
 												<div class="form-group col-md-2">
-													<label>Jumlah KK dalam 1 rumah</label>
+													<label>Jml KK dalam 1 rumah</label>
 													<div class="input-group-prerend">
 														<input type="number" class="form-control" name="jumlah_kk" placeholder="1">
 													</div>
@@ -565,7 +528,7 @@
 													</div>
 												</div>
 												<div class="form-group col-md-2">
-													<label>Sts Kepemilikan Tanah</label>
+													<label>Kepemilikan Tanah</label>
 													<div class="input-group-prepend">
 														<select class="form-control" name="status_kepemilikan_tanah" required>
 															<option value="Milik Sendiri" selected="selected">Milik Sendiri</option>
@@ -576,7 +539,7 @@
 													</div>
 												</div>
 												<div class="form-group col-md-2">
-													<label>Sts Kepemilikan Rumah</label>
+													<label>Kepemilikan Rumah</label>
 													<div class="input-group-prepend">
 														<select class="form-control" name="status_kepemilikan_rumah" required>
 															<option value="Milik Sendiri" selected="selected">Milik Sendiri</option>
@@ -656,10 +619,10 @@
 							<div class="row">
 								<div class="col-xl-12 col-lg-5">
 									<!-- kuisioner pengisian -->
-									<div class="card shadow mb-4">
+									<div class="card shadow mb-1">
 										<!-- Card Header-->
-										<div class="card-header py-3">
-											<h6 class="m-3 font-weight-bold text-primary">KONDISI FISIK RUMAH</h6>
+										<div class="card py-1 bg-gray-600 accordion">
+											<h6 class="m-3 font-weight-bold text-white ">KONDISI FISIK RUMAH</h6>
 										</div>
 									</div>
 								</div>
@@ -819,7 +782,7 @@
 													</select>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
-												<div class="form-group col-md-3">
+												<div class="form-group col-md-2">
 													<label>Jendela Dan Ventilasi</label>
 													<select class="form-control" name="jendela" required>
 														<option value="Tidak Ada" selected="selected">Tidak Ada</option>
@@ -830,7 +793,7 @@
 													</select>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
-												<div class="form-group col-md-1">
+												<div class="form-group col-md-2">
 													<label>Daun Pintu</label>
 													<select class="form-control" name="pintu" required>
 														<option value="Tidak Ada">Tidak Ada</option>
@@ -885,7 +848,7 @@
 													</select>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
-												<div class="form-group col-md-3">
+												<div class="form-group col-md-2">
 													<label>Sumber Air Minum</label>
 													<select class="form-control" name="sumber_air_minum" required>
 														<option value="Air Kemasan/Isi Ulang" selected="selected">Air Kemasan/Isi Ulang</option>
@@ -896,7 +859,7 @@
 													</select>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
-												<div class="form-group col-md-2">
+												<div class="form-group col-md-3">
 													<label>Jarak Sumber Air Minum</label>
 													<select class="form-control" name="jarak_air_minum" required>
 														<option value="> 10m" selected="selected">> 10m</option>
@@ -1055,26 +1018,26 @@
 							<!-- input button -->
 							<div class="col-xl-6 col-lg-5">
 								<!-- Button trigger modal -->
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#simpan">
 									Simpan Data
 								</button>
 
 								<!-- Modal -->
-								<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal fade" id="simpan" tabindex="-1" role="dialog" aria-labelledby="simpanLabel" aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Simpan Data</h5>
+												<h5 class="modal-title" id="simpanLabel">Simpan Data</h5>
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
 											<div class="modal-body">
 												Periksa lagi, apakah data yang dimasukkan sudah benar. <br>
-												tekan save untuk melanjutkan.
+												tekan save untuk melanjutkan, Apabila tombol save tidak bekerja, Berarti masih ada data yang kosong.
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
 												<button type="submit" class="btn btn-primary" name="submit">Save changes</button>
 											</div>
 										</div>
@@ -1118,14 +1081,6 @@
 								$rw			= $_POST['rw'];
 								$desa		= $_POST['desa'];
 								$kecamatan	= $_POST['kecamatan'];
-								// //tabel foto ktp
-								// $nama_pemilik	= $_POST['nama_pemilik'];
-								// $nama_file		= $_POST['nama_file'];
-								// $size			= $_POST['size'];
-								// //tabel foto rumah
-								// $nama_pemilik	= $_POST['nama_pemilik'];
-								// $nama_file		= $_POST['nama_file'];
-								// $size			= $_POST['size'];
 								//tabel aspek persyaratan
 								$luas_rumah		= $_POST['luas_rumah'];
 								$jumlah_penghuni= $_POST['jumlah_penghuni'];
@@ -1256,11 +1211,11 @@
 								// KAMAR MANDI
 								if($kamar_mandi === 'Tidak Ada'){$kamar_mandi_value = 10;
 								}else if($kamar_mandi === 'Sendiri'){$kamar_mandi_value = 10;
-								}else{$kamar_mandi_value = 10;
+								}else{$kamar_mandi_value = 10;};
 								// SALURAN AIR
 								if($saluran_air === 'Tidak Ada'){$saluran_air_value = 10;
 								}else if($saluran_air === 'Sendiri'){$saluran_air_value = 10;
-								}else{$saluran_air_value = 10;
+								}else{$saluran_air_value = 10;};
 								// PEMBUANGAN AKHIR TINJA
 								if($pembuangan === 'Lainnya'){$pembuangan_value = 10;
 								}else if($pembuangan === 'Septictank'){$pembuangan_value = 20;
@@ -1332,9 +1287,10 @@
 								}else if($struktur_lantai === 'Rusak Ringan'){$struktur_lantai_value = 20;
 								}else if($struktur_lantai === 'Rusak Sedang/Sebagian'){$struktur_lantai_value = 30;
 								}else {$struktur_lantai_value = 40;};
-								$struktur_lantai  = $_POST['struktur_lantai'];
+						
 								
 								// ASPEK KESELAMATAN
+								// PONDASI MATERIAL
 								if($pondasi_material === 'Kayu'){$pondasi_material_value = 50;
 								}else if($Pondasi_material === 'Batu Kali'){$pondasi_material_value = 40;
 								}else if($pondasi_material === 'Batu Kambung'){$pondasi_material_value = 30;
@@ -1391,8 +1347,7 @@
 								if($prasarana_proteksi_kebakaran === 'Hidran/Tangki/Sumber Air'){$prasarana_proteksi_kebakaran_value = 30;
 								}else if($prasarana_proteksi_kebakaran === 'Jalan Untuk Damkar'){$prasarana_proteksi_kebakaran_value = 20;
 								}else{$prasarana_proteksi_kebakaran_value = 10;};
-								$sarana_proteksi_kebakaran		= $_POST['sarana_proteksi_kebakaran'];
-								$prasarana_proteksi_kebakaran	= $_POST['prasarana_proteksi_kebakaran'];
+								
 
 
 
@@ -1415,33 +1370,87 @@
 
 								$hasil_waktu = mysqli_query($koneksi,$query_waktu);
 								$hasil1 = mysqli_query($koneksi, $query_tabel_identitas_responden);
-								$id_identitas = mysqli_insert_id($koneksi);
+									$id_identitas = mysqli_insert_id($koneksi);//mengambil data id
 								$hasil2 = mysqli_query($koneksi, $query_tabel_alamat_responden);
 								$hasil3 = mysqli_query($koneksi, $query_tabel_detail_responden);
 								$hasil4 = mysqli_query($koneksi, $query_tabel_aspek_persyaratan);
-								$id_aspek_persyaratan = mysqli_insert_id($koneksi);
+									$id_aspek_persyaratan = mysqli_insert_id($koneksi);//mengambil data id
 								$hasil5 = mysqli_query($koneksi, $query_tabel_aspek_kesehatan);
-								$id_aspek_kesehatan = mysqli_insert_id($koneksi);
+									$id_aspek_kesehatan = mysqli_insert_id($koneksi);//mengambil data id
 								$hasil6 = mysqli_query($koneksi, $query_tabel_aspek_bangunan);
-								$id_aspek_bangunan = mysqli_insert_id($koneksi);
+									$id_aspek_bangunan = mysqli_insert_id($koneksi);//mengambil data id
 								$hasil7 = mysqli_query($koneksi, $query_tabel_aspek_keselamatan);
-								$id_aspek_keselamatan = mysqli_insert_id($koneksi);
-								// printf($pondasi_material_value);
-								// printf($id_aspek_persyaratan);
+									$id_aspek_keselamatan = mysqli_insert_id($koneksi);//mengambil data id
+								
 
+								//queri upload id
 								$query_tabel_hasil_penilaian_aspek = "INSERT INTO tabel_hasil_penilaian_aspek (id_responden,id_aspek_persyaratan,id_aspek_kesehatan,id_aspek_bangunan,id_aspek_keselamatan)
 																			VALUE ('$id_identitas','$id_aspek_persyaratan','$id_aspek_kesehatan','$id_aspek_bangunan','$id_aspek_keselamatan')";
-
 								$hasil_input_id = mysqli_query($koneksi,$query_tabel_hasil_penilaian_aspek);
 								
-								//validasi data masuk
-								if ($hasil1 && $hasil2 && $hasil3 && $hasil4 && $hasil5 && $hasil6 && $hasil7 && $hasil_input_id) {
-									// echo '<meta http-equiv="refresh" content="0;url=index.php" />';
-									echo "<script>alert('input data berhasil');</script>";
-								} else {
-									echo "input data gagal";
+								
+								// Ambil Data yang Dikirim dari Form
+								$nama_file_ktp = $_FILES['ktp']['name'];
+								$ukuran_file_ktp = $_FILES['ktp']['size'];
+								$tipe_file_ktp = $_FILES['ktp']['type'];
+								$tmp_file_ktp = $_FILES['ktp']['tmp_name'];
+								$nama_file_rumah = $_FILES['rumah']['name'];
+								$ukuran_file_rumah = $_FILES['rumah']['size'];
+								$tipe_file_rumah = $_FILES['rumah']['type'];
+								$tmp_file_rumah = $_FILES['rumah']['tmp_name'];
+								
+								// Set path folder tempat menyimpan gambarnya
+								$path_ktp = "../assets/img/ktp/".$nama_file_ktp;
+								$path_rumah = "../assets/img/rumah/".$nama_file_rumah;
+								
+								if($tipe_file_ktp == "image/jpeg" || $tipe_file_ktp == "image/png" && $tipe_file_rumah == "image/jpeg" || $tipe_file_rumah == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
+								  // Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
+								  if($ukuran_file <= 1000000){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
+									// Jika ukuran file kurang dari sama dengan 1MB, lakukan :
+									// Proses upload
+									if(move_uploaded_file($tmp_file_ktp, $path_ktp) && move_uploaded_file($tmp_file_rumah, $path_rumah) ){ // Cek apakah gambar berhasil diupload atau tidak
+									 // Cek apakah gambar berhasil diupload atau tidak
+									  // Jika gambar berhasil diupload, Lakukan :	
+									  // Proses simpan ke Database
+									  $query_ktp = "INSERT INTO gambar_ktp(nama,ukuran,tipe) VALUES('".$nama_file_ktp."','".$ukuran_file_ktp."','".$tipe_file_ktp."')";
+									  $sql_ktp = mysqli_query($koneksi, $query_ktp); // Eksekusi/ Jalankan query dari variabel $query
+									  $query_rumah = "INSERT INTO gambar_rumah(nama,ukuran,tipe) VALUES('".$nama_file_rumah."','".$ukuran_file_rumah."','".$tipe_file_rumah."')";
+									  $sql_rumah = mysqli_query($koneksi, $query_rumah); // Eksekusi/ Jalankan query dari variabel $query
+									  
+									  if($sql_ktp && $sql_rumah){ // Cek jika proses simpan ke database sukses atau tidak
+										// Jika Sukses, Lakukan :
+										//validasi data masuk
+										if ($hasil1 && $hasil2 && $hasil3 && $hasil4 && $hasil5 && $hasil6 && $hasil7 && $hasil_input_id) {
+											echo '<meta http-equiv="refresh" content="0;url=index.php" />';
+											echo "<script>alert('input data berhasil');</script>";
+										} else {
+											echo "input data gagal";
+										}
+										echo '<meta http-equiv="refresh" content="0;url=index.php" />';
+									  }else{
+										// Jika Gagal, Lakukan :
+										echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
+										echo "<br><a href='index.php'>Kembali Ke Index</a>";
+									  }
+									}else{
+									  // Jika gambar gagal diupload, Lakukan :
+									  echo "Maaf, Gambar gagal untuk diupload.";
+									  echo "<br><a href='index.php'>Kembali Ke index</a>";
+									}
+								  }else{
+									// Jika ukuran file lebih dari 1MB, lakukan :
+									echo "Maaf, Ukuran gambar yang diupload tidak boleh lebih dari 1MB";
+									echo "<br><a href='index.php'>Kembali Ke index</a>";
+								  }
+								}else{
+								  // Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
+								  echo "Maaf, Tipe gambar yang diupload harus JPG / JPEG / PNG.";
+								//   echo "<br><a href='index.php'>Kembali Ke index</a>";
+								
 								}
+							}else{
 							}
+								
 							?>
 						</form>
 						<!-- end form -->
