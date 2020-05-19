@@ -84,10 +84,11 @@
           <div class="bg-white py-2 collapse-inner rounded">
 
             <h6 class="collapse-header">Data Akun :</h6>
-            <a class="collapse-item" href="edit_data.php">Akun User</a>
+            <a class="collapse-item" href="akun_user.php">Akun User</a>
 
             <h6 class="collapse-header">Keamanan Data :</h6>
             <a class="collapse-item" href="view.php">Lihat Data</a>
+            <a class="collapse-item " href="penilaian.php">Penilaian Data</a>
             <a class="collapse-item" href="backup.php">Backup Data</a>
 
           </div>
@@ -162,20 +163,15 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
                 <img class="img-profile rounded-circle" src="../assets/img/60x60.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Admin
+                  Adam Ahmad
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Edit Profile
-                </a>
-
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -231,7 +227,7 @@
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                             <?php
                             include '../koneksi.php';
-                            $query_jumlah_data = "SELECT id_responden FROM tabel_identitas_responden";
+                            $query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
                             $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
                             $total_id_responden = mysqli_num_rows($hasil_id_responden);
                             echo $total_id_responden;

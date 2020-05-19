@@ -74,8 +74,6 @@
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Perizinan :</h6>
-            <a class="collapse-item" href="data_edit.php">Permintaan Edit Data</a>
 
             <h6 class="collapse-header">Data :</h6>
             <a class="collapse-item active" href="data_surve.php">Data Surve</a>
@@ -155,232 +153,232 @@
 	        <div class="container-fluid">
 
 
-	          <!-- DataTales -->
-	          <div class="card shadow mb-4">
-	            <div class="card-body">
-	              <div class="table-responsive">
-	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-	                  <thead>
-	                    <tr>
-	                      <th>No</th>
-	                      <th>Nama_Responden</th>
-	                      <th>NIK</th>
-	                      <th>No Telp</th>
-	                      <th>Sumber_Data</th>
-	                      <th>Kordinat</th>
-	                      <th>Gender</th>
-	                      <th>Kecamatan</th>
-	                      <th>Desa</th>
-	                      <th>Dusun</th>
-	                      <th>RT</th>
-	                      <th>RW</th>
-	                      <th>Alamat_Lengkap/Jln</th>
-	                      <th>Jumlah_Tabungan</th>
-	                      <th>Tabungan/Bulan</th>
-	                      <th>Jumlah_KK/rumah</th>
-	                      <th>Pekerjaan_Utama</th>
-	                      <th>Jumlah_Penghasilan</th>
-	                      <th>Range_Penghasilan</th>
-	                      <th>Pendidikan</th>
-	                      <th>Status</th>
-	                      <th>Kesehatan</th>
-	                      <th>Aset_Tanah</th>
-	                      <th>Aset_Rumah</th>
-	                      <th>Aset_Rumah_Lain</th>
-	                      <th>Aset_Tanah_Lain</th>
-	                      <th>Menerima_Bantuan_Lain</th>
-	                      <th>Nama_Bantuan_Lain</th>
-	                      <th>Jenis_Kawasan_Rumah</th>
-	                      <th>Luas_Rumah</th>
-	                      <th>Jumlah_Penghuni_Rumah</th>
-	                      <th>Kusen_Rumah</th>
-	                      <th>Jendela_Dan_Ventilasi</th>
-	                      <th>Daun_Pintu_rumah</th>
-	                      <th>Kamar_Mandi</th>
-	                      <th>Saluran_Air</th>
-	                      <th>Pembuangan</th>
-	                      <th>Drainase_Rumah</th>
-	                      <th>Tempat_Sampah</th>
-	                      <th>Sumber_Air_Minum</th>
-	                      <th>Jarak_Air_Minum</th>
-	                      <th>Jarak_Sumber_Air_Minum</th>
-	                      <th>Material_Atap</th>
-	                      <th>Kondisi_Atap</th>
-	                      <th>Material_Dinding</th>
-	                      <th>Kondisi_Dinding</th>
-	                      <th>Material_Lantai</th>
-	                      <th>Kondisi_Lantai</th>
-	                      <th>Struktur_Lantai</th>
-	                      <th>Pondasi_Material</th>
-	                      <th>Kondisi_Material</th>
-	                      <th>Sloof_Material</th>
-	                      <th>Kondisi_Sloof</th>
-	                      <th>Material_Kolom</th>
-	                      <th>Kondisi_Kolom</th>
-	                      <th>Material_Rangka_Atap</th>
-	                      <th>Kondisi_Rangka_Atap</th>
-	                      <th>Proteksi_Kebakaran</th>
-	                      <th>Sarana_Proteksi_Kebakaran</th>
-                        <th>Prasarana_Proteksi_Kebakaran</th>
-                        <th>Nama_Responden</th>
-                        <th>No</th>
+						<!-- DataTales -->
+						<div class="card shadow mb-4">
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th>No</th>
+												<th>Waktu_Surve</th>
+												<th>Nama_Responden</th>
+												<th>NIK</th>
+												<th>No_Telp</th>
+												<th>Sumber_Data</th>
+												<th>Kordinat</th>
+												<th>Gender</th>
+												<th>Kecamatan</th>
+												<th>Desa</th>
+												<th>Dusun</th>
+												<th>RT</th>
+												<th>RW</th>
+												<th>Alamat_Lengkap/Jln</th>
+												<th>Jumlah_Tabungan</th>
+												<th>Tabungan/Bulan</th>
+												<th>Jumlah_KK/rumah</th>
+												<th>Pekerjaan_Utama</th>
+												<th>Jumlah_Penghasilan</th>
+												<th>Range_Penghasilan</th>
+												<th>Pendidikan</th>
+												<th>Status</th>
+												<th>Kesehatan</th>
+												<th>Aset_Tanah</th>
+												<th>Aset_Rumah</th>
+												<th>Aset_Rumah_Lain</th>
+												<th>Aset_Tanah_Lain</th>
+												<th>Menerima_Bantuan_Lain</th>
+												<th>Nama_Bantuan_Lain</th>
+												<th>Jenis_Kawasan_Rumah</th>
+												<th>Luas_Rumah</th>
+												<th>Jumlah_Penghuni_Rumah</th>
+												<th>Kusen_Rumah</th>
+												<th>Jendela_Dan_Ventilasi</th>
+												<th>Daun_Pintu_rumah</th>
+												<th>Kamar_Mandi</th>
+												<th>Saluran_Air</th>
+												<th>Pembuangan</th>
+												<th>Drainase_Rumah</th>
+												<th>Tempat_Sampah</th>
+												<th>Sumber_Air_Minum</th>
+												<th>Jarak_Air_Minum</th>
+												<th>Jarak_Sumber_Air_Minum</th>
+												<th>Material_Atap</th>
+												<th>Kondisi_Atap</th>
+												<th>Material_Dinding</th>
+												<th>Kondisi_Dinding</th>
+												<th>Material_Lantai</th>
+												<th>Kondisi_Lantai</th>
+												<th>Struktur_Lantai</th>
+												<th>Pondasi_Material</th>
+												<th>Kondisi_Material</th>
+												<th>Sloof_Material</th>
+												<th>Kondisi_Sloof</th>
+												<th>Material_Kolom</th>
+												<th>Kondisi_Kolom</th>
+												<th>Material_Rangka_Atap</th>
+												<th>Kondisi_Rangka_Atap</th>
+												<th>Proteksi_Kebakaran</th>
+												<th>Sarana_Proteksi_Kebakaran</th>
+												<th>Prasarana_Proteksi_Kebakaran</th>
+												<th>Nama_Responden</th>
+												<th>No</th>
 
-	                    </tr>
-	                  </thead>
-	                  <tfoot>
-	                    <tr>
-	                      <th>No</th>
-	                      <th>Nama_Responden</th>
-	                      <th>NIK</th>
-	                      <th>No Telp</th>
-	                      <th>Sumber_Data</th>
-	                      <th>Kordinat</th>
-	                      <th>Gender</th>
-	                      <th>Kecamatan</th>
-	                      <th>Desa</th>
-	                      <th>Dusun</th>
-	                      <th>RT</th>
-	                      <th>RW</th>
-	                      <th>Alamat_Lengkap/Jln</th>
-	                      <th>Jumlah_Tabungan</th>
-	                      <th>Tabungan/Bulan</th>
-	                      <th>Jumlah_KK/rumah</th>
-	                      <th>Pekerjaan_Utama</th>
-	                      <th>Jumlah_Penghasilan</th>
-	                      <th>Range_Penghasilan</th>
-	                      <th>Pendidikan</th>
-	                      <th>Status</th>
-	                      <th>Kesehatan</th>
-	                      <th>Aset_Tanah</th>
-	                      <th>Aset_Rumah</th>
-	                      <th>Aset_Rumah_Lain</th>
-	                      <th>Aset_Tanah_Lain</th>
-	                      <th>Menerima_Bantuan_Lain</th>
-	                      <th>Nama_Bantuan_Lain</th>
-	                      <th>Jenis_Kawasan_Rumah</th>
-	                      <th>Luas_Rumah</th>
-	                      <th>Jumlah_Penghuni_Rumah</th>
-	                      <th>Kusen_Rumah</th>
-	                      <th>Jendela_Dan_Ventilasi</th>
-	                      <th>Daun_Pintu_rumah</th>
-	                      <th>Kamar_Mandi</th>
-	                      <th>Saluran_Air</th>
-	                      <th>Pembuangan</th>
-	                      <th>Drainase_Rumah</th>
-	                      <th>Tempat_Sampah</th>
-	                      <th>Sumber_Air_Minum</th>
-	                      <th>Jarak_Air_Minum</th>
-	                      <th>Jarak_Sumber_Air_Minum</th>
-	                      <th>Material_Atap</th>
-	                      <th>Kondisi_Atap</th>
-	                      <th>Material_Dinding</th>
-	                      <th>Kondisi_Dinding</th>
-	                      <th>Material_Lantai</th>
-	                      <th>Kondisi_Lantai</th>
-	                      <th>Struktur_Lantai</th>
-	                      <th>Pondasi_Material</th>
-	                      <th>Kondisi_Material</th>
-	                      <th>Sloof_Material</th>
-	                      <th>Kondisi_Sloof</th>
-	                      <th>Material_Kolom</th>
-	                      <th>Kondisi_Kolom</th>
-	                      <th>Material_Rangka_Atap</th>
-	                      <th>Kondisi_Rangka_Atap</th>
-	                      <th>Proteksi_Kebakaran</th>
-	                      <th>Sarana_Proteksi_Kebakaran</th>
-                        <th>Prasarana_Proteksi_Kebakaran</th>
-                        <th>Nama_Responden</th>
-                        <th>No</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<th>No</th>
+												<th>Waktu_Surve</th>
+												<th>Nama_Responden</th>
+												<th>NIK</th>
+												<th>No_Telp</th>
+												<th>Sumber_Data</th>
+												<th>Kordinat</th>
+												<th>Gender</th>
+												<th>Kecamatan</th>
+												<th>Desa</th>
+												<th>Dusun</th>
+												<th>RT</th>
+												<th>RW</th>
+												<th>Alamat_Lengkap/Jln</th>
+												<th>Jumlah_Tabungan</th>
+												<th>Tabungan/Bulan</th>
+												<th>Jumlah_KK/rumah</th>
+												<th>Pekerjaan_Utama</th>
+												<th>Jumlah_Penghasilan</th>
+												<th>Range_Penghasilan</th>
+												<th>Pendidikan</th>
+												<th>Status</th>
+												<th>Kesehatan</th>
+												<th>Aset_Tanah</th>
+												<th>Aset_Rumah</th>
+												<th>Aset_Rumah_Lain</th>
+												<th>Aset_Tanah_Lain</th>
+												<th>Menerima_Bantuan_Lain</th>
+												<th>Nama_Bantuan_Lain</th>
+												<th>Jenis_Kawasan_Rumah</th>
+												<th>Luas_Rumah</th>
+												<th>Jumlah_Penghuni_Rumah</th>
+												<th>Kusen_Rumah</th>
+												<th>Jendela_Dan_Ventilasi</th>
+												<th>Daun_Pintu_rumah</th>
+												<th>Kamar_Mandi</th>
+												<th>Saluran_Air</th>
+												<th>Pembuangan</th>
+												<th>Drainase_Rumah</th>
+												<th>Tempat_Sampah</th>
+												<th>Sumber_Air_Minum</th>
+												<th>Jarak_Air_Minum</th>
+												<th>Jarak_Sumber_Air_Minum</th>
+												<th>Material_Atap</th>
+												<th>Kondisi_Atap</th>
+												<th>Material_Dinding</th>
+												<th>Kondisi_Dinding</th>
+												<th>Material_Lantai</th>
+												<th>Kondisi_Lantai</th>
+												<th>Struktur_Lantai</th>
+												<th>Pondasi_Material</th>
+												<th>Kondisi_Material</th>
+												<th>Sloof_Material</th>
+												<th>Kondisi_Sloof</th>
+												<th>Material_Kolom</th>
+												<th>Kondisi_Kolom</th>
+												<th>Material_Rangka_Atap</th>
+												<th>Kondisi_Rangka_Atap</th>
+												<th>Proteksi_Kebakaran</th>
+												<th>Sarana_Proteksi_Kebakaran</th>
+												<th>Prasarana_Proteksi_Kebakaran</th>
+												<th>Nama_Responden</th>
+												<th>No</th>
 
-	                    </tr>
-	                  </tfoot>
-	                  <tbody>
-	                    <?php
-                      include '../koneksi.php';
-                      $query = "SELECT * FROM tabel_identitas_responden
-                      JOIN tabel_detail_responden ON tabel_detail_responden.id_detail = tabel_identitas_responden.id_responden
-                      JOIN tabel_alamat_responden ON tabel_alamat_responden.id_alamat = tabel_identitas_responden.id_responden
-                      JOIN tabel_aspek_persyaratan ON tabel_aspek_persyaratan.id_aspek_persyaratan = tabel_identitas_responden.id_responden
-                      JOIN tabel_aspek_bangunan ON tabel_aspek_bangunan.id_aspek_bangunan = tabel_identitas_responden.id_responden
-                      JOIN tabel_aspek_kesehatan ON tabel_aspek_kesehatan.id_aspek_kesehatan = tabel_identitas_responden.id_responden
-                      JOIN tabel_aspek_keselamatan ON tabel_aspek_keselamatan.id_aspek_keselamatan = tabel_identitas_responden.id_responden";
-                      // $query_alamat = "SELECT * FROM tabel_alamat_responden";
-                      $tampil = mysqli_query($koneksi, $query);
-                      $no = 1;
-                      // $eks_alamat = mysqli_query($koneksi, $query_alamat);
-                      while ($data  = mysqli_fetch_array($tampil)) {
-                        echo "<tr>";
-                        echo "<th>" . $no. "</th>";
-                        echo "<td>" . $data['nama_lengkap'] . "</td>";
-                        echo "<td>" . $data['nik'] . "</td>";
-                        echo "<td>" . $data['no_telp'] . "</td>";
-                        echo "<td>" . $data['sumber_data'] . "</td>";
-                        echo "<td>" . $data['kordinat'] . "</td>";
-                        echo "<td>" . $data['jenis_kelamin'] . "</td>";
-                        echo "<td>" . $data['kecamatan'] . "</td>";
-                        echo "<td>" . $data['desa'] . "</td>";
-                        echo "<td>" . $data['dusun'] . "</td>";
-                        echo "<td>" . $data['rt'] . "</td>";
-                        echo "<td>" . $data['rw'] . "</td>";
-                        echo "<td>" . $data['jalan'] . "</td>";
-                        echo "<td>" . $data['jumlah_tabungan'] . "</td>";
-                        echo "<td>" . $data['tabungan_perbulan'] . "</td>";
-                        echo "<td>" . $data['jumlah_kk'] . "</td>";
-                        echo "<td>" . $data['pekerjaan_utama'] . "</td>";
-                        echo "<td>" . $data['jumlah_penghasilan'] . "</td>";
-                        echo "<td>" . $data['range_penghasilan'] . "</td>";
-                        echo "<td>" . $data['pendidikan_terakhir'] . "</td>";
-                        echo "<td>" . $data['status_perkawinan'] . "</td>";
-                        echo "<td>" . $data['status_fisik'] . "</td>";
-                        echo "<td>" . $data['status_kepemilikan_tanah'] . "</td>";
-                        echo "<td>" . $data['status_kepemilikan_rumah'] . "</td>";
-                        echo "<td>" . $data['aset_rumah_lain'] . "</td>";
-                        echo "<td>" . $data['aset_tanah_lain'] . "</td>";
-                        echo "<td>" . $data['bantuan_lain'] . "</td>";
-                        echo "<td>" . $data['nama_bantuan_lain'] . "</td>";
-                        echo "<td>" . $data['jenis_kawasan_rumah'] . "</td>";
-                        echo "<td>" . $data['luas_rumah'] . "</td>";
-                        echo "<td>" . $data['jumlah_penghuni'] . "</td>";
-                        echo "<td>" . $data['kusen'] . "</td>";
-                        echo "<td>" . $data['jendela'] . "</td>";
-                        echo "<td>" . $data['pintu'] . "</td>";
-                        echo "<td>" . $data['kamar_mandi'] . "</td>";
-                        echo "<td>" . $data['saluran_air'] . "</td>";
-                        echo "<td>" . $data['pembuangan'] . "</td>";
-                        echo "<td>" . $data['drainase'] . "</td>";
-                        echo "<td>" . $data['tempat_sampah'] . "</td>";
-                        echo "<td>" . $data['sumber_air_minum'] . "</td>";
-                        echo "<td>" . $data['jarak_air_minum'] . "</td>";
-                        echo "<td>" . $data['sumber_listrik'] . "</td>";
-                        echo "<td>" . $data['material_atap'] . "</td>";
-                        echo "<td>" . $data['kondisi_atap'] . "</td>";
-                        echo "<td>" . $data['material_dinding'] . "</td>";
-                        echo "<td>" . $data['kondisi_dinding'] . "</td>";
-                        echo "<td>" . $data['material_lantai'] . "</td>";
-                        echo "<td>" . $data['kondisi_penutup_lantai'] . "</td>";
-                        echo "<td>" . $data['struktur_lantai'] . "</td>";
-                        echo "<td>" . $data['pondasi_material'] . "</td>";
-                        echo "<td>" . $data['pondasi_kondisi'] . "</td>";
-                        echo "<td>" . $data['sloof_material'] . "</td>";
-                        echo "<td>" . $data['sloof_kondisi'] . "</td>";
-                        echo "<td>" . $data['material_kolom_ring'] . "</td>";
-                        echo "<td>" . $data['kondisi_kolom_ring'] . "</td>";
-                        echo "<td>" . $data['material_rangka_atap'] . "</td>";
-                        echo "<td>" . $data['kondisi_rangka_atap'] . "</td>";
-                        echo "<td>" . $data['proteksi_kebakaran'] . "</td>";
-                        echo "<td>" . $data['sarana_proteksi_kebakaran'] . "</td>";
-                        echo "<td>" . $data['prasarana_proteksi_kebakaran'] . "</td>";
-                        echo "<td>" . $data['nama_lengkap'] . "</td>";
-                        echo "<th>" . $no . "</th>";
-                        echo "</tr>";
-                        $no++;
-                      };
-                      ?>
-	                  </tbody>
-	                </table>
-	              </div>
-	            </div>
-	          </div>
+											</tr>
+										</tfoot>
+										<tbody>
+											<?php
+											include '../koneksi.php';
+											$query = "SELECT * FROM tabel_identitas_responden 
+											JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden
+											JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden";
+										
+											// $query_alamat = "SELECT * FROM tabel_alamat_responden";
+											$tampil = mysqli_query($koneksi, $query);
+											$no = 1;
+											// $eks_alamat = mysqli_query($koneksi, $query_alamat);
+											while ($data  = mysqli_fetch_array($tampil)) {
+												echo "<tr>";
+												echo "<th>" . $no . "</th>";
+												echo "<td>" . $data['tanggal_surve'] . "</td>";
+												echo "<td>" . $data['nama_lengkap'] . "</td>";
+												echo "<td>" . $data['nik_responden'] . "</td>";
+												echo "<td>" . $data['no_telp'] . "</td>";
+												echo "<td>" . $data['sumber_data'] . "</td>";
+												echo "<td>" . $data['kordinat'] . "</td>";
+												echo "<td>" . $data['jenis_kelamin'] . "</td>";
+												echo "<td>" . $data['kecamatan'] . "</td>";
+												echo "<td>" . $data['desa'] . "</td>";
+												echo "<td>" . $data['dusun'] . "</td>";
+												echo "<td>" . $data['rt'] . "</td>";
+												echo "<td>" . $data['rw'] . "</td>";
+												echo "<td>" . $data['jalan'] . "</td>";
+												echo "<td>" . $data['jumlah_tabungan'] . "</td>";
+												echo "<td>" . $data['tabungan_perbulan'] . "</td>";
+												echo "<td>" . $data['jumlah_kk'] . "</td>";
+												echo "<td>" . $data['pekerjaan_utama'] . "</td>";
+												echo "<td>" . $data['jumlah_penghasilan'] . "</td>";
+												echo "<td>" . $data['range_penghasilan'] . "</td>";
+												echo "<td>" . $data['pendidikan_terakhir'] . "</td>";
+												echo "<td>" . $data['status_perkawinan'] . "</td>";
+												echo "<td>" . $data['status_fisik'] . "</td>";
+												echo "<td>" . $data['status_kepemilikan_tanah'] . "</td>";
+												echo "<td>" . $data['status_kepemilikan_rumah'] . "</td>";
+												echo "<td>" . $data['aset_rumah_lain'] . "</td>";
+												echo "<td>" . $data['aset_tanah_lain'] . "</td>";
+												echo "<td>" . $data['bantuan_lain'] . "</td>";
+												echo "<td>" . $data['nama_bantuan_lain'] . "</td>";
+												echo "<td>" . $data['jenis_kawasan_rumah'] . "</td>";
+												echo "<td>" . $data['luas_rumah'] . "</td>";
+												echo "<td>" . $data['jumlah_penghuni'] . "</td>";
+												echo "<td>" . $data['kusen'] . "</td>";
+												echo "<td>" . $data['jendela'] . "</td>";
+												echo "<td>" . $data['pintu'] . "</td>";
+												echo "<td>" . $data['kamar_mandi'] . "</td>";
+												echo "<td>" . $data['saluran_air'] . "</td>";
+												echo "<td>" . $data['pembuangan'] . "</td>";
+												echo "<td>" . $data['drainase'] . "</td>";
+												echo "<td>" . $data['tempat_sampah'] . "</td>";
+												echo "<td>" . $data['sumber_air_minum'] . "</td>";
+												echo "<td>" . $data['jarak_air_minum'] . "</td>";
+												echo "<td>" . $data['sumber_listrik'] . "</td>";
+												echo "<td>" . $data['material_atap'] . "</td>";
+												echo "<td>" . $data['kondisi_atap'] . "</td>";
+												echo "<td>" . $data['material_dinding'] . "</td>";
+												echo "<td>" . $data['kondisi_dinding'] . "</td>";
+												echo "<td>" . $data['material_lantai'] . "</td>";
+												echo "<td>" . $data['kondisi_penutup_lantai'] . "</td>";
+												echo "<td>" . $data['struktur_lantai'] . "</td>";
+												echo "<td>" . $data['pondasi_material'] . "</td>";
+												echo "<td>" . $data['pondasi_kondisi'] . "</td>";
+												echo "<td>" . $data['sloof_material'] . "</td>";
+												echo "<td>" . $data['sloof_kondisi'] . "</td>";
+												echo "<td>" . $data['material_kolom_ring'] . "</td>";
+												echo "<td>" . $data['kondisi_kolom_ring'] . "</td>";
+												echo "<td>" . $data['material_rangka_atap'] . "</td>";
+												echo "<td>" . $data['kondisi_rangka_atap'] . "</td>";
+												echo "<td>" . $data['proteksi_kebakaran'] . "</td>";
+												echo "<td>" . $data['sarana_proteksi_kebakaran'] . "</td>";
+												echo "<td>" . $data['prasarana_proteksi_kebakaran'] . "</td>";
+												echo "<td>" . $data['nama_lengkap'] . "</td>";
+												echo "<th>" . $no . "</th>";
+												echo "</tr>";
+												$no++;
+											};
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
 
 	        </div>
 	        <!-- /.container-fluid -->

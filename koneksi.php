@@ -1,6 +1,6 @@
 <?php
 
-$koneksi = mysqli_connect('localhost','root','damm','rtlh_campurejo');
+$koneksi = mysqli_connect('localhost','root','damm','db_rtlhCampurejo');
 
 if (mysqli_connect_errno()){
     echo "database troble : " . mysqli_connect_errno();

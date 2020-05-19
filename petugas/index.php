@@ -86,9 +86,8 @@
             <a class="collapse-item" href="input.php">Form Input</a>
 
             <h6 class="collapse-header">Data :</h6>
-            <a class="collapse-item" href="view.php">View Data</a>
-            <a class="collapse-item" href="penilaian_edit.php">Penilaian & Edit</a>
-            <a class="collapse-item" href="backup.php">Backup Data</a>
+            <a class="collapse-item" href="view.php">Lihat Data</a>
+            <a class="collapse-item" href="penilaian.php">Penilaian Data</a>
             <a class="collapse-item" href="panduan.php">Panduan Penggunaan</a>
 
           </div>
@@ -166,7 +165,7 @@
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Petugas
+                  Abd Karim
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -223,7 +222,7 @@
                           <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                           <?php
                             include '../koneksi.php';
-                            $query_jumlah_data = "SELECT id_responden FROM tabel_identitas_responden";
+                            $query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
                             $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
                             $total_id_responden = mysqli_num_rows($hasil_id_responden);
                             echo $total_id_responden;

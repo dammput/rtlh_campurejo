@@ -76,9 +76,8 @@
 							<a class="collapse-item active" href="input.php">Form Input</a>
 
 							<h6 class="collapse-header">Data :</h6>
-							<a class="collapse-item" href="view.php">View Data</a>
-							<a class="collapse-item" href="penilaian_edit.php">Penilaian & Edit</a>
-							<a class="collapse-item" href="backup.php">Backup Data</a>
+							<a class="collapse-item" href="view.php">Lihat Data</a>
+							<a class="collapse-item" href="penilaian.php">Penilaian Data</a>
 							<a class="collapse-item" href="panduan.php">Panduan Penggunaan</a>
 
 						</div>
@@ -150,7 +149,7 @@
 								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="#">
 										<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-										Petugas
+										Abd karim
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -201,7 +200,7 @@
 												</div>
 												<div class="form-group col-md-4">
 													<label>NIK</label>
-													<input type="number" class="form-control" placeholder="01672.." name="nik" required>
+													<input type="text" class="form-control" placeholder="01672.." name="nik" maxlength="16" required>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 												<div class="form-group col-md-3">
@@ -217,7 +216,7 @@
 													<label>Nomer Telp.</label>
 													<div class="input-group-prepend">
 														<span class="input-group-text" id="basic-addon1">+62</span>
-														<input type="number" class="form-control" placeholder="nomer telp" name="no_telp" required>
+														<input type="text" class="form-control" placeholder="nomer telp" name="no_telp" maxlength="12" required>
 														<div class="invalid-feedback">Data harus diisi.</div>
 													</div>
 												</div>
@@ -257,7 +256,7 @@
 														<span class="input-group-text">Upload</span>
 													</div>
 													<div class="custom-file" id="customFile" lang="es">
-													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='ktp'> 
+													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='ktp' required> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
 													Select file ktp...
 													</label>
@@ -272,7 +271,7 @@
 														<span class="input-group-text">Upload</span>
 													</div>
 													<div class="custom-file" id="customFile" lang="es">
-													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='rumah'> 
+													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='rumah' required> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
 													Select file rumah...
 													</label>
@@ -1292,7 +1291,7 @@
 								// ASPEK KESELAMATAN
 								// PONDASI MATERIAL
 								if($pondasi_material === 'Kayu'){$pondasi_material_value = 50;
-								}else if($Pondasi_material === 'Batu Kali'){$pondasi_material_value = 40;
+								}else if($pondasi_material === 'Batu Kali'){$pondasi_material_value = 40;
 								}else if($pondasi_material === 'Batu Kambung'){$pondasi_material_value = 30;
 								}else if($pondasi_material === 'Bambu'){$pondasi_material_value = 20;
 								}else if($pondasi_material === 'Beton'){$pondasi_material_value = 10;
@@ -1351,43 +1350,63 @@
 
 
 
-								// QUERY
-								$query_tabel_identitas_responden = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
-																			VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
-								$query_tabel_alamat_responden = "INSERT INTO tabel_alamat_responden (jalan,dusun,rt,rw,desa,kecamatan)
-																			VALUE ('$jalan','$dusun','$rt','$rw','$desa','$kecamatan')";
-								$query_tabel_detail_responden = "INSERT INTO tabel_detail_responden (jumlah_tabungan,tabungan_perbulan,jumlah_kk,pekerjaan_utama,jumlah_penghasilan,range_penghasilan,pendidikan_terakhir,status_perkawinan,status_fisik,status_kepemilikan_tanah,status_kepemilikan_rumah,aset_rumah_lain,aset_tanah_lain,bantuan_lain,nama_bantuan_lain,jenis_kawasan_rumah)
-																			VALUE ('$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
-								$query_tabel_aspek_persyaratan = "INSERT INTO tabel_aspek_persyaratan (luas_rumah,jumlah_penghuni)
-																			VALUE ('$luas_rumah','$jumlah_penghuni')";
-								$query_tabel_aspek_kesehatan = "INSERT INTO tabel_aspek_kesehatan (kusen,jendela,pintu,kamar_mandi,saluran_air,pembuangan,drainase,tempat_sampah,sumber_air_minum,jarak_air_minum,sumber_listrik)
-																			VALUE ('$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik')";
-								$query_tabel_aspek_bangunan = "INSERT INTO tabel_aspek_bangunan (material_atap,kondisi_atap,material_dinding,kondisi_dinding,material_lantai,kondisi_penutup_lantai,struktur_lantai)
-																			VALUE ('$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai')";
-								$query_tabel_aspek_keselamatan = "INSERT INTO tabel_aspek_keselamatan (pondasi_material,pondasi_kondisi,sloof_material,sloof_kondisi,material_kolom_ring,kondisi_kolom_ring,material_rangka_atap,kondisi_rangka_atap,proteksi_kebakaran,sarana_proteksi_kebakaran,prasarana_proteksi_kebakaran)
-																			VALUE ('$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
-								$query_waktu	= "INSERT INTO table_waktu (tanggal_surve) VALUES ('$tanggal_surve')";
-
+								// <-- query lama ->
+									// $query_tabel_identitas_responden = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
+									// 											VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
+									// $query_tabel_alamat_responden = "INSERT INTO tabel_alamat_responden (jalan,dusun,rt,rw,desa,kecamatan)
+									// 											VALUE ('$jalan','$dusun','$rt','$rw','$desa','$kecamatan')";
+									// $query_tabel_detail_responden = "INSERT INTO tabel_detail_responden (jumlah_tabungan,tabungan_perbulan,jumlah_kk,pekerjaan_utama,jumlah_penghasilan,range_penghasilan,pendidikan_terakhir,status_perkawinan,status_fisik,status_kepemilikan_tanah,status_kepemilikan_rumah,aset_rumah_lain,aset_tanah_lain,bantuan_lain,nama_bantuan_lain,jenis_kawasan_rumah)
+									// 											VALUE ('$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+									// $query_tabel_aspek_persyaratan = "INSERT INTO tabel_aspek_persyaratan (luas_rumah,jumlah_penghuni)
+									// 											VALUE ('$luas_rumah','$jumlah_penghuni')";
+									// $query_tabel_aspek_kesehatan = "INSERT INTO tabel_aspek_kesehatan (kusen,jendela,pintu,kamar_mandi,saluran_air,pembuangan,drainase,tempat_sampah,sumber_air_minum,jarak_air_minum,sumber_listrik)
+									// 											VALUE ('$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik')";
+									// $query_tabel_aspek_bangunan = "INSERT INTO tabel_aspek_bangunan (material_atap,kondisi_atap,material_dinding,kondisi_dinding,material_lantai,kondisi_penutup_lantai,struktur_lantai)
+									// 											VALUE ('$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai')";
+									// $query_tabel_aspek_keselamatan = "INSERT INTO tabel_aspek_keselamatan (pondasi_material,pondasi_kondisi,sloof_material,sloof_kondisi,material_kolom_ring,kondisi_kolom_ring,material_rangka_atap,kondisi_rangka_atap,proteksi_kebakaran,sarana_proteksi_kebakaran,prasarana_proteksi_kebakaran)
+									// 											VALUE ('$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+								$query_responden	= "INSERT INTO `tabel_identitas_responden` (`nik_responden`,`nama_lengkap`,`no_telp`,`kordinat`,`sumber_data`,`jenis_kelamin`,`jalan`,`dusun`,`rt`,`rw`,`desa`,`kecamatan`,`jumlah_tabungan`,`tabungan_perbulan`,`jumlah_kk`,`pekerjaan_utama`,`jumlah_penghasilan`,`range_penghasilan`,`pendidikan_terakhir`,`status_perkawinan`,`status_fisik`,`status_kepemilikan_tanah`,`status_kepemilikan_rumah`,`aset_rumah_lain`,`aset_tanah_lain`,`bantuan_lain`,`nama_bantuan_lain`,`jenis_kawasan_rumah`)
+												VALUE ('$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+								$query_aspek	= "INSERT INTO `tabel_aspek` (`nik_aspek`,`luas_rumah`,`jumlah_penghuni`,`kusen`,`jendela`,`pintu`,`kamar_mandi`,`saluran_air`,`pembuangan`,`drainase`,`tempat_sampah`,`sumber_air_minum`,`jarak_air_minum`,`sumber_listrik`,`material_atap`,`kondisi_atap`,`material_dinding`,`kondisi_dinding`,`material_lantai`,`kondisi_penutup_lantai`,`struktur_lantai`,`pondasi_material`,`pondasi_kondisi`,`sloof_material`,`sloof_kondisi`,`material_kolom_ring`,`kondisi_kolom_ring`,`material_rangka_atap`,`kondisi_rangka_atap`,`proteksi_kebakaran`,`sarana_proteksi_kebakaran`,`prasarana_proteksi_kebakaran`)
+												VALUES ('$nik','$luas_rumah','$jumlah_penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+								$query_waktu	= "INSERT INTO tabel_waktu (`nik_waktu`,`tanggal_surve`) VALUES ('$nik','$tanggal_surve')";
+								$hasil_responden = mysqli_query($koneksi, $query_responden);
+								$hasil_aspek = mysqli_query($koneksi, $query_aspek);
 								$hasil_waktu = mysqli_query($koneksi,$query_waktu);
-								$hasil1 = mysqli_query($koneksi, $query_tabel_identitas_responden);
-									$id_identitas = mysqli_insert_id($koneksi);//mengambil data id
-								$hasil2 = mysqli_query($koneksi, $query_tabel_alamat_responden);
-								$hasil3 = mysqli_query($koneksi, $query_tabel_detail_responden);
-								$hasil4 = mysqli_query($koneksi, $query_tabel_aspek_persyaratan);
-									$id_aspek_persyaratan = mysqli_insert_id($koneksi);//mengambil data id
-								$hasil5 = mysqli_query($koneksi, $query_tabel_aspek_kesehatan);
-									$id_aspek_kesehatan = mysqli_insert_id($koneksi);//mengambil data id
-								$hasil6 = mysqli_query($koneksi, $query_tabel_aspek_bangunan);
-									$id_aspek_bangunan = mysqli_insert_id($koneksi);//mengambil data id
-								$hasil7 = mysqli_query($koneksi, $query_tabel_aspek_keselamatan);
-									$id_aspek_keselamatan = mysqli_insert_id($koneksi);//mengambil data id
-								
 
-								//queri upload id
-								$query_tabel_hasil_penilaian_aspek = "INSERT INTO tabel_hasil_penilaian_aspek (id_responden,id_aspek_persyaratan,id_aspek_kesehatan,id_aspek_bangunan,id_aspek_keselamatan)
-																			VALUE ('$id_identitas','$id_aspek_persyaratan','$id_aspek_kesehatan','$id_aspek_bangunan','$id_aspek_keselamatan')";
-								$hasil_input_id = mysqli_query($koneksi,$query_tabel_hasil_penilaian_aspek);
+
+								// upload ke data backup
+								$query_responden_backup	= "INSERT INTO `tabel_identitas_responden_backup` (`nik_responden_backup`,`nama_lengkap`,`no_telp`,`kordinat`,`sumber_data`,`jenis_kelamin`,`jalan`,`dusun`,`rt`,`rw`,`desa`,`kecamatan`,`jumlah_tabungan`,`tabungan_perbulan`,`jumlah_kk`,`pekerjaan_utama`,`jumlah_penghasilan`,`range_penghasilan`,`pendidikan_terakhir`,`status_perkawinan`,`status_fisik`,`status_kepemilikan_tanah`,`status_kepemilikan_rumah`,`aset_rumah_lain`,`aset_tanah_lain`,`bantuan_lain`,`nama_bantuan_lain`,`jenis_kawasan_rumah`)
+												VALUE ('$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+								$query_aspek_backup	= "INSERT INTO `tabel_aspek_backup` (`nik_aspek_backup`,`luas_rumah`,`jumlah_penghuni`,`kusen`,`jendela`,`pintu`,`kamar_mandi`,`saluran_air`,`pembuangan`,`drainase`,`tempat_sampah`,`sumber_air_minum`,`jarak_air_minum`,`sumber_listrik`,`material_atap`,`kondisi_atap`,`material_dinding`,`kondisi_dinding`,`material_lantai`,`kondisi_penutup_lantai`,`struktur_lantai`,`pondasi_material`,`pondasi_kondisi`,`sloof_material`,`sloof_kondisi`,`material_kolom_ring`,`kondisi_kolom_ring`,`material_rangka_atap`,`kondisi_rangka_atap`,`proteksi_kebakaran`,`sarana_proteksi_kebakaran`,`prasarana_proteksi_kebakaran`)
+												VALUES ('$nik','$luas_rumah','$jumlah_penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+								$query_waktu_backup	= "INSERT INTO tabel_waktu_backup (`nik_waktu_backup`,`tanggal_surve`) VALUES ('$nik','$tanggal_surve')";
+								$hasil_responden_backup = mysqli_query($koneksi, $query_responden_backup);
+								$hasil_aspek_backup = mysqli_query($koneksi, $query_aspek_backup);
+								$hasil_waktu_backup = mysqli_query($koneksi,$query_waktu_backup);
+
+								// <-- script lama (memanggil id) ->
+									// $hasil1 = mysqli_query($koneksi, $query_tabel_identitas_responden);
+									// 	$id_identitas = mysqli_insert_id($koneksi);//mengambil data id
+									// $hasil2 = mysqli_query($koneksi, $query_tabel_alamat_responden);
+									// $hasil3 = mysqli_query($koneksi, $query_tabel_detail_responden);
+									// $hasil4 = mysqli_query($koneksi, $query_tabel_aspek_persyaratan);
+									// 	$id_aspek_persyaratan = mysqli_insert_id($koneksi);//mengambil data id
+									// $hasil5 = mysqli_query($koneksi, $query_tabel_aspek_kesehatan);
+									// 	$id_aspek_kesehatan = mysqli_insert_id($koneksi);//mengambil data id
+									// $hasil6 = mysqli_query($koneksi, $query_tabel_aspek_bangunan);
+									// 	$id_aspek_bangunan = mysqli_insert_id($koneksi);//mengambil data id
+									// $hasil7 = mysqli_query($koneksi, $query_tabel_aspek_keselamatan);
+									// 	$id_aspek_keselamatan = mysqli_insert_id($koneksi);//mengambil data id
+										
+
+									//queri upload id
+									// $query_tabel_hasil_penilaian_aspek = "INSERT INTO tabel_hasil_penilaian_aspek (id_responden,id_aspek_persyaratan,id_aspek_kesehatan,id_aspek_bangunan,id_aspek_keselamatan)
+									// 											VALUE ('$id_identitas','$id_aspek_persyaratan','$id_aspek_kesehatan','$id_aspek_bangunan','$id_aspek_keselamatan')";
+									// $hasil_input_id = mysqli_query($koneksi,$query_tabel_hasil_penilaian_aspek);
+									
 								
+					
 								
 								// Ambil Data yang Dikirim dari Form
 								$nama_file_ktp = $_FILES['ktp']['name'];
@@ -1402,55 +1421,55 @@
 								// Set path folder tempat menyimpan gambarnya
 								$path_ktp = "../assets/img/ktp/".$nama_file_ktp;
 								$path_rumah = "../assets/img/rumah/".$nama_file_rumah;
-								
+
 								if($tipe_file_ktp == "image/jpeg" || $tipe_file_ktp == "image/png" && $tipe_file_rumah == "image/jpeg" || $tipe_file_rumah == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
-								  // Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
-								  if($ukuran_file <= 1000000){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
-									// Jika ukuran file kurang dari sama dengan 1MB, lakukan :
-									// Proses upload
-									if(move_uploaded_file($tmp_file_ktp, $path_ktp) && move_uploaded_file($tmp_file_rumah, $path_rumah) ){ // Cek apakah gambar berhasil diupload atau tidak
-									 // Cek apakah gambar berhasil diupload atau tidak
-									  // Jika gambar berhasil diupload, Lakukan :	
-									  // Proses simpan ke Database
-									  $query_ktp = "INSERT INTO gambar_ktp(nama,ukuran,tipe) VALUES('".$nama_file_ktp."','".$ukuran_file_ktp."','".$tipe_file_ktp."')";
-									  $sql_ktp = mysqli_query($koneksi, $query_ktp); // Eksekusi/ Jalankan query dari variabel $query
-									  $query_rumah = "INSERT INTO gambar_rumah(nama,ukuran,tipe) VALUES('".$nama_file_rumah."','".$ukuran_file_rumah."','".$tipe_file_rumah."')";
-									  $sql_rumah = mysqli_query($koneksi, $query_rumah); // Eksekusi/ Jalankan query dari variabel $query
-									  
-									  if($sql_ktp && $sql_rumah){ // Cek jika proses simpan ke database sukses atau tidak
-										// Jika Sukses, Lakukan :
-										//validasi data masuk
-										if ($hasil1 && $hasil2 && $hasil3 && $hasil4 && $hasil5 && $hasil6 && $hasil7 && $hasil_input_id) {
-											echo '<meta http-equiv="refresh" content="0;url=index.php" />';
-											echo "<script>alert('input data berhasil');</script>";
-										} else {
-											echo "input data gagal";
+									// Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
+									if($ukuran_file_ktp <= 10000000 && $ukuran_file_rumah <= 10000000 ){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
+										// Jika ukuran file kurang dari sama dengan 1MB, lakukan :
+										// Proses upload
+										if(move_uploaded_file($tmp_file_ktp, $path_ktp) && move_uploaded_file($tmp_file_rumah, $path_rumah) ){ // Cek apakah gambar berhasil diupload atau tidak
+											// Cek apakah gambar berhasil diupload atau tidak
+											// Jika gambar berhasil diupload, Lakukan :	
+											// Proses simpan ke Database
+											$query_ktp = "INSERT INTO `tabel_foto_ktp` (`nik_ktp`,`nama`,`ukuran`,`tipe`) 
+														VALUES ('$nik','$nama_file_ktp','$ukuran_file_ktp','$tipe_file_ktp')";
+											$query_rumah = "INSERT INTO `tabel_foto_rumah` (`nik_rumah`,`nama`,`ukuran`,`tipe`) 
+														VALUES('$nik','$nama_file_rumah','$ukuran_file_rumah','$tipe_file_rumah')";
+											$sql_ktp = mysqli_query($koneksi, $query_ktp); 
+											$sql_rumah = mysqli_query($koneksi, $query_rumah); 
+											
+											if($sql_ktp && $sql_rumah){ // Cek jika proses simpan ke database sukses atau tidak
+												// Jika Sukses, Lakukan :
+												//validasi data masuk
+												if ($query_responden && $query_aspek && $query_waktu && $query_waktu_backup && $query_aspek_backup && $query_responden_backup) {
+													echo "<script>alert('input data berhasil');</script>";
+													echo '<meta http-equiv="refresh" content="1;url=view.php" />';
+												} else {
+													echo "<script>alert('input data gagal');</script>";
+												}
+												echo '<meta http-equiv="refresh" content="0;url=index.php" />';
+											}else{
+												// Jika Gagal, Lakukan :
+												echo "<script>alert('Data sudah ada pada database');</script>";
+											}
+										}else{
+										// Jika gambar gagal diupload, Lakukan :
+										echo "<script>alert('Foto gagal diupload');</script>";
+										// echo "<br><a href='index.php'>Kembali Ke index</a>";
 										}
-										echo '<meta http-equiv="refresh" content="0;url=index.php" />';
-									  }else{
-										// Jika Gagal, Lakukan :
-										echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
-										echo "<br><a href='index.php'>Kembali Ke Index</a>";
-									  }
 									}else{
-									  // Jika gambar gagal diupload, Lakukan :
-									  echo "Maaf, Gambar gagal untuk diupload.";
-									  echo "<br><a href='index.php'>Kembali Ke index</a>";
+										// Jika ukuran file lebih dari 1MB, lakukan :
+										echo "<script>alert('Ukuran foto tidak boleh lebih dari 1mb');</script>";
+										// echo "<br><a href='index.php'>Kembali Ke index</a>";
 									}
-								  }else{
-									// Jika ukuran file lebih dari 1MB, lakukan :
-									echo "Maaf, Ukuran gambar yang diupload tidak boleh lebih dari 1MB";
-									echo "<br><a href='index.php'>Kembali Ke index</a>";
-								  }
 								}else{
-								  // Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
-								  echo "Maaf, Tipe gambar yang diupload harus JPG / JPEG / PNG.";
+								// Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
+								echo "<script>alert('Tipe gambar tidak benar, harus JPG/PNG');</script>";
 								//   echo "<br><a href='index.php'>Kembali Ke index</a>";
-								
 								}
 							}else{
 							}
-								
+							
 							?>
 						</form>
 						<!-- end form -->

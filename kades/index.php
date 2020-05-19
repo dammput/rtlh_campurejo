@@ -82,9 +82,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Perizinan :</h6>
-            <a class="collapse-item" href="data_edit.php">Permintaan Edit Data</a>
-
+ 
             <h6 class="collapse-header">Data :</h6>
             <a class="collapse-item" href="data_surve.php">Data Surve</a>
             <a class="collapse-item" href="data_penilaian.php">Penilaian Data</a>
@@ -196,100 +194,122 @@
           <!-- Content Row -->
           <div class="row">
 
-            <!-- tanggal -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-bottom-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tanggal</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Tanggal sekarang</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              <!-- tanggal -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tanggal</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        <?php
+                            date_default_timezone_set('Asia/Jakarta');
+                            echo  date('d-m-Y');
+                            // echo '<br>' . date('H:i:s');
+                          ?>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Proses data -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-bottom-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Diproses</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              <!-- Proses data -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Diproses</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                            <?php
+                            include '../koneksi.php';
+                            $query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
+                            $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
+                            $total_id_responden = mysqli_num_rows($hasil_id_responden);
+                            echo $total_id_responden;
+                            ?>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="progress progress-sm mr-2">
+                              <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- kelayakan -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-bottom-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Layak</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">40</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              <!-- kelayakan -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-info shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Layak</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                            <?php
+                            echo $total_id_responden;
+                            ?>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="progress progress-sm mr-2">
+                              <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Ketidak Layakan -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-bottom-danger shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Kurang Layak</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">10</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              <!-- Ketidak Layakan -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-danger shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Kurang Layak</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                            <?php
+                            echo $total_id_responden;
+                            ?>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="progress progress-sm mr-2">
+                              <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
 
           </div>
