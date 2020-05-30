@@ -5,6 +5,433 @@
 		header("location:../index.php?pesan=belum_login");
 	}
 	?>
+		<?php
+	include '../koneksi.php';
+	if (isset($_POST['submit'])) {
+
+		// tabel identitas responden
+		$nama_lengkap	= $_POST['nama_lengkap'];
+		$nik			= $_POST['nik'];
+		$no_telp		= $_POST['no_telp'];
+		$kordinat		= $_POST['kordinat'];
+		$jenis_kelamin	= $_POST['jenis_kelamin'];
+		$sumber_data	= $_POST['sumber_data'];
+		$jenis_kelamin	= $_POST['jenis_kelamin'];
+		// tabel detail responden
+		$jumlah_tabungan	= $_POST['jumlah_tabungan'];
+		$tabungan_perbulan	= $_POST['tabungan_perbulan'];
+		$jumlah_kk			= $_POST['jumlah_kk'];
+		$pekerjaan_utama	= $_POST['pekerjaan_utama'];	
+		$jumlah_penghasilan	= $_POST['jumlah_penghasilan'];	
+		$range_penghasilan	= $_POST['range_penghasilan'];
+		$pendidikan_terakhir= $_POST['pendidikan_terakhir'];
+		$status_perkawinan	= $_POST['status_perkawinan'];
+		$status_fisik		= $_POST['status_fisik'];
+		$status_kepemilikan_tanah= $_POST['status_kepemilikan_tanah'];
+		$status_kepemilikan_rumah= $_POST['status_kepemilikan_rumah'];
+		$aset_rumah_lain	= $_POST['aset_rumah_lain'];
+		$aset_tanah_lain	= $_POST['aset_tanah_lain'];
+		$bantuan_lain		= $_POST['bantuan_lain'];
+		$nama_bantuan_lain	= 'Belum Pernah';
+		$nama_bantuan_lain	= $_POST['nama_bantuan_lain'];
+		$jenis_kawasan_rumah= $_POST['jenis_kawasan_rumah'];
+		//tabel alamat responden
+		$jalan		= $_POST['jalan'];
+		$dusun		= $_POST['dusun'];
+		$rt			= $_POST['rt'];
+		$rw			= $_POST['rw'];
+		$desa		= $_POST['desa'];
+		$kecamatan	= $_POST['kecamatan'];
+		//tabel aspek persyaratan
+		$luas_rumah		= $_POST['luas_rumah'];
+		$penghuni		= $_POST['jumlah_penghuni'];
+		//tabel aspek kesehatan
+		$kusen			= $_POST['kusen'];
+		$jendela		= $_POST['jendela'];
+		$pintu			= $_POST['pintu'];
+		$kamar_mandi	= $_POST['kamar_mandi'];
+		$saluran_air	= $_POST['saluran_air'];
+		$pembuangan		= $_POST['pembuangan'];
+		$drainase		= $_POST['drainase'];
+		$tempat_sampah	= $_POST['tempat_sampah'];
+		$sumber_air_minum	= $_POST['sumber_air_minum'];
+		$jarak_air_minum	= $_POST['jarak_air_minum'];
+		$sumber_listrik		= $_POST['sumber_listrik'];
+		//tabel aspek bangunan
+		$material_atap	= $_POST['material_atap'];
+		$kondisi_atap	= $_POST['kondisi_atap'];
+		$material_dinding = $_POST['material_dinding'];
+		$kondisi_dinding  = $_POST['kondisi_dinding'];
+		$material_lantai  = $_POST['material_lantai'];
+		$kondisi_penutup_lantai   = $_POST['kondisi_penutup_lantai'];
+		$struktur_lantai  = $_POST['struktur_lantai'];
+		//tabel aspek keselamatan
+		$pondasi_material		= $_POST['pondasi_material'];
+		$pondasi_kondisi		= $_POST['pondasi_kondisi'];
+		$sloof_material			= $_POST['sloof_material'];
+		$sloof_kondisi			= $_POST['sloof_kondisi'];
+		$material_kolom_ring	= $_POST['material_kolom_ring'];
+		$kondisi_kolom_ring		= $_POST['kondisi_kolom_ring'];
+		$material_rangka_atap	= $_POST['material_rangka_atap'];
+		$kondisi_rangka_atap	= $_POST['kondisi_rangka_atap'];
+		$proteksi_kebakaran		= $_POST['proteksi_kebakaran'];
+		$sarana_proteksi_kebakaran		= $_POST['sarana_proteksi_kebakaran'];
+		$prasarana_proteksi_kebakaran	= $_POST['prasarana_proteksi_kebakaran'];
+		//waktu
+		$tanggal_surve	= date('Y-m-d H:i:s');
+		
+		// CONVERT VALUE
+
+		// DETAIL RESPONDEN
+		// TABUNGAN PERBULAN
+		if($tabungan_perbulan === '0 - 1.2 Juta'){$tabungan_perbulan_value = 10;
+		}else if($tabungan_perbulan === '1.3 - 1.8 Juta'){$tabungan_perbulan_value = 20;
+		}else if($tabungan_perbulan === '1.9 - 2.1 Juta'){$tabungan_perbulan_value = 30;
+		}else if($tabungan_perbulan === '2.2 - 2.6 Juta'){$tabungan_perbulan_value = 40;
+		}else if($tabungan_perbulan === '2.7 - 3.1 Juta'){$tabungan_perbulan_value = 50;
+		}else{$tabungan_perbulan_value = 60;};
+		// PEKERJAAN UTAMA
+		if($pekerjaan_utama === 'Lainnya'){$pekerjaan_utama_value = 10;
+		}else if($pekerjaan_utama === 'Tidak Bekerja'){$pekerjaan_utama_value = 20;
+		}else if($pekerjaan_utama === 'Wirausaha'){$pekerjaan_utama_value = 30;
+		}else if($pekerjaan_utama === 'Petani'){$pekerjaan_utama_value = 40;	
+		}else if($pekerjaan_utama === 'Tukang/Montir'){$pekerjaan_utama_value = 50;	
+		}else if($pekerjaan_utama === 'Buruh harian'){$pekerjaan_utama_value = 60;	
+		}else if($pekerjaan_utama === 'Karyawan'){$pekerjaan_utama_value = 70;	
+		}else if($pekerjaan_utama === 'Honorer'){$pekerjaan_utama_value = 80;	
+		}else if($pekerjaan_utama === 'Ojek/Supir'){$pekerjaan_utama_value = 90;	
+		}else if($pekerjaan_utama === 'Pramuwiswa'){$pekerjaan_utama_value = 100;	
+		}else if($pekerjaan_utama === 'Nelayan'){$pekerjaan_utama_value = 110;	
+		}else if($pekerjaan_utama === 'PNS'){$pekerjaan_utama_value = 120;	
+		}else if($pekerjaan_utama === 'Pensiunan'){$pekerjaan_utama_value = 130;	
+		}else if($pekerjaan_utama === 'BUMN/D'){$pekerjaan_utama_value = 140;	
+		}else{$pekerjaan_utama_value = 150;};	
+		// RANGE PENGHASILAN
+		if($range_penghasilan === '0 - 1.2 Juta'){$range_penghasilan_value = 10;
+		}else if($range_penghasilan === '1.3 - 1.8 Juta'){$range_penghasilan_value = 20;
+		}else if($range_penghasilan === '1.9 - 2.1 Juta'){$range_penghasilan_value = 30;
+		}else if($range_penghasilan === '2.2 - 2.6 Juta'){$range_penghasilan_value = 40;
+		}else if($range_penghasilan === '2.7 - 3.1 Juta'){$range_penghasilan_value = 50;
+		}else{$range_penghasilan_value = 60;};
+		// PENDIDIKAN TERAKHIR
+		if($pendidikan_terakhir === 'Tidak Punya Ijazah'){$pendidikan_terakhir_value = 10;
+		}else if($pendidikan_terakhir === 'SD/Sederajat'){$pendidikan_terakhir_value = 20;
+		}else if($pendidikan_terakhir === 'SMP/Sederajat'){$pendidikan_terakhir_value = 30;
+		}else if($pendidikan_terakhir === 'SMA/Sederajat'){$pendidikan_terakhir_value = 40;
+		}else if($pendidikan_terakhir === 'D1/D2/D3'){$pendidikan_terakhir_value = 50;
+		}else{$pendidikan_terakhir_value = 60;};
+		// STATUS PERKAWINAN
+		if($status_perkawinan === 'Belum Menikah'){$status_perkaeinan_value = 10;
+		}else if($status_perkawinan === 'Menikah'){$status_perkawinan_value = 20;
+		}else{$status_perkawinan_value = 30;};
+		// STATUS FISIK
+		if($status_fisik === 'Sehat'){$status_fisik_value = 10;
+		}else if($status_fisik === 'Sakit'){$status_fisik_value = 20;
+		}else {$status_fisik_value = 30;};
+		// STATUS KEPEMILIKAN TANAH
+		if($status_kepemilikan_tanah === 'Milik Sendiri'){$status_kepemilikan_tanah_value = 10;
+		}else if($status_kepemilikan_tanah === 'Bukan Milik Sendiri'){$status_kepemilikan_tanah_value = 20;
+		}else{$status_kepemilikan_tanah_value = 30;};
+		// STATUS KEPEMILIKAN RUMAH
+		if($status_kepemilikan_rumah === 'Milik Sendiri'){$status_kepemilikan_rumah_value = 10;
+		}else if($status_kepemilikan_rumah === 'Bukan Milik Sendiri'){$status_kepemilikan_rumah_value = 20;
+		}else{$status_kepemilikan_rumah_value = 30;};
+		// ASET RUMAH LAIN
+		if($aset_rumah_lain === 'Ada'){$aset_rumah_lain_value = 10;
+		}else{$aset_rumah_lain_value = 20;};
+		// ASET TANAH LAIN
+		if($aset_tanah_lain === 'Ada'){$aset_tanah_lain_value = 10;
+		}else{$aset_tanah_lain_value = 20;};
+		// BANTUAN LAIN
+		if($bantuan_lain === 'Ya > 5 Tahun Yang Lalu'){$bantuan_lain_value = 10;
+		}else if($bantuan_lain === 'Ya < 5 Tahun Yang Lalu'){$bantuan_lain_value = 20;
+		}else{$bantuan_lain_value = 30;};
+		// JENIS KAWASAN RUMAH
+		if($jenis_kawasan_rumah === 'Lainnya'){$jenis_kawasan_rumah_value = 10;
+		}else if($jenis_kawasan_rumah === 'Kawasan Rawan Air'){$jenis_kawasan_rumah_value = 20;
+		}else if($jenis_kawasan_rumah === 'Kawasan Pesisir/Nelayan'){$jenis_kawasan_rumah_value = 30;
+		}else if($jenis_kawasan_rumah === 'Kawasan Perbatasan'){$jenis_kawasan_rumah_value = 40;
+		}else if($jenis_kawasan_rumah === 'Daerah Tertinggal/Terpencil'){$jenis_kawasan_rumah_value = 50;
+		}else if($jenis_kawasan_rumah === 'Kawasan Ekonomi Khusus'){$jenis_kawasan_rumah_value = 60;
+		}else{$jenis_kawasan_rumah_value = 70;};
+		
+		
+		// ASPEK KESEHATAN
+		// KUSEN
+		if($kusen === 'Tidak Ada'){$kusen_value = 10;
+		}else{$kusen_value = 20;};
+		// JENDELA DAN VENTILASI
+		if($jendela === 'Tidak Ada'){$jendela_value = 10;
+		}else if($jendela === 'Memenuhi, Kondisi Baik'){$jendela_value = 20;
+		}else if($jendela === 'Memenuhi, Kondisi Rusak'){$jendela_value = 30;
+		}else if($jendela === 'Tidak Memenuhi Kondisi Baik'){$jendela_value = 40;
+		}else{$jendela_value = 50;};
+		// DAUN PINTU
+		if($pintu === 'Ada'){$pintu_value = 10;
+		}else{$pintu_value = 20;};
+		// KAMAR MANDI
+		if($kamar_mandi === 'Tidak Ada'){$kamar_mandi_value = 10;
+		}else if($kamar_mandi === 'Sendiri'){$kamar_mandi_value = 10;
+		}else{$kamar_mandi_value = 10;};
+		// SALURAN AIR
+		if($saluran_air === 'Tidak Ada'){$saluran_air_value = 10;
+		}else if($saluran_air === 'Sendiri'){$saluran_air_value = 10;
+		}else{$saluran_air_value = 10;};
+		// PEMBUANGAN AKHIR TINJA
+		if($pembuangan === 'Lainnya'){$pembuangan_value = 10;
+		}else if($pembuangan === 'Septictank'){$pembuangan_value = 20;
+		}else if($pembuangan === 'SPAL'){$pembuangan_value = 30;
+		}else if($pembuangan === 'Lubang Tanah'){$pembuangan_value = 40;
+		}else if($pembuangan === 'Kolam/Sawah/Sungai/Daun'){$pembuangan_value = 50;
+		}else{$pembuangan_value = 60;};
+		// DRAINASE
+		if($drainase === 'Ada, Kondisi Baik'){$drainase_value = 10;
+		}else if($drainase === 'Ada, Kondisi Rusak'){$drainase_value = 20;
+		}else{$drainase_value = 30;};
+		// TEMPAT SAMPAH
+		if($tempat_sampah === 'Ada'){$tempat_sampah_value = 10;
+		}else{$tempat_sampah_value = 20;};
+		// SUMBER AIR MINUM
+		if($sumber_air_minum === 'PDAM'){$sumber_air_minum_value = 10;
+		}else if($sumber_air_minum === 'Sumur'){$sumber_air_minum_value = 20;
+		}else if($sumber_air_minum === 'Mata Air'){$sumber_air_minum_value = 30;
+		}else if($sumber_air_minum === 'Air Kemasan/Isi Ulang'){$sumber_air_minum_value = 40;
+		}else{$sumber_air_minum_value = 50;};
+		// JARAK AIR MINUM
+		if($jarak_air_minum === '> 10m'){$jarak_air_minum_value = 20;
+		}else{$jarak_air_minum_value = 10;};
+		// SUMBER LISTRIK
+		if($sumber_listrik === 'Listrik PLN Dengan Meteran'){$sumber_listrik_value = 20;
+		}else if($sumber_listrik === 'Listrik PLN Tanpa Meteran'){$sumber_listrik_value = 30;
+		}else if($sumber_listrik === 'Listrik Non PLN'){$sumber_listrik_value = 40;
+		}else{$sumber_listrik_value = 50;};
+		
+		//ASPEK BANGUNAN
+		// MATERIAL ATAP
+		if($material_atap === 'Tidak Ada'){$material_atap_value = 60;
+		}else if($material_atap === 'Kayu'){$material_atap_value = 50;
+		}else if($material_atap === 'Batu Kali'){$material_atap_value = 40;
+		}else if($material_atap === 'Batu Kambung'){$material_atap_value = 30;
+		}else if($material_atap === 'Beton'){$material_atap_value = 20;
+		}else{$material_atap_value = 10;};
+		// KONDISI ATAP
+		if($kondisi_atap === 'Kondisi Baik'){$kondisi_atap_value = 10;
+		}else if($kondisi_atap === 'Rusak Ringan'){$kondisi_atap_value = 20;
+		}else if($kondisi_atap === 'Rusak Sedang/Sebagian'){$kondisi_atap_value = 30;
+		}else {$kondisi_atap_value = 40;};
+		// MATERIAL DINDING
+		if($material_dinding === 'Tembok'){$material_dinding_value = 10;
+		}else if($material_dinding === 'GRC(Esbes)'){$material_dinding_value = 20;
+		}else if($material_dinding === 'Papan/Tripleks'){$material_dinding_value = 30;
+		}else if($material_dinding === 'Anyaman Bambu'){$material_dinding_value = 40;
+		}else {$material_dinding_value = 50;};
+		// KONDISI MATERIAL DINDING
+		if($kondisi_dinding === 'Kondisi Baik'){$kondisi_dinding_value = 10;
+		}else if($kondisi_dinding === 'Rusak Ringan'){$kondisi_dinding_value = 20;
+		}else if($kondisi_dinding === 'Rusak Sedang/Sebagian'){$kondisi_dinding_value = 30;
+		}else {$kondisi_dinding_value = 40;};
+		// MATERIAL LANTAI
+		if($material_lantai === 'Keramik'){$material_lantai_value = 10;
+		}else if($material_lantai === 'Marmer/Granit'){$material_lantai_value = 20;
+		}else if($material_lantai === 'Ubin/Tegel'){$material_lantai_value = 30;
+		}else if($material_lantai === 'Plesteran'){$material_lantai_value = 40;
+		}else if($material_lantai === 'Bambu'){$material_lantai_value = 50;
+		}else if($material_lantai === 'Kayu'){$material_lantai_value = 60;
+		}else{$material_lantai_value = 70;};
+		// KONDISI PENUUTUP LANTAI
+		if($kondisi_penutup_lantai === 'Kondisi Baik'){$kondisi_penutup_lantai_value = 10;
+		}else if($kondisi_penutup_lantai === 'Rusak Ringan'){$kondisi_penutup_lantai_value = 20;
+		}else if($kondisi_penutup_lantai === 'Rusak Sedang/Sebagian'){$kondisi_penutup_lantai_value = 30;
+		}else {$kondisi_penutup_lantai_value = 40;};
+		// STRUKTUR LANTAI
+		if($struktur_lantai === 'Kondisi Baik'){$struktur_lantai_value = 10;
+		}else if($struktur_lantai === 'Rusak Ringan'){$struktur_lantai_value = 20;
+		}else if($struktur_lantai === 'Rusak Sedang/Sebagian'){$struktur_lantai_value = 30;
+		}else {$struktur_lantai_value = 40;};
+
+		
+		// ASPEK KESELAMATAN
+		// PONDASI MATERIAL
+		if($pondasi_material === 'Kayu'){$pondasi_material_value = 50;
+		}else if($pondasi_material === 'Batu Kali'){$pondasi_material_value = 40;
+		}else if($pondasi_material === 'Batu Kambung'){$pondasi_material_value = 30;
+		}else if($pondasi_material === 'Bambu'){$pondasi_material_value = 20;
+		}else if($pondasi_material === 'Beton'){$pondasi_material_value = 10;
+		}else{$pondasi_material_value = 5;};
+		// PONDASI KONDISI
+		if($pondasi_kondisi === 'Kondisi Baik'){$pondasi_kondisi_value = 10;
+		}else if($pondasi_kondisi === 'Rusak Ringan'){$pondasi_kondisi_value = 20;
+		}else if($pondasi_kondisi === 'Rusak Sedang/Sebagian'){$pondasi_kondisi_value = 30;
+		}else {$pondasi_kondisi_value = 40;};
+		// SLOOF MATERIAL
+		if($sloof_material === 'Kayu'){$sloof_material_value = 50;
+		}else if($sloof_material === 'Beton Bertulang'){$sloof_material_value = 40;
+		}else if($sloof_material === 'Batu Bata'){$sloof_material_value = 30;
+		}else if($sloof_material === 'Bambu'){$sloof_material_value = 20;
+		}else if($sloof_material === 'Semen'){$sloof_material_value = 10;
+		}else{$sloof_material_value = 5;};
+		// SLOOF KONDISI
+		if($sloof_kondisi === 'Kondisi Baik'){$sloof_kondisi_value = 10;
+		}else if($sloof_kondisi === 'Rusak Ringan'){$sloof_kondisi_value = 20;
+		}else if($sloof_kondisi === 'Rusak Sedang/Sebagian'){$sloof_kondisi_value = 30;
+		}else {$sloof_kondisi_value = 40;};
+		// MATERIAL KOLOM RING
+		if($material_kolom_ring === 'Kayu'){$material_kolom_ring_value = 50;
+		}else if($material_kolom_ring === 'Beton Bertulang'){$material_kolom_ring_value = 40;
+		}else if($material_kolom_ring === 'Baja Ringan'){$material_kolom_ring_value = 30;
+		}else if($material_kolom_ring === 'Bambu'){$material_kolom_ring_value = 20;
+		}else{$material_kolom_ring_value = 10;};
+		// KONDISI KOLOM RING
+		if($kondisi_kolom_ring === 'Kondisi Baik'){$kondisi_kolom_ring_value = 10;
+		}else if($kondisi_kolom_ring === 'Rusak Ringan'){$kondisi_kolom_ring_value = 20;
+		}else if($kondisi_kolom_ring === 'Rusak Sedang/Sebagian'){$kondisi_kolom_ring_value = 30;
+		}else {$kondisi_kolom_ring_value = 40;};
+		// MATERIAL RANGKA ATAP
+		if($material_rangka_atap === 'Kayu'){$material_rangka_atap_value = 50;
+		}else if($material_rangka_atap === 'Beton Bertulang'){$material_rangka_atap_value = 40;
+		}else if($material_rangka_atap === 'Baja Ringan'){$material_rangka_atap_value = 30;
+		}else if($material_rangka_atap === 'Bambu'){$material_rangka_atap_value = 20;
+		}else{$material_rangka_atap_value = 10;};
+		// KONDISI RANGKA ATAP
+		if($kondisi_rangka_atap === 'Kondisi Baik'){$kondisi_rangka_atap_value = 10;
+		}else if($kondisi_rangka_atap === 'Rusak Ringan'){$kondisi_rangka_atap_value = 20;
+		}else if($kondisi_rangka_atap === 'Rusak Sedang/Sebagian'){$kondisi_rangka_atap_value = 30;
+		}else {$kondisi_rangka_atap_value = 40;};
+		// PROTEKSI KEBAKARAN
+		if($proteksi_kebakaran === 'Tidak Ada'){$proteksi_kebakaran_value = 20;
+		}else{$proteksi_kebakaran_value = 10;};
+		// SARANA PROTEKSI
+		if($sarana_proteksi_kebakaran === 'PMK/APAR'){$sarana_proteksi_kebakaran_value = 30;
+		}else if($sarana_proteksi_kebakaran === 'Detektor Asap'){$sarana_proteksi_kebakaran_value = 20;
+		}else{$sarana_proteksi_kebakaran_value = 10;};
+		// PRASARANA PROTEKSI
+		if($prasarana_proteksi_kebakaran === 'Hidran/Tangki/Sumber Air'){$prasarana_proteksi_kebakaran_value = 30;
+		}else if($prasarana_proteksi_kebakaran === 'Jalan Untuk Damkar'){$prasarana_proteksi_kebakaran_value = 20;
+		}else{$prasarana_proteksi_kebakaran_value = 10;};
+		
+
+		// <-- query lama ->
+			// $query_tabel_identitas_responden = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
+			// 											VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
+			// $query_tabel_alamat_responden = "INSERT INTO tabel_alamat_responden (jalan,dusun,rt,rw,desa,kecamatan)
+			// 											VALUE ('$jalan','$dusun','$rt','$rw','$desa','$kecamatan')";
+			// $query_tabel_detail_responden = "INSERT INTO tabel_detail_responden (jumlah_tabungan,tabungan_perbulan,jumlah_kk,pekerjaan_utama,jumlah_penghasilan,range_penghasilan,pendidikan_terakhir,status_perkawinan,status_fisik,status_kepemilikan_tanah,status_kepemilikan_rumah,aset_rumah_lain,aset_tanah_lain,bantuan_lain,nama_bantuan_lain,jenis_kawasan_rumah)
+			// 											VALUE ('$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+			// $query_tabel_aspek_persyaratan = "INSERT INTO tabel_aspek_persyaratan (luas_rumah,jumlah_penghuni)
+			// 											VALUE ('$luas_rumah','$jumlah_penghuni')";
+			// $query_tabel_aspek_kesehatan = "INSERT INTO tabel_aspek_kesehatan (kusen,jendela,pintu,kamar_mandi,saluran_air,pembuangan,drainase,tempat_sampah,sumber_air_minum,jarak_air_minum,sumber_listrik)
+			// 											VALUE ('$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik')";
+			// $query_tabel_aspek_bangunan = "INSERT INTO tabel_aspek_bangunan (material_atap,kondisi_atap,material_dinding,kondisi_dinding,material_lantai,kondisi_penutup_lantai,struktur_lantai)
+			// 											VALUE ('$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai')";
+			// $query_tabel_aspek_keselamatan = "INSERT INTO tabel_aspek_keselamatan (pondasi_material,pondasi_kondisi,sloof_material,sloof_kondisi,material_kolom_ring,kondisi_kolom_ring,material_rangka_atap,kondisi_rangka_atap,proteksi_kebakaran,sarana_proteksi_kebakaran,prasarana_proteksi_kebakaran)
+			// 											VALUE ('$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+		$query_responden	= "INSERT INTO `tabel_identitas_responden` (`nik_responden`,`nama_lengkap`,`no_telp`,`kordinat`,`sumber_data`,`jenis_kelamin`,`jalan`,`dusun`,`rt`,`rw`,`desa`,`kecamatan`,`jumlah_tabungan`,`tabungan_perbulan`,`jumlah_kk`,`pekerjaan_utama`,`jumlah_penghasilan`,`range_penghasilan`,`pendidikan_terakhir`,`status_perkawinan`,`status_fisik`,`status_kepemilikan_tanah`,`status_kepemilikan_rumah`,`aset_rumah_lain`,`aset_tanah_lain`,`bantuan_lain`,`nama_bantuan_lain`,`jenis_kawasan_rumah`)
+						VALUE ('$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+		$query_aspek	= "INSERT INTO `tabel_aspek` (`nik_aspek`,`penghuni`,`luas_rumah`,`kusen`,`jendela`,`pintu`,`kamar_mandi`,`saluran_air`,`pembuangan`,`drainase`,`tempat_sampah`,`sumber_air_minum`,`jarak_air_minum`,`sumber_listrik`,`material_atap`,`kondisi_atap`,`material_dinding`,`kondisi_dinding`,`material_lantai`,`kondisi_penutup_lantai`,`struktur_lantai`,`pondasi_material`,`pondasi_kondisi`,`sloof_material`,`sloof_kondisi`,`material_kolom_ring`,`kondisi_kolom_ring`,`material_rangka_atap`,`kondisi_rangka_atap`,`proteksi_kebakaran`,`sarana_proteksi_kebakaran`,`prasarana_proteksi_kebakaran`)
+						VALUES ('$nik','$penghuni','$luas_rumah','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+		$query_waktu	= "INSERT INTO tabel_waktu (`nik_waktu`,`tanggal_surve`) VALUES ('$nik','$tanggal_surve')";
+		$hasil_responden = mysqli_query($koneksi, $query_responden);
+		$hasil_aspek = mysqli_query($koneksi, $query_aspek);
+		$hasil_waktu = mysqli_query($koneksi,$query_waktu);
+
+		// upload ke data backup
+		$query_responden_backup	= "INSERT INTO `tabel_identitas_responden_backup` (`id_identitas`,`nik_identitas`,`nik_awal`,`nama_lengkap`,`no_telp`,`kordinat`,`sumber_data`,`jenis_kelamin`,`jalan`,`dusun`,`rt`,`rw`,`desa`,`kecamatan`,`jumlah_tabungan`,`tabungan_perbulan`,`jumlah_kk`,`pekerjaan_utama`,`jumlah_penghasilan`,`range_penghasilan`,`pendidikan_terakhir`,`status_perkawinan`,`status_fisik`,`status_kepemilikan_tanah`,`status_kepemilikan_rumah`,`aset_rumah_lain`,`aset_tanah_lain`,`bantuan_lain`,`nama_bantuan_lain`,`jenis_kawasan_rumah`)
+						VALUE ('','$nik','$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+		$query_aspek_backup	= "INSERT INTO `tabel_aspek_backup` (`id_aspek`,`nik_aspek`,`nik_awal`,`luas_rumah`,`penghuni`,`kusen`,`jendela`,`pintu`,`kamar_mandi`,`saluran_air`,`pembuangan`,`drainase`,`tempat_sampah`,`sumber_air_minum`,`jarak_air_minum`,`sumber_listrik`,`material_atap`,`kondisi_atap`,`material_dinding`,`kondisi_dinding`,`material_lantai`,`kondisi_penutup_lantai`,`struktur_lantai`,`pondasi_material`,`pondasi_kondisi`,`sloof_material`,`sloof_kondisi`,`material_kolom_ring`,`kondisi_kolom_ring`,`material_rangka_atap`,`kondisi_rangka_atap`,`proteksi_kebakaran`,`sarana_proteksi_kebakaran`,`prasarana_proteksi_kebakaran`)
+						VALUES ('','$nik','$nik','$luas_rumah','$penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+		$query_waktu_backup	= "INSERT INTO tabel_waktu_backup (`nik_waktu`,`nik_awal`,`tanggal_surve`) VALUES ('$nik','$nik','$tanggal_surve')";
+		$hasil_responden_backup = mysqli_query($koneksi, $query_responden_backup);
+		$hasil_aspek_backup = mysqli_query($koneksi, $query_aspek_backup);
+		$hasil_waktu_backup = mysqli_query($koneksi,$query_waktu_backup);
+
+		// <-- script lama (memanggil id) ->
+			// $hasil1 = mysqli_query($koneksi, $query_tabel_identitas_responden);
+			// 	$id_identitas = mysqli_insert_id($koneksi);//mengambil data id
+			// $hasil2 = mysqli_query($koneksi, $query_tabel_alamat_responden);
+			// $hasil3 = mysqli_query($koneksi, $query_tabel_detail_responden);
+			// $hasil4 = mysqli_query($koneksi, $query_tabel_aspek_persyaratan);
+			// 	$id_aspek_persyaratan = mysqli_insert_id($koneksi);//mengambil data id
+			// $hasil5 = mysqli_query($koneksi, $query_tabel_aspek_kesehatan);
+			// 	$id_aspek_kesehatan = mysqli_insert_id($koneksi);//mengambil data id
+			// $hasil6 = mysqli_query($koneksi, $query_tabel_aspek_bangunan);
+			// 	$id_aspek_bangunan = mysqli_insert_id($koneksi);//mengambil data id
+			// $hasil7 = mysqli_query($koneksi, $query_tabel_aspek_keselamatan);
+			// 	$id_aspek_keselamatan = mysqli_insert_id($koneksi);//mengambil data id
+				
+
+			//queri upload id
+			// $query_tabel_hasil_penilaian_aspek = "INSERT INTO tabel_hasil_penilaian_aspek (id_responden,id_aspek_persyaratan,id_aspek_kesehatan,id_aspek_bangunan,id_aspek_keselamatan)
+			// 											VALUE ('$id_identitas','$id_aspek_persyaratan','$id_aspek_kesehatan','$id_aspek_bangunan','$id_aspek_keselamatan')";
+			// $hasil_input_id = mysqli_query($koneksi,$query_tabel_hasil_penilaian_aspek);
+			
+		
+
+		
+		// Ambil Data yang Dikirim dari Form
+		$nama_file_ktp = $_FILES['ktp']['name'];
+		$ukuran_file_ktp = $_FILES['ktp']['size'];
+		$tipe_file_ktp = $_FILES['ktp']['type'];
+		$tmp_file_ktp = $_FILES['ktp']['tmp_name'];
+		$nama_file_rumah = $_FILES['rumah']['name'];
+		$ukuran_file_rumah = $_FILES['rumah']['size'];
+		$tipe_file_rumah = $_FILES['rumah']['type'];
+		$tmp_file_rumah = $_FILES['rumah']['tmp_name'];
+		$max = 5000000; //5000kb
+		
+		// Set path folder tempat menyimpan gambarnya
+		$path_ktp = "../assets/img/ktp/".$nama_file_ktp;
+		$path_rumah = "../assets/img/rumah/".$nama_file_rumah;
+
+		if($tipe_file_ktp == "image/jpeg" || $tipe_file_ktp == "image/png" && $tipe_file_rumah == "image/jpeg" || $tipe_file_rumah == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
+			// Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
+			if($ukuran_file_ktp <= $max && $ukuran_file_rumah <= $max ){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
+				// Jika ukuran file kurang dari sama dengan 1MB, lakukan :
+				// Proses upload
+				if(move_uploaded_file($tmp_file_ktp, $path_ktp) && move_uploaded_file($tmp_file_rumah, $path_rumah) ){ // Cek apakah gambar berhasil diupload atau tidak
+					// Cek apakah gambar berhasil diupload atau tidak
+					// Jika gambar berhasil diupload, Lakukan :	
+					// Proses simpan ke Database
+					$query_ktp = "INSERT INTO `tabel_foto_ktp` (`nik_ktp`,`nama`,`ukuran`,`tipe`) 
+								VALUES ('$nik','$nama_file_ktp','$ukuran_file_ktp','$tipe_file_ktp')";
+					$query_rumah = "INSERT INTO `tabel_foto_rumah` (`nik_rumah`,`nama`,`ukuran`,`tipe`) 
+								VALUES('$nik','$nama_file_rumah','$ukuran_file_rumah','$tipe_file_rumah')";
+					$sql_ktp = mysqli_query($koneksi, $query_ktp); 
+					$sql_rumah = mysqli_query($koneksi, $query_rumah); 
+					
+					if($sql_ktp && $sql_rumah){ // Cek jika proses simpan ke database sukses atau tidak
+						// Jika Sukses, Lakukan :
+						//validasi data masuk
+						if ($query_responden && $query_aspek && $query_waktu && $query_waktu_backup && $query_aspek_backup && $query_responden_backup ) {
+							echo "<script>alert('input data berhasil');</script>";
+							echo '<meta http-equiv="refresh" content="1;url=view.php" />';
+						} else {
+							echo "<script>alert('input data gagal');</script>";
+						}
+						// echo '<meta http-equiv="refresh" content="0;url=index.php" />';
+					}else{
+						// Jika Gagal, Lakukan :
+						echo "<script>alert('Data sudah ada pada database');</script>";
+					}
+					
+				}else{
+					// Jika gambar gagal diupload, Lakukan :
+					echo "<script>alert('Foto gagal diupload');</script>";
+					// echo "<br><a href='index.php'>Kembali Ke index</a>";
+				}
+			}else{
+				// Jika ukuran file lebih dari 1MB, lakukan :
+				echo "<script>alert('Ukuran foto tidak boleh lebih dari 5 Mb');</script>";
+				// echo "<br><a href='index.php'>Kembali Ke index</a>";
+			}
+		}else{
+		// Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
+		echo "<script>alert('Tipe gambar tidak benar, harus JPG/PNG');</script>";
+		//   echo "<br><a href='index.php'>Kembali Ke index</a>";
+		}
+	}else{
+	}
+	
+	?>
 
 	<!DOCTYPE html>
 	<html lang="en">
@@ -256,7 +683,7 @@
 														<span class="input-group-text">Upload</span>
 													</div>
 													<div class="custom-file" id="customFile" lang="es">
-													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='ktp' required> 
+													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileName" name='ktp' required> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
 													Select file ktp...
 													</label>
@@ -271,7 +698,7 @@
 														<span class="input-group-text">Upload</span>
 													</div>
 													<div class="custom-file" id="customFile" lang="es">
-													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='rumah' required> 
+													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileName" name='rumah' required> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
 													Select file rumah...
 													</label>
@@ -1044,433 +1471,7 @@
 								</div>
 							</div>
 							<!-- end button -->
-							<?php
-							include '../koneksi.php';
-							if (isset($_POST['submit'])) {
 
-								// tabel identitas responden
-								$nama_lengkap	= $_POST['nama_lengkap'];
-								$nik			= $_POST['nik'];
-								$no_telp		= $_POST['no_telp'];
-								$kordinat		= $_POST['kordinat'];
-								$jenis_kelamin	= $_POST['jenis_kelamin'];
-								$sumber_data	= $_POST['sumber_data'];
-								$jenis_kelamin	= $_POST['jenis_kelamin'];
-								// tabel detail responden
-								$jumlah_tabungan	= $_POST['jumlah_tabungan'];
-								$tabungan_perbulan	= $_POST['tabungan_perbulan'];
-								$jumlah_kk			= $_POST['jumlah_kk'];
-								$pekerjaan_utama	= $_POST['pekerjaan_utama'];
-								$jumlah_penghasilan	= $_POST['jumlah_penghasilan'];
-								$range_penghasilan	= $_POST['range_penghasilan'];
-								$pendidikan_terakhir= $_POST['pendidikan_terakhir'];
-								$status_perkawinan	= $_POST['status_perkawinan'];
-								$status_fisik		= $_POST['status_fisik'];
-								$status_kepemilikan_tanah= $_POST['status_kepemilikan_tanah'];
-								$status_kepemilikan_rumah= $_POST['status_kepemilikan_rumah'];
-								$aset_rumah_lain	= $_POST['aset_rumah_lain'];
-								$aset_tanah_lain	= $_POST['aset_tanah_lain'];
-								$bantuan_lain		= $_POST['bantuan_lain'];
-								$nama_bantuan_lain	= $_POST['nama_bantuan_lain'];
-								$jenis_kawasan_rumah= $_POST['jenis_kawasan_rumah'];
-								//tabel alamat responden
-								$jalan		= $_POST['jalan'];
-								$dusun		= $_POST['dusun'];
-								$rt			= $_POST['rt'];
-								$rw			= $_POST['rw'];
-								$desa		= $_POST['desa'];
-								$kecamatan	= $_POST['kecamatan'];
-								//tabel aspek persyaratan
-								$luas_rumah		= $_POST['luas_rumah'];
-								$jumlah_penghuni= $_POST['jumlah_penghuni'];
-								//tabel aspek kesehatan
-								$kusen			= $_POST['kusen'];
-								$jendela		= $_POST['jendela'];
-								$pintu			= $_POST['pintu'];
-								$kamar_mandi	= $_POST['kamar_mandi'];
-								$saluran_air	= $_POST['saluran_air'];
-								$pembuangan		= $_POST['pembuangan'];
-								$drainase		= $_POST['drainase'];
-								$tempat_sampah	= $_POST['tempat_sampah'];
-								$sumber_air_minum	= $_POST['sumber_air_minum'];
-								$jarak_air_minum	= $_POST['jarak_air_minum'];
-								$sumber_listrik		= $_POST['sumber_listrik'];
-								//tabel aspek bangunan
-								$material_atap	= $_POST['material_atap'];
-								$kondisi_atap	= $_POST['kondisi_atap'];
-								$material_dinding = $_POST['material_dinding'];
-								$kondisi_dinding  = $_POST['kondisi_dinding'];
-								$material_lantai  = $_POST['material_lantai'];
-								$kondisi_penutup_lantai   = $_POST['kondisi_penutup_lantai'];
-								$struktur_lantai  = $_POST['struktur_lantai'];
-								//tabel aspek keselamatan
-								$pondasi_material		= $_POST['pondasi_material'];
-								$pondasi_kondisi		= $_POST['pondasi_kondisi'];
-								$sloof_material			= $_POST['sloof_material'];
-								$sloof_kondisi			= $_POST['sloof_kondisi'];
-								$material_kolom_ring	= $_POST['material_kolom_ring'];
-								$kondisi_kolom_ring		= $_POST['kondisi_kolom_ring'];
-								$material_rangka_atap	= $_POST['material_rangka_atap'];
-								$kondisi_rangka_atap	= $_POST['kondisi_rangka_atap'];
-								$proteksi_kebakaran		= $_POST['proteksi_kebakaran'];
-								$sarana_proteksi_kebakaran		= $_POST['sarana_proteksi_kebakaran'];
-								$prasarana_proteksi_kebakaran	= $_POST['prasarana_proteksi_kebakaran'];
-								//waktu
-								$tanggal_surve	= date('Y-m-d H:i:s');
-								
-								// CONVERT VALUE
-
-								// DETAIL RESPONDEN
-								// TABUNGAN PERBULAN
-								if($tabungan_perbulan === '0 - 1.2 Juta'){$tabungan_perbulan_value = 10;
-								}else if($tabungan_perbulan === '1.3 - 1.8 Juta'){$tabungan_perbulan_value = 20;
-								}else if($tabungan_perbulan === '1.9 - 2.1 Juta'){$tabungan_perbulan_value = 30;
-								}else if($tabungan_perbulan === '2.2 - 2.6 Juta'){$tabungan_perbulan_value = 40;
-								}else if($tabungan_perbulan === '2.7 - 3.1 Juta'){$tabungan_perbulan_value = 50;
-								}else{$tabungan_perbulan_value = 60;};
-								// PEKERJAAN UTAMA
-								if($pekerjaan_utama === 'Lainnya'){$pekerjaan_utama_value = 10;
-								}else if($pekerjaan_utama === 'Tidak Bekerja'){$pekerjaan_utama_value = 20;
-								}else if($pekerjaan_utama === 'Wirausaha'){$pekerjaan_utama_value = 30;
-								}else if($pekerjaan_utama === 'Petani'){$pekerjaan_utama_value = 40;	
-								}else if($pekerjaan_utama === 'Tukang/Montir'){$pekerjaan_utama_value = 50;	
-								}else if($pekerjaan_utama === 'Buruh harian'){$pekerjaan_utama_value = 60;	
-								}else if($pekerjaan_utama === 'Karyawan'){$pekerjaan_utama_value = 70;	
-								}else if($pekerjaan_utama === 'Honorer'){$pekerjaan_utama_value = 80;	
-								}else if($pekerjaan_utama === 'Ojek/Supir'){$pekerjaan_utama_value = 90;	
-								}else if($pekerjaan_utama === 'Pramuwiswa'){$pekerjaan_utama_value = 100;	
-								}else if($pekerjaan_utama === 'Nelayan'){$pekerjaan_utama_value = 110;	
-								}else if($pekerjaan_utama === 'PNS'){$pekerjaan_utama_value = 120;	
-								}else if($pekerjaan_utama === 'Pensiunan'){$pekerjaan_utama_value = 130;	
-								}else if($pekerjaan_utama === 'BUMN/D'){$pekerjaan_utama_value = 140;	
-								}else{$pekerjaan_utama_value = 150;};	
-								// RANGE PENGHASILAN
-								if($range_penghasilan === '0 - 1.2 Juta'){$range_penghasilan_value = 10;
-								}else if($range_penghasilan === '1.3 - 1.8 Juta'){$range_penghasilan_value = 20;
-								}else if($range_penghasilan === '1.9 - 2.1 Juta'){$range_penghasilan_value = 30;
-								}else if($range_penghasilan === '2.2 - 2.6 Juta'){$range_penghasilan_value = 40;
-								}else if($range_penghasilan === '2.7 - 3.1 Juta'){$range_penghasilan_value = 50;
-								}else{$range_penghasilan_value = 60;};
-								// PENDIDIKAN TERAKHIR
-								if($pendidikan_terakhir === 'Tidak Punya Ijazah'){$pendidikan_terakhir_value = 10;
-								}else if($pendidikan_terakhir === 'SD/Sederajat'){$pendidikan_terakhir_value = 20;
-								}else if($pendidikan_terakhir === 'SMP/Sederajat'){$pendidikan_terakhir_value = 30;
-								}else if($pendidikan_terakhir === 'SMA/Sederajat'){$pendidikan_terakhir_value = 40;
-								}else if($pendidikan_terakhir === 'D1/D2/D3'){$pendidikan_terakhir_value = 50;
-								}else{$pendidikan_terakhir_value = 60;};
-								// STATUS PERKAWINAN
-								if($status_perkawinan === 'Belum Menikah'){$status_perkaeinan_value = 10;
-								}else if($status_perkawinan === 'Menikah'){$status_perkawinan_value = 20;
-								}else{$status_perkawinan_value = 30;};
-								// STATUS FISIK
-								if($status_fisik === 'Sehat'){$status_fisik_value = 10;
-								}else if($status_fisik === 'Sakit'){$status_fisik_value = 20;
-								}else {$status_fisik_value = 30;};
-								// STATUS KEPEMILIKAN TANAH
-								if($status_kepemilikan_tanah === 'Milik Sendiri'){$status_kepemilikan_tanah_value = 10;
-								}else if($status_kepemilikan_tanah === 'Bukan Milik Sendiri'){$status_kepemilikan_tanah_value = 20;
-								}else{$status_kepemilikan_tanah_value = 30;};
-								// STATUS KEPEMILIKAN RUMAH
-								if($status_kepemilikan_rumah === 'Milik Sendiri'){$status_kepemilikan_rumah_value = 10;
-								}else if($status_kepemilikan_rumah === 'Bukan Milik Sendiri'){$status_kepemilikan_rumah_value = 20;
-								}else{$status_kepemilikan_rumah_value = 30;};
-								// ASET RUMAH LAIN
-								if($aset_rumah_lain === 'Ada'){$aset_rumah_lain_value = 10;
-								}else{$aset_rumah_lain_value = 20;};
-								// ASET TANAH LAIN
-								if($aset_tanah_lain === 'Ada'){$aset_tanah_lain_value = 10;
-								}else{$aset_tanah_lain_value = 20;};
-								// BANTUAN LAIN
-								if($bantuan_lain === 'Ya > 5 Tahun Yang Lalu'){$bantuan_lain_value = 10;
-								}else if($bantuan_lain === 'Ya < 5 Tahun Yang Lalu'){$bantuan_lain_value = 20;
-								}else{$bantuan_lain_value = 30;};
-								// JENIS KAWASAN RUMAH
-								if($jenis_kawasan_rumah === 'Lainnya'){$jenis_kawasan_rumah_value = 10;
-								}else if($jenis_kawasan_rumah === 'Kawasan Rawan Air'){$jenis_kawasan_rumah_value = 20;
-								}else if($jenis_kawasan_rumah === 'Kawasan Pesisir/Nelayan'){$jenis_kawasan_rumah_value = 30;
-								}else if($jenis_kawasan_rumah === 'Kawasan Perbatasan'){$jenis_kawasan_rumah_value = 40;
-								}else if($jenis_kawasan_rumah === 'Daerah Tertinggal/Terpencil'){$jenis_kawasan_rumah_value = 50;
-								}else if($jenis_kawasan_rumah === 'Kawasan Ekonomi Khusus'){$jenis_kawasan_rumah_value = 60;
-								}else{$jenis_kawasan_rumah_value = 70;};
-								
-								
-								// ASPEK KESEHATAN
-								// KUSEN
-								if($kusen === 'Tidak Ada'){$kusen_value = 10;
-								}else{$kusen_value = 20;};
-								// JENDELA DAN VENTILASI
-								if($jendela === 'Tidak Ada'){$jendela_value = 10;
-								}else if($jendela === 'Memenuhi, Kondisi Baik'){$jendela_value = 20;
-								}else if($jendela === 'Memenuhi, Kondisi Rusak'){$jendela_value = 30;
-								}else if($jendela === 'Tidak Memenuhi Kondisi Baik'){$jendela_value = 40;
-								}else{$jendela_value = 50;};
-								// DAUN PINTU
-								if($pintu === 'Ada'){$pintu_value = 10;
-								}else{$pintu_value = 20;};
-								// KAMAR MANDI
-								if($kamar_mandi === 'Tidak Ada'){$kamar_mandi_value = 10;
-								}else if($kamar_mandi === 'Sendiri'){$kamar_mandi_value = 10;
-								}else{$kamar_mandi_value = 10;};
-								// SALURAN AIR
-								if($saluran_air === 'Tidak Ada'){$saluran_air_value = 10;
-								}else if($saluran_air === 'Sendiri'){$saluran_air_value = 10;
-								}else{$saluran_air_value = 10;};
-								// PEMBUANGAN AKHIR TINJA
-								if($pembuangan === 'Lainnya'){$pembuangan_value = 10;
-								}else if($pembuangan === 'Septictank'){$pembuangan_value = 20;
-								}else if($pembuangan === 'SPAL'){$pembuangan_value = 30;
-								}else if($pembuangan === 'Lubang Tanah'){$pembuangan_value = 40;
-								}else if($pembuangan === 'Kolam/Sawah/Sungai/Daun'){$pembuangan_value = 50;
-								}else{$pembuangan_value = 60;};
-								// DRAINASE
-								if($drainase === 'Ada, Kondisi Baik'){$drainase_value = 10;
-								}else if($drainase === 'Ada, Kondisi Rusak'){$drainase_value = 20;
-								}else{$drainase_value = 30;};
-								// TEMPAT SAMPAH
-								if($tempat_sampah === 'Ada'){$tempat_sampah_value = 10;
-								}else{$tempat_sampah_value = 20;};
-								// SUMBER AIR MINUM
-								if($sumber_air_minum === 'PDAM'){$sumber_air_minum_value = 10;
-								}else if($sumber_air_minum === 'Sumur'){$sumber_air_minum_value = 20;
-								}else if($sumber_air_minum === 'Mata Air'){$sumber_air_minum_value = 30;
-								}else if($sumber_air_minum === 'Air Kemasan/Isi Ulang'){$sumber_air_minum_value = 40;
-								}else{$sumber_air_minum_value = 50;};
-								// JARAK AIR MINUM
-								if($jarak_air_minum === '> 10m'){$jarak_air_minum_value = 20;
-								}else{$jarak_air_minum_value = 10;};
-								// SUMBER LISTRIK
-								if($sumber_listrik === 'Listrik PLN Dengan Meteran'){$sumber_listrik_value = 20;
-								}else if($sumber_listrik === 'Listrik PLN Tanpa Meteran'){$sumber_listrik_value = 30;
-								}else if($sumber_listrik === 'Listrik Non PLN'){$sumber_listrik_value = 40;
-								}else{$sumber_listrik_value = 50;};
-								
-								//ASPEK BANGUNAN
-								// MATERIAL ATAP
-								if($material_atap === 'Tidak Ada'){$material_atap_value = 60;
-								}else if($material_atap === 'Kayu'){$material_atap_value = 50;
-								}else if($material_atap === 'Batu Kali'){$material_atap_value = 40;
-								}else if($material_atap === 'Batu Kambung'){$material_atap_value = 30;
-								}else if($material_atap === 'Beton'){$material_atap_value = 20;
-								}else{$material_atap_value = 10;};
-								// KONDISI ATAP
-								if($kondisi_atap === 'Kondisi Baik'){$kondisi_atap_value = 10;
-								}else if($kondisi_atap === 'Rusak Ringan'){$kondisi_atap_value = 20;
-								}else if($kondisi_atap === 'Rusak Sedang/Sebagian'){$kondisi_atap_value = 30;
-								}else {$kondisi_atap_value = 40;};
-								// MATERIAL DINDING
-								if($material_dinding === 'Tembok'){$material_dinding_value = 10;
-								}else if($material_dinding === 'GRC(Esbes)'){$material_dinding_value = 20;
-								}else if($material_dinding === 'Papan/Tripleks'){$material_dinding_value = 30;
-								}else if($material_dinding === 'Anyaman Bambu'){$material_dinding_value = 40;
-								}else {$material_dinding_value === 'Kayu';};
-								// KONDISI MATERIAL DINDING
-								if($kondisi_dinding === 'Kondisi Baik'){$kondisi_dinding_value = 10;
-								}else if($kondisi_dinding === 'Rusak Ringan'){$kondisi_dinding_value = 20;
-								}else if($kondisi_dinding === 'Rusak Sedang/Sebagian'){$kondisi_dinding_value = 30;
-								}else {$kondisi_dinding_value = 40;};
-								// MATERIAL LANTAI
-								if($material_lantai === 'Keramik'){$material_lantai_value = 10;
-								}else if($material_lantai === 'Marmer/Granit'){$material_lantai_value = 20;
-								}else if($material_lantai === 'Ubin/Tegel'){$material_lantai_value = 30;
-								}else if($material_lantai === 'Plesteran'){$material_lantai_value = 40;
-								}else if($material_lantai === 'Bambu'){$material_lantai_value = 50;
-								}else if($material_lantai === 'Kayu'){$material_lantai_value = 60;
-								}else{$material_lantai_value = 70;};
-								// KONDISI PENUUTUP LANTAI
-								if($kondisi_penutup_lantai === 'Kondisi Baik'){$kondisi_penutup_lantai_value = 10;
-								}else if($kondisi_penutup_lantai === 'Rusak Ringan'){$kondisi_penutup_lantai_value = 20;
-								}else if($kondisi_penutup_lantai === 'Rusak Sedang/Sebagian'){$kondisi_penutup_lantai_value = 30;
-								}else {$kondisi_penutup_lantai_value = 40;};
-								// STRUKTUR LANTAI
-								if($struktur_lantai === 'Kondisi Baik'){$struktur_lantai_value = 10;
-								}else if($struktur_lantai === 'Rusak Ringan'){$struktur_lantai_value = 20;
-								}else if($struktur_lantai === 'Rusak Sedang/Sebagian'){$struktur_lantai_value = 30;
-								}else {$struktur_lantai_value = 40;};
-						
-								
-								// ASPEK KESELAMATAN
-								// PONDASI MATERIAL
-								if($pondasi_material === 'Kayu'){$pondasi_material_value = 50;
-								}else if($pondasi_material === 'Batu Kali'){$pondasi_material_value = 40;
-								}else if($pondasi_material === 'Batu Kambung'){$pondasi_material_value = 30;
-								}else if($pondasi_material === 'Bambu'){$pondasi_material_value = 20;
-								}else if($pondasi_material === 'Beton'){$pondasi_material_value = 10;
-								}else{$pondasi_material_value = 5;};
-								// PONDASI KONDISI
-								if($pondasi_kondisi === 'Kondisi Baik'){$pondasi_kondisi_value = 10;
-								}else if($pondasi_kondisi === 'Rusak Ringan'){$pondasi_kondisi_value = 20;
-								}else if($pondasi_kondisi === 'Rusak Sedang/Sebagian'){$pondasi_kondisi_value = 30;
-								}else {$pondasi_kondisi_value = 40;};
-								// SLOOF MATERIAL
-								if($sloof_material === 'Kayu'){$sloof_material_value = 50;
-								}else if($sloof_material === 'Beton Bertulang'){$sloof_material_value = 40;
-								}else if($sloof_material === 'Batu Bata'){$sloof_material_value = 30;
-								}else if($sloof_material === 'Bambu'){$sloof_material_value = 20;
-								}else if($sloof_material === 'Semen'){$sloof_material_value = 10;
-								}else{$sloof_material_value = 5;};
-								// SLOOF KONDISI
-								if($sloof_kondisi === 'Kondisi Baik'){$sloof_kondisi_value = 10;
-								}else if($sloof_kondisi === 'Rusak Ringan'){$sloof_kondisi_value = 20;
-								}else if($sloof_kondisi === 'Rusak Sedang/Sebagian'){$sloof_kondisi_value = 30;
-								}else {$sloof_kondisi_value = 40;};
-								// MATERIAL KOLOM RING
-								if($material_kolom_ring === 'Kayu'){$material_kolom_ring_value = 50;
-								}else if($material_kolom_ring === 'Beton Bertulang'){$material_kolom_ring_value = 40;
-								}else if($material_kolom_ring === 'Baja Ringan'){$material_kolom_ring_value = 30;
-								}else if($material_kolom_ring === 'Bambu'){$material_kolom_ring_value = 20;
-								}else{$material_kolom_ring_value = 10;};
-								// KONDISI KOLOM RING
-								if($kondisi_kolom_ring === 'Kondisi Baik'){$kondisi_kolom_ring_value = 10;
-								}else if($kondisi_kolom_ring === 'Rusak Ringan'){$kondisi_kolom_ring_value = 20;
-								}else if($kondisi_kolom_ring === 'Rusak Sedang/Sebagian'){$kondisi_kolom_ring_value = 30;
-								}else {$kondisi_kolom_ring_value = 40;};
-								// MATERIAL RANGKA ATAP
-								if($material_rangka_atap === 'Kayu'){$material_rangka_atap_value = 50;
-								}else if($material_rangka_atap === 'Beton Bertulang'){$material_rangka_atap_value = 40;
-								}else if($material_rangka_atap === 'Baja Ringan'){$material_rangka_atap_value = 30;
-								}else if($material_rangka_atap === 'Bambu'){$material_rangka_atap_value = 20;
-								}else{$material_rangka_atap_value = 10;};
-								// KONDISI RANGKA ATAP
-								if($kondisi_rangka_atap === 'Kondisi Baik'){$kondisi_rangka_atap_value = 10;
-								}else if($kondisi_rangka_atap === 'Rusak Ringan'){$kondisi_rangka_atap_value = 20;
-								}else if($kondisi_rangka_atap === 'Rusak Sedang/Sebagian'){$kondisi_rangka_atap_value = 30;
-								}else {$kondisi_rangka_atap_value = 40;};
-								// PROTEKSI KEBAKARAN
-								if($proteksi_kebakaran === 'Tidak Ada'){$proteksi_kebakaran_value = 20;
-								}else{$proteksi_kebakaran_value = 10;};
-								// SARANA PROTEKSI
-								if($sarana_proteksi_kebakaran === 'PMK/APAR'){$sarana_proteksi_kebakaran_value = 30;
-								}else if($sarana_proteksi_kebakaran === 'Detektor Asap'){$sarana_proteksi_kebakaran_value = 20;
-								}else{$sarana_proteksi_kebakaran_value = 10;};
-								// PRASARANA PROTEKSI
-								if($prasarana_proteksi_kebakaran === 'Hidran/Tangki/Sumber Air'){$prasarana_proteksi_kebakaran_value = 30;
-								}else if($prasarana_proteksi_kebakaran === 'Jalan Untuk Damkar'){$prasarana_proteksi_kebakaran_value = 20;
-								}else{$prasarana_proteksi_kebakaran_value = 10;};
-								
-
-
-
-								// <-- query lama ->
-									// $query_tabel_identitas_responden = "INSERT INTO tabel_identitas_responden (nama_lengkap,nik,no_telp,kordinat,sumber_data,jenis_kelamin)
-									// 											VALUE ('$nama_lengkap','$nik','$no_telp','$kordinat','$sumber_data','$jenis_kelamin')";
-									// $query_tabel_alamat_responden = "INSERT INTO tabel_alamat_responden (jalan,dusun,rt,rw,desa,kecamatan)
-									// 											VALUE ('$jalan','$dusun','$rt','$rw','$desa','$kecamatan')";
-									// $query_tabel_detail_responden = "INSERT INTO tabel_detail_responden (jumlah_tabungan,tabungan_perbulan,jumlah_kk,pekerjaan_utama,jumlah_penghasilan,range_penghasilan,pendidikan_terakhir,status_perkawinan,status_fisik,status_kepemilikan_tanah,status_kepemilikan_rumah,aset_rumah_lain,aset_tanah_lain,bantuan_lain,nama_bantuan_lain,jenis_kawasan_rumah)
-									// 											VALUE ('$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
-									// $query_tabel_aspek_persyaratan = "INSERT INTO tabel_aspek_persyaratan (luas_rumah,jumlah_penghuni)
-									// 											VALUE ('$luas_rumah','$jumlah_penghuni')";
-									// $query_tabel_aspek_kesehatan = "INSERT INTO tabel_aspek_kesehatan (kusen,jendela,pintu,kamar_mandi,saluran_air,pembuangan,drainase,tempat_sampah,sumber_air_minum,jarak_air_minum,sumber_listrik)
-									// 											VALUE ('$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik')";
-									// $query_tabel_aspek_bangunan = "INSERT INTO tabel_aspek_bangunan (material_atap,kondisi_atap,material_dinding,kondisi_dinding,material_lantai,kondisi_penutup_lantai,struktur_lantai)
-									// 											VALUE ('$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai')";
-									// $query_tabel_aspek_keselamatan = "INSERT INTO tabel_aspek_keselamatan (pondasi_material,pondasi_kondisi,sloof_material,sloof_kondisi,material_kolom_ring,kondisi_kolom_ring,material_rangka_atap,kondisi_rangka_atap,proteksi_kebakaran,sarana_proteksi_kebakaran,prasarana_proteksi_kebakaran)
-									// 											VALUE ('$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
-								$query_responden	= "INSERT INTO `tabel_identitas_responden` (`nik_responden`,`nama_lengkap`,`no_telp`,`kordinat`,`sumber_data`,`jenis_kelamin`,`jalan`,`dusun`,`rt`,`rw`,`desa`,`kecamatan`,`jumlah_tabungan`,`tabungan_perbulan`,`jumlah_kk`,`pekerjaan_utama`,`jumlah_penghasilan`,`range_penghasilan`,`pendidikan_terakhir`,`status_perkawinan`,`status_fisik`,`status_kepemilikan_tanah`,`status_kepemilikan_rumah`,`aset_rumah_lain`,`aset_tanah_lain`,`bantuan_lain`,`nama_bantuan_lain`,`jenis_kawasan_rumah`)
-												VALUE ('$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
-								$query_aspek	= "INSERT INTO `tabel_aspek` (`nik_aspek`,`luas_rumah`,`jumlah_penghuni`,`kusen`,`jendela`,`pintu`,`kamar_mandi`,`saluran_air`,`pembuangan`,`drainase`,`tempat_sampah`,`sumber_air_minum`,`jarak_air_minum`,`sumber_listrik`,`material_atap`,`kondisi_atap`,`material_dinding`,`kondisi_dinding`,`material_lantai`,`kondisi_penutup_lantai`,`struktur_lantai`,`pondasi_material`,`pondasi_kondisi`,`sloof_material`,`sloof_kondisi`,`material_kolom_ring`,`kondisi_kolom_ring`,`material_rangka_atap`,`kondisi_rangka_atap`,`proteksi_kebakaran`,`sarana_proteksi_kebakaran`,`prasarana_proteksi_kebakaran`)
-												VALUES ('$nik','$luas_rumah','$jumlah_penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
-								$query_waktu	= "INSERT INTO tabel_waktu (`nik_waktu`,`tanggal_surve`) VALUES ('$nik','$tanggal_surve')";
-								$hasil_responden = mysqli_query($koneksi, $query_responden);
-								$hasil_aspek = mysqli_query($koneksi, $query_aspek);
-								$hasil_waktu = mysqli_query($koneksi,$query_waktu);
-
-
-								// upload ke data backup
-								$query_responden_backup	= "INSERT INTO `tabel_identitas_responden_backup` (`nik_responden_backup`,`nama_lengkap`,`no_telp`,`kordinat`,`sumber_data`,`jenis_kelamin`,`jalan`,`dusun`,`rt`,`rw`,`desa`,`kecamatan`,`jumlah_tabungan`,`tabungan_perbulan`,`jumlah_kk`,`pekerjaan_utama`,`jumlah_penghasilan`,`range_penghasilan`,`pendidikan_terakhir`,`status_perkawinan`,`status_fisik`,`status_kepemilikan_tanah`,`status_kepemilikan_rumah`,`aset_rumah_lain`,`aset_tanah_lain`,`bantuan_lain`,`nama_bantuan_lain`,`jenis_kawasan_rumah`)
-												VALUE ('$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
-								$query_aspek_backup	= "INSERT INTO `tabel_aspek_backup` (`nik_aspek_backup`,`luas_rumah`,`jumlah_penghuni`,`kusen`,`jendela`,`pintu`,`kamar_mandi`,`saluran_air`,`pembuangan`,`drainase`,`tempat_sampah`,`sumber_air_minum`,`jarak_air_minum`,`sumber_listrik`,`material_atap`,`kondisi_atap`,`material_dinding`,`kondisi_dinding`,`material_lantai`,`kondisi_penutup_lantai`,`struktur_lantai`,`pondasi_material`,`pondasi_kondisi`,`sloof_material`,`sloof_kondisi`,`material_kolom_ring`,`kondisi_kolom_ring`,`material_rangka_atap`,`kondisi_rangka_atap`,`proteksi_kebakaran`,`sarana_proteksi_kebakaran`,`prasarana_proteksi_kebakaran`)
-												VALUES ('$nik','$luas_rumah','$jumlah_penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
-								$query_waktu_backup	= "INSERT INTO tabel_waktu_backup (`nik_waktu_backup`,`tanggal_surve`) VALUES ('$nik','$tanggal_surve')";
-								$hasil_responden_backup = mysqli_query($koneksi, $query_responden_backup);
-								$hasil_aspek_backup = mysqli_query($koneksi, $query_aspek_backup);
-								$hasil_waktu_backup = mysqli_query($koneksi,$query_waktu_backup);
-
-								// <-- script lama (memanggil id) ->
-									// $hasil1 = mysqli_query($koneksi, $query_tabel_identitas_responden);
-									// 	$id_identitas = mysqli_insert_id($koneksi);//mengambil data id
-									// $hasil2 = mysqli_query($koneksi, $query_tabel_alamat_responden);
-									// $hasil3 = mysqli_query($koneksi, $query_tabel_detail_responden);
-									// $hasil4 = mysqli_query($koneksi, $query_tabel_aspek_persyaratan);
-									// 	$id_aspek_persyaratan = mysqli_insert_id($koneksi);//mengambil data id
-									// $hasil5 = mysqli_query($koneksi, $query_tabel_aspek_kesehatan);
-									// 	$id_aspek_kesehatan = mysqli_insert_id($koneksi);//mengambil data id
-									// $hasil6 = mysqli_query($koneksi, $query_tabel_aspek_bangunan);
-									// 	$id_aspek_bangunan = mysqli_insert_id($koneksi);//mengambil data id
-									// $hasil7 = mysqli_query($koneksi, $query_tabel_aspek_keselamatan);
-									// 	$id_aspek_keselamatan = mysqli_insert_id($koneksi);//mengambil data id
-										
-
-									//queri upload id
-									// $query_tabel_hasil_penilaian_aspek = "INSERT INTO tabel_hasil_penilaian_aspek (id_responden,id_aspek_persyaratan,id_aspek_kesehatan,id_aspek_bangunan,id_aspek_keselamatan)
-									// 											VALUE ('$id_identitas','$id_aspek_persyaratan','$id_aspek_kesehatan','$id_aspek_bangunan','$id_aspek_keselamatan')";
-									// $hasil_input_id = mysqli_query($koneksi,$query_tabel_hasil_penilaian_aspek);
-									
-								
-					
-								
-								// Ambil Data yang Dikirim dari Form
-								$nama_file_ktp = $_FILES['ktp']['name'];
-								$ukuran_file_ktp = $_FILES['ktp']['size'];
-								$tipe_file_ktp = $_FILES['ktp']['type'];
-								$tmp_file_ktp = $_FILES['ktp']['tmp_name'];
-								$nama_file_rumah = $_FILES['rumah']['name'];
-								$ukuran_file_rumah = $_FILES['rumah']['size'];
-								$tipe_file_rumah = $_FILES['rumah']['type'];
-								$tmp_file_rumah = $_FILES['rumah']['tmp_name'];
-								
-								// Set path folder tempat menyimpan gambarnya
-								$path_ktp = "../assets/img/ktp/".$nama_file_ktp;
-								$path_rumah = "../assets/img/rumah/".$nama_file_rumah;
-
-								if($tipe_file_ktp == "image/jpeg" || $tipe_file_ktp == "image/png" && $tipe_file_rumah == "image/jpeg" || $tipe_file_rumah == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
-									// Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
-									if($ukuran_file_ktp <= 10000000 && $ukuran_file_rumah <= 10000000 ){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
-										// Jika ukuran file kurang dari sama dengan 1MB, lakukan :
-										// Proses upload
-										if(move_uploaded_file($tmp_file_ktp, $path_ktp) && move_uploaded_file($tmp_file_rumah, $path_rumah) ){ // Cek apakah gambar berhasil diupload atau tidak
-											// Cek apakah gambar berhasil diupload atau tidak
-											// Jika gambar berhasil diupload, Lakukan :	
-											// Proses simpan ke Database
-											$query_ktp = "INSERT INTO `tabel_foto_ktp` (`nik_ktp`,`nama`,`ukuran`,`tipe`) 
-														VALUES ('$nik','$nama_file_ktp','$ukuran_file_ktp','$tipe_file_ktp')";
-											$query_rumah = "INSERT INTO `tabel_foto_rumah` (`nik_rumah`,`nama`,`ukuran`,`tipe`) 
-														VALUES('$nik','$nama_file_rumah','$ukuran_file_rumah','$tipe_file_rumah')";
-											$sql_ktp = mysqli_query($koneksi, $query_ktp); 
-											$sql_rumah = mysqli_query($koneksi, $query_rumah); 
-											
-											if($sql_ktp && $sql_rumah){ // Cek jika proses simpan ke database sukses atau tidak
-												// Jika Sukses, Lakukan :
-												//validasi data masuk
-												if ($query_responden && $query_aspek && $query_waktu && $query_waktu_backup && $query_aspek_backup && $query_responden_backup) {
-													echo "<script>alert('input data berhasil');</script>";
-													echo '<meta http-equiv="refresh" content="1;url=view.php" />';
-												} else {
-													echo "<script>alert('input data gagal');</script>";
-												}
-												echo '<meta http-equiv="refresh" content="0;url=index.php" />';
-											}else{
-												// Jika Gagal, Lakukan :
-												echo "<script>alert('Data sudah ada pada database');</script>";
-											}
-										}else{
-										// Jika gambar gagal diupload, Lakukan :
-										echo "<script>alert('Foto gagal diupload');</script>";
-										// echo "<br><a href='index.php'>Kembali Ke index</a>";
-										}
-									}else{
-										// Jika ukuran file lebih dari 1MB, lakukan :
-										echo "<script>alert('Ukuran foto tidak boleh lebih dari 1mb');</script>";
-										// echo "<br><a href='index.php'>Kembali Ke index</a>";
-									}
-								}else{
-								// Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
-								echo "<script>alert('Tipe gambar tidak benar, harus JPG/PNG');</script>";
-								//   echo "<br><a href='index.php'>Kembali Ke index</a>";
-								}
-							}else{
-							}
-							
-							?>
 						</form>
 						<!-- end form -->
 						<br>	
@@ -1606,6 +1607,7 @@
 		<!-- Custom scripts for all pages-->
 		<script src="../assets/js/sb-admin-2.min.js"></script>
 		<script src="../assets/js/jquery.js"></script>
+		<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 
 	</body>
 	</html>
