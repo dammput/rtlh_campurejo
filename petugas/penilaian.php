@@ -78,8 +78,6 @@
 	            <h6 class="collapse-header">Data :</h6>
 	            <a class="collapse-item" href="view.php">Lihat Data</a>
 	            <a class="collapse-item active" href="penilaian.php">Penilaian Data</a>
-	            <a class="collapse-item" href="panduan.php">Panduan Penggunaan</a>
-
 	          </div>
 	        </div>
 	      </li>
@@ -171,6 +169,7 @@
 	                      <th style="text-align:center">Rt</th>
 	                      <th style="text-align:center">Rw</th>
 	                      <th style="text-align:center">Hasil_Penilaian</th>
+	                      <th style="text-align:center">Ket</th>
 	                    </tr>
 	                  </thead>
 	                  <tfoot>
@@ -184,16 +183,22 @@
 	                      <th style="text-align:center">Rt</th>
 	                      <th style="text-align:center">Rw</th>
 	                      <th style="text-align:center">Hasil_Penilaian</th>
+	                      <th style="text-align:center">Ket</th>
 	                    </tr>
 	                  </tfoot>
 	                  <tbody>
 	                    <?php
                       include '../koneksi.php';
                       $query = "SELECT * FROM tabel_identitas_responden 
-                      JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden";
+                      JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden
+					  JOIN tabel_score ON tabel_score.nik_score = tabel_identitas_responden.nik_responden";
                       $tampil = mysqli_query($koneksi, $query);
-                      $no = 1;
-                      // $eks_alamat = mysqli_query($koneksi, $query_alamat);
+					  $no = 1;
+					  $query_vektor = "SELECT SUM(total_score) AS total_fix FROM tabel_score";
+					  $hasil_vektor = mysqli_query($koneksi, $query_vektor);
+						$total_fix = mysqli_fetch_array($hasil_vektor);
+						$total_score_fix = $total_fix['total_fix'];
+					  
                       while ($data  = mysqli_fetch_array($tampil)) {
                         echo "<tr>";
                         echo "<th style=\"text-align:center\">" . $no . "</th>";
@@ -204,7 +209,10 @@
                         echo "<td style=\"text-align:center\">" . $data['desa'] . "</td>";
                         echo "<td style=\"text-align:center\">" . $data['rt'] . "</td>";
                         echo "<td style=\"text-align:center\">" . $data['rw'] . "</td>";
-                        echo "<td style=\"text-align:center\">" . $data['score'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['total_score']/$total_score_fix . "</td>";
+                       	if($data['total_score'] >= 2.5){ 
+							echo "<td style=\"text-align:center\"> Layak Menerima </td>";
+						}{echo "<td style=\"text-align:center\"> Kurang Layak </td>";}; 
                         echo "</tr>";
                         $no++;
                       };

@@ -160,52 +160,59 @@
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
-	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                  <thead>
 	                    <tr>
-	                      <th>No</th>
-	                      <th>Nama_Lengkap</th>
-	                      <th>NIK</th>
-	                      <th>Sumber_Data</th>
-	                      <th>JK</th>
-	                      <th>Desa</th>
-	                      <th>Rt</th>
-	                      <th>Rw</th>
-	                      <th>Hasil_Penilaian</th>
+	                      <th style="text-align:center">No</th>
+	                      <th style="text-align:center">Nama_Lengkap</th>
+	                      <th style="text-align:center">NIK</th>
+	                      <th style="text-align:center">Sumber_Data</th>
+	                      <th style="text-align:center">JK</th>
+	                      <th style="text-align:center">Desa</th>
+	                      <th style="text-align:center">Rt</th>
+	                      <th style="text-align:center">Rw</th>
+	                      <th style="text-align:center">Hasil_Penilaian</th>
+	                      <th style="text-align:center">Ket</th>
 	                    </tr>
 	                  </thead>
 	                  <tfoot>
 	                    <tr>
-	                      <th>No</th>
-	                      <th>Nama_Lengkap</th>
-	                      <th>NIK</th>
-	                      <th>Sumber_Data</th>
-	                      <th>JK</th>
-	                      <th>Desa</th>
-	                      <th>Rt</th>
-	                      <th>Rw</th>
-	                      <th>Hasil_Penilaian</th>
+	                      <th style="text-align:center">No</th>
+	                      <th style="text-align:center">Nama_Lengkap</th>
+	                      <th style="text-align:center">NIK</th>
+	                      <th style="text-align:center">Sumber_Data</th>
+	                      <th style="text-align:center">JK</th>
+	                      <th style="text-align:center">Desa</th>
+	                      <th style="text-align:center">Rt</th>
+	                      <th style="text-align:center">Rw</th>
+	                      <th style="text-align:center">Hasil_Penilaian</th>
+	                      <th style="text-align:center">Ket</th>
 	                    </tr>
 	                  </tfoot>
 	                  <tbody>
 	                    <?php
                       include '../koneksi.php';
                       $query = "SELECT * FROM tabel_identitas_responden 
-                      JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden";
+                      JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden
+					  JOIN tabel_score ON tabel_score.nik_score = tabel_identitas_responden.nik_responden";
                       $tampil = mysqli_query($koneksi, $query);
-                      $no = 1;
+					  $no = 1;
+					//   $query_vektor = "SELECT SUM(id) AS jumlah FROM profile;"
                       // $eks_alamat = mysqli_query($koneksi, $query_alamat);
                       while ($data  = mysqli_fetch_array($tampil)) {
                         echo "<tr>";
-                        echo "<th>" . $no . "</th>";
-                        echo "<td>" . $data['nama_lengkap'] . "</td>";
-                        echo "<td>" . $data['nik_responden'] . "</td>";
-                        echo "<td>" . $data['sumber_data'] . "</td>";
-                        echo "<td>" . $data['jenis_kelamin'] . "</td>";
-                        echo "<td>" . $data['desa'] . "</td>";
-                        echo "<td>" . $data['rt'] . "</td>";
-                        echo "<td>" . $data['rw'] . "</td>";
-                        echo "<td>" . $data['score'] . "</td>";
+                        echo "<th style=\"text-align:center\">" . $no . "</th>";
+                        echo "<td style=\"text-align:center\">" . $data['nama_lengkap'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['nik_responden'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['sumber_data'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['jenis_kelamin'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['desa'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['rt'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['rw'] . "</td>";
+                        echo "<td style=\"text-align:center\">" . $data['total_score']  . "</td>";
+                       	if($data['total_score'] >= 2.5){ 
+							echo "<td style=\"text-align:center\"> Layak Menerima </td>";
+						}{echo "<td style=\"text-align:center\"> Kurang Layak </td>";}; 
                         echo "</tr>";
                         $no++;
                       };

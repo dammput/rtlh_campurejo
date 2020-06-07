@@ -10,10 +10,13 @@
     $nik_update     = $_GET['nik'];
     $query_tampil   = "SELECT * FROM tabel_identitas_responden 
     JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden
-    JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden WHERE tabel_identitas_responden.nik_responden = $nik_update";
+    JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden 
+	WHERE tabel_identitas_responden.nik_responden = $nik_update";
     $hasil          = mysqli_query($koneksi,$query_tampil);
     while($data = mysqli_fetch_array($hasil))
     {	
+		$edit_usia =$data['usia'];
+		$nik_awal = $data['nik_awal'];
 		$edit_nik_waktu = $data['nik_waktu'];
 		$edit_nik_aspek = $data['nik_aspek'];
         $edit_nama_lengkap = $data['nama_lengkap'];
@@ -315,6 +318,8 @@
 		// tabel identitas responden
 		$nama_lengkap	= $_POST['ganti_nama'];
 		$nik			= $_POST['nik'];
+		$usia			= $_POST['usia'];
+		$nik_awal		= $_POST['nik_awal'];
 		$nik_lama		= $_POST['nik_lama'];
 		$no_telp		= $_POST['no_telp'];
 		$kordinat		= $_POST['kordinat'];
@@ -400,7 +405,7 @@
 
 		// echo $nama_lengkap . $no_telp . $kordinat . $sumber_data . $jenis_kelamin . $jalan . $dusun . $rt . $rw . $desa . $kecamatan . $jumlah_tabungan . $tabungan_perbulan . $jumlah_kk . $pekerjaan_utama . $jumlah_penghasilan . $range_penghasilan . $pendidikan_terakhir . $status_perkawinan . $status_fisik . $status_kepemilikan_tanah . $status_kepemilikan_rumah . $aset_rumah_lain . $aset_tanah_lain . $bantuan_lain . $nama_bantuan_lain . $jenis_kawasan_rumah;
 		$query_responden		="UPDATE tabel_identitas_responden 
-									SET nik_responden=$nik, nama_lengkap='$nama_lengkap', no_telp='$no_telp', kordinat='$kordinat', sumber_data='$sumber_data', jenis_kelamin='$jenis_kelamin',
+									SET nik_responden=$nik, nama_lengkap='$nama_lengkap',usia='$usia', no_telp='$no_telp', kordinat='$kordinat', sumber_data='$sumber_data', jenis_kelamin='$jenis_kelamin',
 										jalan='$jalan', dusun='$dusun', rt='$rt', rw='$rw', desa='$desa', kecamatan='$kecamatan',
 										jumlah_tabungan=$jumlah_tabungan, tabungan_perbulan='$tabungan_perbulan', jumlah_kk=$jumlah_kk, pekerjaan_utama='$pekerjaan_utama', jumlah_penghasilan='$jumlah_penghasilan', range_penghasilan='$range_penghasilan', 
 										pendidikan_terakhir='$pendidikan_terakhir', status_perkawinan='$status_perkawinan', status_fisik='$status_fisik', status_kepemilikan_tanah='$status_kepemilikan_tanah', status_kepemilikan_rumah='$status_kepemilikan_rumah',aset_rumah_lain='$aset_rumah_lain',
@@ -415,35 +420,27 @@
 		$query_waktu			= "UPDATE tabel_waktu
 									SET	nik_waktu=$nik, tanggal_surve='$tanggal_surve'
 									WHERE nik_waktu=$nik_lama";
-		$query_responden_backup	= "INSERT INTO  tabel_identitas_responden_backup  ( id_identitas , nik_identitas , nama_lengkap , no_telp , kordinat , sumber_data , jenis_kelamin , jalan , dusun , rt , rw , desa , kecamatan , jumlah_tabungan , tabungan_perbulan , jumlah_kk , pekerjaan_utama , jumlah_penghasilan , range_penghasilan , pendidikan_terakhir , status_perkawinan , status_fisik , status_kepemilikan_tanah , status_kepemilikan_rumah , aset_rumah_lain , aset_tanah_lain , bantuan_lain , nama_bantuan_lain , jenis_kawasan_rumah )
-									VALUE ('','$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
-		$query_aspek_backup		= "INSERT INTO  tabel_aspek_backup  ( id_aspek , nik_aspek , luas_rumah , penghuni , kusen , jendela , pintu , kamar_mandi , saluran_air , pembuangan , drainase , tempat_sampah , sumber_air_minum , jarak_air_minum , sumber_listrik , material_atap , kondisi_atap , material_dinding , kondisi_dinding , material_lantai , kondisi_penutup_lantai , struktur_lantai , pondasi_material , pondasi_kondisi , sloof_material , sloof_kondisi , material_kolom_ring , kondisi_kolom_ring , material_rangka_atap , kondisi_rangka_atap , proteksi_kebakaran , sarana_proteksi_kebakaran , prasarana_proteksi_kebakaran )
-									VALUES ('','$nik','$luas_rumah','$penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
-		$query_waktu_backup		= "INSERT INTO tabel_waktu_backup (`id_waktu`,`nik_waktu`,`tanggal_surve`) VALUES ('','$nik','$tanggal_surve')";
+		// $query_responden_backup	= "INSERT INTO  tabel_identitas_responden_backup  ( id_identitas , nik_identitas , nik_awal , nama_lengkap , no_telp , kordinat , sumber_data , jenis_kelamin , jalan , dusun , rt , rw , desa , kecamatan , jumlah_tabungan , tabungan_perbulan , jumlah_kk , pekerjaan_utama , jumlah_penghasilan , range_penghasilan , pendidikan_terakhir , status_perkawinan , status_fisik , status_kepemilikan_tanah , status_kepemilikan_rumah , aset_rumah_lain , aset_tanah_lain , bantuan_lain , nama_bantuan_lain , jenis_kawasan_rumah )
+		// 							VALUE ('','$nik','$nik_awal','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+		// $query_aspek_backup		= "INSERT INTO  tabel_aspek_backup  ( id_aspek , nik_aspek , nik_awal , luas_rumah , penghuni , kusen , jendela , pintu , kamar_mandi , saluran_air , pembuangan , drainase , tempat_sampah , sumber_air_minum , jarak_air_minum , sumber_listrik , material_atap , kondisi_atap , material_dinding , kondisi_dinding , material_lantai , kondisi_penutup_lantai , struktur_lantai , pondasi_material , pondasi_kondisi , sloof_material , sloof_kondisi , material_kolom_ring , kondisi_kolom_ring , material_rangka_atap , kondisi_rangka_atap , proteksi_kebakaran , sarana_proteksi_kebakaran , prasarana_proteksi_kebakaran )
+		// 							VALUES ('','$nik','$nik_awal','$luas_rumah','$penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+		// $query_waktu_backup		= "INSERT INTO tabel_waktu_backup (`id_waktu` , `nik_awal` ,`nik_waktu`,`tanggal_surve`) VALUES ('','$nik','$nik_awal','$tanggal_surve')";
 		$hasil_responden 		= mysqli_query($koneksi, $query_responden);
 		$hasil_aspek	 		= mysqli_query($koneksi, $query_aspek);
 		$hasil_waktu	 		= mysqli_query($koneksi, $query_waktu);
-		// injek eror
-			// $hasil_aspek 		= mysqli_query($koneksi, $query_aspek);
-			// $hasil_waktu 		= mysqli_query($koneksi, $query_waktu);
-			// echo "hasil_responden" .mysqli_error($koneksi);
-			// $hasil_aspek 		= mysqli_query($koneksi, $query_aspek);
-			// echo "hasil_aspek" .mysqli_error($koneksi);
-			// $hasil_waktu		= mysqli_query($koneksi,$query_waktu);
-			// echo "hasil_waktu" .mysqli_error($koneksi);
-
-		$hasil_responden_backup = mysqli_query($koneksi, $query_responden_backup);
-		$hasil_aspek_backup 	= mysqli_query($koneksi, $query_aspek_backup);
-		$hasil_waktu_backup 	= mysqli_query($koneksi,$query_waktu_backup);
+		// $hasil_responden_backup = mysqli_query($koneksi, $query_responden_backup);
+		// $hasil_aspek_backup 	= mysqli_query($koneksi, $query_aspek_backup);
+		// $hasil_waktu_backup 	= mysqli_query($koneksi,$query_waktu_backup);
 
 		//validasi edit data
 		// validasi edit foto
 		if($tipe_file_ktp == "" || $tipe_file_ktp == "" && $tipe_file_rumah == "" || $tipe_file_rumah == ""){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
-			if ($hasil_responden && $hasil_aspek && $hasil_waktu && $hasil_waktu_backup && $hasil_aspek_backup && $hasil_responden_backup) {
+			if ($hasil_responden && $hasil_aspek && $hasil_waktu) {
 				header("location:view.php");
 				echo "<script>alert('Edit Data Berhasil');</script>";
 			} else {
 				echo "<script>alert('Edit Data Gagal, Coba Lagi');</script>";
+				echo "kesalahan pada edit data";
 			}
 		}else{
 			if($tipe_file_ktp == "image/jpeg" || $tipe_file_ktp == "image/png" && $tipe_file_rumah == "image/jpeg" || $tipe_file_rumah == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
@@ -456,15 +453,15 @@
 						// Jika gambar berhasil diupload, Lakukan :	
 						// Proses simpan ke Database
 						$query_ktp 		= "UPDATE tabel_foto_rumah 
-											SET nama='$nama_file_ktp', ukuran='$ukuran_file_ktp', tipe='$tmp_file_ktp'
+											SET nama_ktp='$nama_file_ktp', ukuran='$ukuran_file_ktp', tipe='$tmp_file_ktp'
 											WHERE nik_rumah=$nik_lama";
 						$query_rumah 	= "UPDATE tabel_foto_rumah 
-											SET nama='$nama_file_rumah', ukuran='$ukuran_file_rumah', tipe='$tmp_file_rumah' 
+											SET nama_rumah='$nama_file_rumah', ukuran='$ukuran_file_rumah', tipe='$tmp_file_rumah' 
 											WHERE nik_rumah=$nik_lama";
 						$sql_ktp = mysqli_query($koneksi, $query_ktp); 
 						$sql_rumah = mysqli_query($koneksi, $query_rumah); 
 						
-						if($sql_ktp && $sql_rumah && $hasil_responden && $hasil_aspek && $hasil_waktu && $hasil_waktu_backup && $hasil_aspek_backup && $hasil_responden_backup){ 
+						if($sql_ktp && $sql_rumah && $hasil_responden && $hasil_aspek && $hasil_waktu){ 
 							echo "<script>alert('Edit Data Berhasil');</script>";
 							echo '<meta http-equiv="refresh" content="0;url=view.php" />';
 						} else {
@@ -473,18 +470,19 @@
 			
 					}else{
 					// Jika gambar gagal diupload, Lakukan :
+					echo '<meta http-equiv="refresh" content="0;url=edit.php" />';
 					echo "<script>alert('Foto gagal diupload');</script>";
 					// echo "<br><a href='index.php'>Kembali Ke index</a>";
 					}
 				}else{
 					// Jika ukuran file lebih dari 1MB, lakukan :
+					echo '<meta http-equiv="refresh" content="0;url=edit.php" />';
 					echo "<script>alert('Ukuran foto tidak boleh lebih dari 5mb');</script>";
-					// echo "<br><a href='index.php'>Kembali Ke index</a>";
 				}
 			}else{
 			// Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
 			echo "<script>alert('Tipe Data Harus JPG/PNG');</script>";
-			//   echo "<br><a href='index.php'>Kembali Ke index</a>";
+			echo '<meta http-equiv="refresh" content="0;url=edit.php" />';
 			}
 		}
 
@@ -626,6 +624,7 @@
 				<div class="form-group col-md-5">
 					<!-- manipulasi variabel nama dan nik lama -->
 					<input type="text" class="form-control" value="<?php echo $nik_update; ?>" name="nik_lama" hidden >
+					<input type="text" class="form-control" value="<?php echo $nik_awal; ?>" name="nik_awal" hidden >
 					</div> 
 					<!-- identitas responden -->
 					<div class="col-xl-12 col-lg-5">
@@ -768,13 +767,18 @@
 							<div class="card shadow mb-4">
 								<!-- Card Header-->
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Edit Alamat Responden</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Edit Identitas Responden</h6>
 								</div>
 								<!-- isi kuisioner -->
 								<div class="card-body">
 
 									<div class="form-row">
-										<div class="form-group col-md-5">
+									<div class="form-group col-md-1">
+											<label>Usia</label>
+											<input type="number" class="form-control" value="<?php echo $usia; ?>" name="usia" >
+											<div class="invalid-feedback">Data harus diisi.</div>
+										</div>
+										<div class="form-group col-md-4">
 											<label>Alamat</label>
 											<input type="text" class="form-control" value="<?php echo $edit_jalan; ?>" name="jalan" >
 											<div class="invalid-feedback">Data harus diisi.</div>
@@ -1812,7 +1816,6 @@
 		<!-- jquery nama bantuan lain -->
 		<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 
-
 		<!-- jquery proteksi kebakaran -->
 		<script type="text/javascript">
 			$(window).load(function(){
@@ -1827,12 +1830,17 @@
 						$('#lanjut-2').prop('hidden', true);
 					}
 				});
+			});
+
+		</script>
+	
+		<script type="text/javascript">
+			$(window).load(function(){
 				$('.custom-file-input').on('change',function(){
 				var fileName = $(this).val();
 				$(this).next('.form-control-file').addClass("selected").html(fileName);
 				});
 			});
-
 		</script>
 	
 		<script>

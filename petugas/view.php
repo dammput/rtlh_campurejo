@@ -80,7 +80,6 @@
 							<h6 class="collapse-header">Data :</h6>
 							<a class="collapse-item active" href="view.php">Lihat Data</a>
 							<a class="collapse-item" href="penilaian.php">Penilaian Data</a>
-							<a class="collapse-item" href="panduan.php">Panduan Penggunaan</a>
 
 						</div>
 					</div>
@@ -117,7 +116,9 @@
 						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 							<i class="fa fa-bars"></i>
 						</button>
-
+						<a target="_blank" href="export_excel.php" class="btn btn-success btn-icon-split btn-sm">
+						<span class="text">EXPORT KE EXCEL</span>
+						</a>
 
 
 						<!-- Topbar Navbar -->
@@ -221,7 +222,7 @@
 												<th style="text-align:center">Sarana_Proteksi_Kebakaran</th>
 												<th style="text-align:center">Prasarana_Proteksi_Kebakaran</th>
 												<th style="text-align:center">Nama_Responden</th>
-												<th style="text-align:center">Edit</th>
+												<th style="text-align:center">Edit_&_Cetak_Dokumen</th>
 
 											</tr>
 										</thead>
@@ -288,7 +289,7 @@
 												<th style="text-align:center">Sarana_Proteksi_Kebakaran</th>
 												<th style="text-align:center">Prasarana_Proteksi_Kebakaran</th>
 												<th style="text-align:center">Nama_Responden</th>
-												<th style="text-align:center">Edit</th>
+												<th style="text-align:center">Edit_&_Cetak_Dokumen</th>
 
 											</tr>
 										</tfoot>
@@ -296,8 +297,9 @@
 											<?php
 											include '../koneksi.php';
 											$query = "SELECT * FROM tabel_identitas_responden 
-											JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden
-											JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden";
+											JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden 
+											JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden
+											JOIN tabel_foto_ktp ON tabel_foto_ktp.nik_ktp = tabel_identitas_responden.nik_responden";
 
 										
 											// $query_alamat = "SELECT * FROM tabel_alamat_responden";
@@ -306,6 +308,7 @@
 											while ($data  = mysqli_fetch_array($tampil)) {
 												echo "<tr>";
 												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $data['nama_lengkap'] . "</td>";
+												// echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . "<img src='../assets/img/ktp/".$data['nama']."'style='width:200px; height:100px;'>" . "</td>";
 												echo "<td style=\"text-align:center\">" . date('d-m-Y', strtotime($data["tanggal_surve"])) . "</td>";
 												echo "<td style=\"text-align:center\">" . $data['nik_responden'] . "</td>";
 												echo "<td style=\"text-align:center\">" . $data['no_telp'] . "</td>";
@@ -374,10 +377,15 @@
 												echo "<td style=\"text-align:center\">" . $data['sarana_proteksi_kebakaran'] . "</td>";
 												echo "<td style=\"text-align:center\">" . $data['prasarana_proteksi_kebakaran'] . "</td>";
 												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $data['nama_lengkap'] . "</td>";
-												echo "<td style=\"text-align:center\">" . "<a href=\"edit.php?nik=$data[nik_responden]\" class=\"btn btn-secondary btn-icon-split btn-sm\" >
+												// echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . "<img src='../assets/img/ktp/".$data['nama']."'style='width:200px; height:100px;'>" . "</td>";
+												echo "<td style=\"text-align:center\">" . 
+												"<a href=\"edit.php?nik=$data[nik_responden]\" class=\"btn btn-facebook btn-icon-split btn-sm\" target=\"_blank\">
 												<span class=\"icon text-white-50\"><i class=\"fas fa-arrow-right\"></i></span>
 												<span class=\"text\">Edit</span>
-												</a>" . "</td>";
+												</a>" ." ".
+												"<a href=\"cetak.php?nik=$data[nik_responden]\" class=\"btn btn-danger btn-icon-split btn-sm\" target=\"_blank\">
+												<span class=\"text\">Print Data</span>
+												</a>" ."</td>";
 												echo "</tr>";
 											};
 											?>

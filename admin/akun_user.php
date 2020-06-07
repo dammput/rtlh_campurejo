@@ -81,7 +81,6 @@
 	            <h6 class="collapse-header">Keamanan Data :</h6>
 				<a class="collapse-item" href="view.php">Lihat Data</a>
 				<a class="collapse-item " href="penilaian.php">Penilaian Data</a>
-	            <a class="collapse-item" href="backup.php">Backup Data</a>
 
 	          </div>
 	        </div>
