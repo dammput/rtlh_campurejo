@@ -1,4 +1,4 @@
-	<?php
+<?php
     session_start();
     if ($_SESSION['level'] !== "admin") {
         header("location:../index.php?pesan=belum_login");
@@ -8,19 +8,19 @@
     include '../koneksi.php';
     $nik_update     = $_GET['nik'];
     $query_tampil   = "SELECT * FROM tabel_identitas_responden 
-						JOIN tabel_identitas_responden_backup ON tabel_identitas_responden_backup.nik_identitas = tabel_identitas_responden.nik_responden
+						JOIN tabel_identitas_responden_update ON tabel_identitas_responden_update.nik_identitas = tabel_identitas_responden.nik_responden
 						JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden
 						JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden 
 						JOIN tabel_foto_ktp ON tabel_foto_ktp.nik_ktp = tabel_identitas_responden.nik_responden 
 						JOIN tabel_foto_rumah ON tabel_foto_rumah.nik_rumah = tabel_identitas_responden.nik_responden 
-						WHERE tabel_identitas_responden.nik_responden = $nik_update";				
+						WHERE tabel_identitas_responden.nik_responden = $nik_update";	
 
 	$hasil          = mysqli_query($koneksi,$query_tampil);
     while($data = mysqli_fetch_array($hasil))
     {	
+		
 		$usia = $data['usia'];
-		$no	= $data['id_identitas'];
-		$nik_awal = $data['nik_awal'];
+		$no	= $data['nomor_urut'];
 		$nik_waktu = $data['nik_waktu'];
 		$nik_aspek = $data['nik_aspek'];
         $nama_lengkap = $data['nama_lengkap'];
@@ -84,7 +84,7 @@
         $sarana_proteksi_kebakaran = $data['sarana_proteksi_kebakaran'];
         $prasarana_proteksi_kebakaran = $data['prasarana_proteksi_kebakaran'];
         $nama_foto_ktp = $data['nama_ktp'];
-        $nama_foto_rumah = $data['nama_rumah'];
+		$nama_foto_rumah = $data['nama_rumah'];
     }
 ?>
 
@@ -188,7 +188,7 @@
 							</tr>
 							<tr>
 								<td class="nama1" colspan="2">Nama Responden</td>
-								<td class="isi1" colspan="4">&nbsp; $nama_lengkap </td>
+								<td class="isi1" colspan="4">&nbsp; <?php echo $nama_lengkap ?> </td>
 							</tr>
 							<tr>
 								<td class="nama1" colspan="2">Nik Responden</td>

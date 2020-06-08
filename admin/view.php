@@ -138,7 +138,7 @@
 							<li class="nav-item dropdown no-arrow">
 								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
-									<img class="img-profile rounded-circle" src="../assets/img/60x60.png">
+									<img class="img-profile rounded-circle" src="../assets/img/1.png">
 								</a>
 								<!-- Dropdown - User Information -->
 								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -164,10 +164,14 @@
 						<!-- DataTales -->
 						<div class="card shadow mb-4">
 							<div class="card-body">
+								<div class="card-header py-3">
+									<h1 class="h3 mb-2 text-gray-800">Data Hasil Surve</h1>
+								</div><br>
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
+												<th style="text-align:center">No</th>
 												<th style="text-align:center">Nama_Responden</th>
 												<th style="text-align:center">Waktu_Surve</th>
 												<th style="text-align:center">NIK</th>
@@ -196,7 +200,7 @@
 												<th style="text-align:center">Aset_Tanah_Lain</th>
 												<th style="text-align:center">Menerima_Bantuan_Lain</th>
 												<th style="text-align:center">Nama_Bantuan_Lain</th>
-												<th style="text-align:center">Jenis_Kawasan_Rumah</th>
+												<th style="text-align:center">Jenis/Daerah_Kawasan_Rumah</th>
 												<th style="text-align:center">Luas_Rumah</th>
 												<th style="text-align:center">Jumlah_Penghuni_Rumah</th>
 												<th style="text-align:center">Kusen_Rumah</th>
@@ -211,18 +215,18 @@
 												<th style="text-align:center">Jarak_Air_Minum</th>
 												<th style="text-align:center">Jarak_Sumber_Air_Minum</th>
 												<th style="text-align:center">Material_Atap</th>
-												<th style="text-align:center">Kondisi_Atap</th>
+												<th style="text-align:center">Kondisi_Atap_Rumah</th>
 												<th style="text-align:center">Material_Dinding</th>
-												<th style="text-align:center">Kondisi_Dinding</th>
+												<th style="text-align:center">Kondisi_Dinding_Rumah</th>
 												<th style="text-align:center">Material_Lantai</th>
-												<th style="text-align:center">Kondisi_Lantai</th>
+												<th style="text-align:center">Kondisi_Lantai_Rumah</th>
 												<th style="text-align:center">Struktur_Lantai</th>
 												<th style="text-align:center">Pondasi_Material</th>
-												<th style="text-align:center">Kondisi_Material</th>
+												<th style="text-align:center">Kondisi_Material_Rumah</th>
 												<th style="text-align:center">Sloof_Material</th>
-												<th style="text-align:center">Kondisi_Sloof</th>
+												<th style="text-align:center">Kondisi_Sloof_Rumah</th>
 												<th style="text-align:center">Material_Kolom</th>
-												<th style="text-align:center">Kondisi_Kolom</th>
+												<th style="text-align:center">Kondisi_Kolom_Rumah</th>
 												<th style="text-align:center">Material_Rangka_Atap</th>
 												<th style="text-align:center">Kondisi_Rangka_Atap</th>
 												<th style="text-align:center">Proteksi_Kebakaran</th>
@@ -235,6 +239,7 @@
 										</thead>
 										<tfoot>
 											<tr>
+												<th style="text-align:center">No</th>
 												<th style="text-align:center">Nama_Responden</th>
 												<th style="text-align:center">Waktu_Surve</th>
 												<th style="text-align:center">NIK</th>
@@ -304,16 +309,21 @@
 											<?php
 											include '../koneksi.php';
 											$query = "SELECT * FROM tabel_identitas_responden 
-													JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden 
-													JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden
-													JOIN tabel_foto_ktp ON tabel_foto_ktp.nik_ktp = tabel_identitas_responden.nik_responden";
+											JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden 
+											JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden
+											JOIN tabel_foto_ktp ON tabel_foto_ktp.nik_ktp = tabel_identitas_responden.nik_responden";
 
 
+
+
+
+											$no = 1;
 											// $query_alamat = "SELECT * FROM tabel_alamat_responden";
 											$tampil = mysqli_query($koneksi, $query);
 											// $eks_alamat = mysqli_query($koneksi, $query_alamat);
 											while ($data  = mysqli_fetch_array($tampil)) {
 												echo "<tr>";
+												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $no . "</td>";
 												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $data['nama_lengkap'] . "</td>";
 												// echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . "<img src='../assets/img/ktp/".$data['nama']."'style='width:200px; height:100px;'>" . "</td>";
 												echo "<td style=\"text-align:center\">" . date('d-m-Y', strtotime($data["tanggal_surve"])) . "</td>";
@@ -387,9 +397,10 @@
 												// echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . "<img src='../assets/img/ktp/".$data['nama']."'style='width:200px; height:100px;'>" . "</td>";
 												echo "<td style=\"text-align:center\">" .
 													"<a href=\"cetak.php?nik=$data[nik_responden]\" class=\"btn btn-danger btn-icon-split btn-sm\" target=\"_blank\">
-													<span class=\"text\">Print Data</span>
-													</a>" . "</td>";
+												<span class=\"text\">Print Data</span>
+												</a>" . "</td>";
 												echo "</tr>";
+												$no++;
 											};
 											?>
 										</tbody>

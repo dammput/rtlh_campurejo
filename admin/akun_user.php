@@ -99,7 +99,8 @@
 	      <!-- Sidebar Toggler (Sidebar) -->
 	      <div class="text-center d-none d-md-inline">
 	        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-	      </div>
+		  </div>
+		  
 
 	    </ul>
 	    <!-- End of Sidebar -->
@@ -134,7 +135,7 @@
 	            <li class="nav-item dropdown no-arrow">
 	              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
-	                <img class="img-profile rounded-circle" src="../assets/img/60x60.png">
+	                <img class="img-profile rounded-circle" src="../assets/img/1.png">
 	              </a>
 	              <!-- Dropdown - User Information -->
 	              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -161,38 +162,156 @@
 
 	          <!-- DataTales Example -->
 	          <div class="card shadow mb-4">
-	            <div class="card-header py-3">
-	              <h1 class="h5 mb-2 text-gray-800">Data User Sistem RTLH</h1>
-	            </div>
-	            <div class="card-body">
+				<div class="card-body">
+				<div class="card-header py-3">
+					<h1 class="h3 mb-2 text-gray-800">Data User &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success btn-lg btn-sm" data-toggle="modal" data-target="#tambah">Tambah Petugas Surve</button></h1>
+								<!-- Modal -->
+					<div id="tambah" class="modal fade" role="dialog">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Silahkan Input Data Petugas Baru</h5>
+								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+								</div>
+								<div class="modal-body">
+								<form action="akun_user.php" method="post" >
+									<div class="form-row">
+										<div class="form-group col-md-4">
+											<label>Nama Lengkap</label>
+											<input type="text" class="form-control" value="" name="nama">
+										</div>
+										<div class="form-group col-md-4">
+											<label>Jenis Kelamin</label>
+											<input type="text" class="form-control" value="" name="kelamin">
+										</div>
+										<div class="form-group col-md-4">
+											<label>Alamat</label>
+											<input type="text" class="form-control" value="" name="alamat">
+										</div>
+										<div class="form-group col-md-2">
+											<label>RT</label>
+											<input type="text" class="form-control" value="" name="rt">
+										</div>
+										<div class="form-group col-md-2">
+											<label>RW</label>
+											<input type="text" class="form-control" value="" name="rw">
+										</div>
+										<div class="form-group col-md-2">
+											<label>USIA</label>
+											<input type="text" class="form-control" value="" name="usia">
+										</div>
+										<div class="form-group col-md-6">
+											<label>NIP</label>
+											<input type="text" class="form-control" value="" name="nip">
+										</div>
+										<div class="form-group col-md-6">
+											<label>No. Telp</label>
+											<input type="text" class="form-control" value="" name="telp">
+										</div>
+										<div class="form-group col-md-6">
+											<label>Email</label>
+											<input type="text" class="form-control" value="" name="email">
+										</div>
+										<div class="form-group col-md-6">
+											<label>Username</label>
+											<input type="text" class="form-control" value="" name="username">
+										</div>
+										<div class="form-group col-md-6">
+											<label>Password</label>
+											<input type="text" class="form-control" value="" name="password">
+										</div>
+
+									</div>
+									
+									<div class="modal-footer">
+									<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+									<button type="input" class="btn btn-facebook btn-block" name=submit>Simpan</button>
+									</div>	
+								</form>
+								<?php
+								
+								include '../koneksi.php';
+								if(isset($_POST['submit'])){
+									$nama		= $_POST['nama']; 
+									$alamat		= $_POST['alamat'];
+									$rt			= $_POST['rt'];
+									$rw			= $_POST['rw'];
+									$usia		= $_POST['usia'];
+									$email		= $_POST['email'];
+									$kelamin	= $_POST['kelamin'];
+									$nip		= $_POST['nip'];
+									$no_telp	= $_POST['telp'];
+									$username		= $_POST['username'];
+									$password		= MD5($_POST['password']);
+									
+									$qwery_id		= "SELECT count(id_profile) AS id_baru FROM tabel_profile_user";		
+									$hasil_id     	= mysqli_query($koneksi,$qwery_id);	
+									$id = mysqli_fetch_array($hasil_id);
+									$id_array = $id['id_baru'];
+									$id_profile = $id_array + 1; 
+									$query_profile = "INSERT INTO tabel_profile_user (id_profile, nama, alamat, rt, rw, usia, email, jk, nip, no_telp)
+														VALUE ('$id_profile','$nama','$alamat','$rt','$rw','$usia','$email','$kelamin','$nip','$no_telp') ";
+									$query_user = "INSERT INTO tabel_user (`id_user`,`level`, `username`, `password`)
+														VALUE ('$id_profile','petugas','$username', '$password') ";
+									$hasil_profile	= mysqli_query($koneksi,$query_profile);
+									$hasil_user	= mysqli_query($koneksi,$query_user);
+									// echo mysqli_error($hasil_profile);
+									// echo mysqli_error($hasil_user);
+							
+									if($hasil_profile && $hasil_user){
+										echo "<script>alert('Akun baru berhasil ditambah');</script>";
+										
+									}else{
+										echo "<script>alert('Gagal menambah akun');</script>";
+										
+									}
+			
+								}
+								?>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+				</div><br>
 	              <div class="table-responsive">
 	                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 	                  <thead>
 	                    <tr>
-	                      <th>No</th>
-	                      <th>Nama_Lengkap</th>
-	                      <th>Status</th>
-	                      <th>Alamat</th>
-	                      <th>RT</th>
-	                      <th>RW</th>
-	                      <th>Usia</th>
-	                      <th>Email</th>
-	                      <th>Gender</th>
-	                      <th>No_Telp</th>
+	                      <th style="text-align:center">No</th>
+	                      <th style="text-align:center">Nama_Lengkap</th>
+	                      <th style="text-align:center">NIP</th>
+	                      <th style="text-align:center">Status</th>
+	                      <th style="text-align:center">Alamat_Username_Sistem</th>
+	                      <th style="text-align:center">RT</th>
+	                      <th style="text-align:center">RW</th>
+	                      <th style="text-align:center">Usia</th>
+	                      <th style="text-align:center">Email</th>
+	                      <th style="text-align:center">Gender</th>
+	                      <th style="text-align:center">No_Telp</th>
+	                      <th style="text-align:center">Username</th>
+	                      <th style="text-align:center">Password</th>
+	                      <th style="text-align:center">Edit_&_Delete</th>
 	                    </tr>
 	                  </thead>
 	                  <tfoot>
 	                    <tr>
-	                      <th>No</th>
-	                      <th>Nama_Lengkap</th>
-	                      <th>Status</th>
-	                      <th>Alamat</th>
-	                      <th>RT</th>
-	                      <th>RW</th>
-	                      <th>Usia</th>
-	                      <th>Email</th>
-	                      <th>Gender</th>
-	                      <th>No_Telp</th>
+	                      <th style="text-align:center">No</th>
+	                      <th style="text-align:center">Nama_Lengkap</th>
+	                      <th style="text-align:center">NIP</th>
+	                      <th style="text-align:center">Status</th>
+	                      <th style="text-align:center">Alamat_Username_Sistem</th>
+	                      <th style="text-align:center">RT</th>
+	                      <th style="text-align:center">RW</th>
+	                      <th style="text-align:center">Usia</th>
+	                      <th style="text-align:center">Email</th>
+	                      <th style="text-align:center">Gender</th>
+	                      <th style="text-align:center">No_Telp</th>
+	                      <th style="text-align:center">Username</th>
+	                      <th style="text-align:center">Password</th>
+	                      <th style="text-align:center">Edit_&_Delete</th>
 	                    </tr>
 	                  </tfoot>
 	                  <tbody>
@@ -206,16 +325,27 @@
                       // $eks_alamat = mysqli_query($koneksi, $query_alamat);
                       while ($data  = mysqli_fetch_array($tampil)) {
                         echo "<tr>";
-                        echo "<th>" . $no . "</th>";
-                        echo "<td>" . $data['nama'] . "</td>";
-                        echo "<td>" . $data['level'] . "</td>";
-                        echo "<td>" . $data['alamat'] . "</td>";
-                        echo "<td>" . $data['rt'] . "</td>";
-                        echo "<td>" . $data['rw'] . "</td>";
-                        echo "<td>" . $data['usia'] . "</td>";
-                        echo "<td>" . $data['email'] . "</td>";
-                        echo "<td>" . $data['jk'] . "</td>";
-                        echo "<td>" . $data['no_telp'] . "</td>";
+                        echo "<th style=\"text-align:center\" >" . $no . "</th>";
+                        echo "<td style=\"text-align:center\" >" . $data['nama'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['nip'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['level'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['alamat'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['rt'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['rw'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['usia'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['email'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['jk'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['no_telp'] . "</td>";
+                        echo "<td style=\"text-align:center\" >" . $data['username'] . "</td>";
+						echo "<td style=\"text-align:center\" >" . $data['password'] . "</td>";
+						echo "<td style=\"text-align:center\" >" . 
+						"<a href=\"javascript:editData(".$data['id_user'].")\" class=\"btn btn-facebook btn-icon-split btn-sm\" >
+						<span class=\"text\">Edit</span>
+						</a>" ." ".
+						"<a href=\"javascript:hapusData(".$data['id_user'].")\" class=\"btn btn-danger btn-icon-split btn-sm\" >
+						<span class=\"text\">Hapus</span>
+						</a>" ."</td>";
+						echo "</tr>";
                         echo "</tr>";
                         $no++;
                       };
@@ -271,6 +401,22 @@
 	      </div>
 	    </div>
 	  </div>
+
+	  <script language="JavaScript" type="text/javascript">
+      function hapusData(id_user){
+        if (confirm("Data yang dihapus tidak dapat dikembalikan lagi!!")){
+          window.location.href = 'hapus_user.php?id=' + id_user;
+        }
+      }
+     </script>
+	  <script language="JavaScript" type="text/javascript">
+      function editData(id_user){
+        if (confirm("Apakah anda akan mengedit data ini?")){
+          window.location.href = 'akun_user_edit.php?id=' + id_user;
+        }
+      }
+     </script>
+	  
 
 	  <!-- Bootstrap core JavaScript-->
 	  <script src="../vendor/jquery/jquery.min.js"></script>

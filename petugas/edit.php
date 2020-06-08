@@ -16,7 +16,6 @@
     while($data = mysqli_fetch_array($hasil))
     {	
 		$edit_usia =$data['usia'];
-		$nik_awal = $data['nik_awal'];
 		$edit_nik_waktu = $data['nik_waktu'];
 		$edit_nik_aspek = $data['nik_aspek'];
         $edit_nama_lengkap = $data['nama_lengkap'];
@@ -319,7 +318,6 @@
 		$nama_lengkap	= $_POST['ganti_nama'];
 		$nik			= $_POST['nik'];
 		$usia			= $_POST['usia'];
-		$nik_awal		= $_POST['nik_awal'];
 		$nik_lama		= $_POST['nik_lama'];
 		$no_telp		= $_POST['no_telp'];
 		$kordinat		= $_POST['kordinat'];
@@ -420,17 +418,17 @@
 		$query_waktu			= "UPDATE tabel_waktu
 									SET	nik_waktu=$nik, tanggal_surve='$tanggal_surve'
 									WHERE nik_waktu=$nik_lama";
-		// $query_responden_backup	= "INSERT INTO  tabel_identitas_responden_backup  ( id_identitas , nik_identitas , nik_awal , nama_lengkap , no_telp , kordinat , sumber_data , jenis_kelamin , jalan , dusun , rt , rw , desa , kecamatan , jumlah_tabungan , tabungan_perbulan , jumlah_kk , pekerjaan_utama , jumlah_penghasilan , range_penghasilan , pendidikan_terakhir , status_perkawinan , status_fisik , status_kepemilikan_tanah , status_kepemilikan_rumah , aset_rumah_lain , aset_tanah_lain , bantuan_lain , nama_bantuan_lain , jenis_kawasan_rumah )
-		// 							VALUE ('','$nik','$nik_awal','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
-		// $query_aspek_backup		= "INSERT INTO  tabel_aspek_backup  ( id_aspek , nik_aspek , nik_awal , luas_rumah , penghuni , kusen , jendela , pintu , kamar_mandi , saluran_air , pembuangan , drainase , tempat_sampah , sumber_air_minum , jarak_air_minum , sumber_listrik , material_atap , kondisi_atap , material_dinding , kondisi_dinding , material_lantai , kondisi_penutup_lantai , struktur_lantai , pondasi_material , pondasi_kondisi , sloof_material , sloof_kondisi , material_kolom_ring , kondisi_kolom_ring , material_rangka_atap , kondisi_rangka_atap , proteksi_kebakaran , sarana_proteksi_kebakaran , prasarana_proteksi_kebakaran )
-		// 							VALUES ('','$nik','$nik_awal','$luas_rumah','$penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
-		// $query_waktu_backup		= "INSERT INTO tabel_waktu_backup (`id_waktu` , `nik_awal` ,`nik_waktu`,`tanggal_surve`) VALUES ('','$nik','$nik_awal','$tanggal_surve')";
+		$query_responden_update	= "INSERT INTO  tabel_identitas_responden_update  ( id_identitas , nik_identitas  , nama_lengkap , no_telp , kordinat , sumber_data , jenis_kelamin , jalan , dusun , rt , rw , desa , kecamatan , jumlah_tabungan , tabungan_perbulan , jumlah_kk , pekerjaan_utama , jumlah_penghasilan , range_penghasilan , pendidikan_terakhir , status_perkawinan , status_fisik , status_kepemilikan_tanah , status_kepemilikan_rumah , aset_rumah_lain , aset_tanah_lain , bantuan_lain , nama_bantuan_lain , jenis_kawasan_rumah )
+									VALUE ('','$nik','$nama_lengkap','$no_telp','$kordinat','$sumber_data','$jenis_kelamin','$jalan','$dusun','$rt','$rw','$desa','$kecamatan','$jumlah_tabungan','$tabungan_perbulan','$jumlah_kk','$pekerjaan_utama','$jumlah_penghasilan','$range_penghasilan','$pendidikan_terakhir','$status_perkawinan','$status_fisik','$status_kepemilikan_tanah','$status_kepemilikan_rumah','$aset_rumah_lain','$aset_tanah_lain','$bantuan_lain','$nama_bantuan_lain','$jenis_kawasan_rumah')";
+		$query_aspek_update		= "INSERT INTO  tabel_aspek_update  ( id_aspek , nik_aspek  , luas_rumah , penghuni , kusen , jendela , pintu , kamar_mandi , saluran_air , pembuangan , drainase , tempat_sampah , sumber_air_minum , jarak_air_minum , sumber_listrik , material_atap , kondisi_atap , material_dinding , kondisi_dinding , material_lantai , kondisi_penutup_lantai , struktur_lantai , pondasi_material , pondasi_kondisi , sloof_material , sloof_kondisi , material_kolom_ring , kondisi_kolom_ring , material_rangka_atap , kondisi_rangka_atap , proteksi_kebakaran , sarana_proteksi_kebakaran , prasarana_proteksi_kebakaran )
+									VALUES ('','$nik','$luas_rumah','$penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
+		$query_waktu_update		= "INSERT INTO tabel_waktu_update (`id_waktu` ,`nik_waktu`,`tanggal_surve`) VALUES ('','$nik','$nik_awal','$tanggal_surve')";
 		$hasil_responden 		= mysqli_query($koneksi, $query_responden);
 		$hasil_aspek	 		= mysqli_query($koneksi, $query_aspek);
 		$hasil_waktu	 		= mysqli_query($koneksi, $query_waktu);
-		// $hasil_responden_backup = mysqli_query($koneksi, $query_responden_backup);
-		// $hasil_aspek_backup 	= mysqli_query($koneksi, $query_aspek_backup);
-		// $hasil_waktu_backup 	= mysqli_query($koneksi,$query_waktu_backup);
+		// $hasil_responden_update = mysqli_query($koneksi, $query_responden_update);
+		// $hasil_aspek_update 	= mysqli_query($koneksi, $query_aspek_update);
+		// $hasil_waktu_update 	= mysqli_query($koneksi,$query_waktu_update);
 
 		//validasi edit data
 		// validasi edit foto
@@ -624,7 +622,6 @@
 				<div class="form-group col-md-5">
 					<!-- manipulasi variabel nama dan nik lama -->
 					<input type="text" class="form-control" value="<?php echo $nik_update; ?>" name="nik_lama" hidden >
-					<input type="text" class="form-control" value="<?php echo $nik_awal; ?>" name="nik_awal" hidden >
 					</div> 
 					<!-- identitas responden -->
 					<div class="col-xl-12 col-lg-5">

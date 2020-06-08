@@ -122,6 +122,29 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
+          <div class="col-xl-3 col-md-1 ">
+								<div class="card border-bottom-primary shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-1"><br><br>
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-9">Tanggal</div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800">
+													<?php
+													date_default_timezone_set('Asia/Jakarta');
+													echo  date('d-m-Y') ."<br>";
+													include '../koneksi.php';
+															$query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
+															$hasil_id_responden = mysqli_query($koneksi, $query_jumlah_data);
+															$total_id_responden = mysqli_num_rows($hasil_id_responden);
+															echo "Jumlah Data : ".$total_id_responden ;
+													// echo '<br>' . date('H:i:s');
+													?>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 
 
 
@@ -164,128 +187,34 @@
         <div class="container-fluid">
 
 
-          <!-- Content Row -->
-          <div class="row">
+					<!-- Begin Page Content -->
+					<div class="container-fluid">
 
-              <!-- tanggal -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tanggal</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <?php
-                            date_default_timezone_set('Asia/Jakarta');
-                            echo  date('d-m-Y');
-                            // echo '<br>' . date('H:i:s');
-                          ?>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+						<div class="container-fluid">
 
-              <!-- Proses data -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Diproses</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            <?php
-                            include '../koneksi.php';
-                            $query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
-                            $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
-                            $total_id_responden = mysqli_num_rows($hasil_id_responden);
-                            echo $total_id_responden;
-                            ?>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+							<div class="container">
 
-              <!-- kelayakan -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Layak</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            <?php
-                            echo $total_id_responden;
-                            ?>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+								<br><br><br>
+								<center>
+									<h3><b>Panduan penggunaan sistem penentu penerima bantuan perbaikan rumah campurejo</b></h3>
+								</center>
+								<hr>
 
-              <!-- Ketidak Layakan -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-danger shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Kurang Layak</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            <?php
-                            echo $total_id_responden;
-                            ?>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+								<strong>Menu</strong> terdapat 2 (dua) menu, antara lain :
+								<ul class="list-unstyled">
+									<li><strong>Data Surve</strong></li>Setelah petugas mengimput data pada form surve, maka akan secara otomatis data surve akan terisi, dan akan mendeteksi pada jam dan pukul berapa petugas melakukan input data.</b>.
+									<li><strong>Penilaian Data </strong></li>Menu ini terdapat rekap dari hasil input, dan sudah di beri sistem penilaian, jadi pada menu ini yang layak dan tidak layak untuk mendapatkan bantuan akan terlihat.
+								</ul>
+
+								<hr>
 
 
-          </div>
+
+							</div>
+							<br><br><br><br>
+						</div>
+						<!-- /.container-fluid -->
+
 
         </div>
         <!-- End of Main Content -->

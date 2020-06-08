@@ -125,6 +125,30 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
+          <div class="col-xl-3 col-md-1 ">
+								<div class="card border-bottom-primary shadow h-100 py-2">
+									<div class="card-body">
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-1"><br><br>
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-9">Tanggal</div>
+												<div class="h5 mb-0 font-weight-bold text-gray-800">
+													<?php
+													date_default_timezone_set('Asia/Jakarta');
+													echo  date('d-m-Y') ."<br>";
+													include '../koneksi.php';
+															$query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
+															$hasil_id_responden = mysqli_query($koneksi, $query_jumlah_data);
+															$total_id_responden = mysqli_num_rows($hasil_id_responden);
+															echo "Jumlah Data : ".$total_id_responden ;
+													// echo '<br>' . date('H:i:s');
+													?>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
 
 
 
@@ -142,7 +166,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN</span>
-                <img class="img-profile rounded-circle" src="../assets/img/60x60.png">
+                <img class="img-profile rounded-circle" src="../assets/img/1.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -163,134 +187,34 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+					<!-- Begin Page Content -->
+					<div class="container-fluid">
+
+						<div class="container-fluid">
+
+							<div class="container">
+
+								<br><br><br>
+								<center>
+									<h3><b>PANDUAN SISTEM PENENTU PENERIMA BANTUAN</b></h3>
+								</center>
+								<hr>
+
+								<strong>Menu</strong> terdapat 3 (empat) menu, antara lain :
+								<ul class="list-unstyled">
+									<li><strong>Akun User</strong></li>Semua data akun pengguna sistem ada di dalan menu ini. menghapus dan mengedit data user juga 
+									<li><strong>Lihat Data </strong></li>Hasil dari pada form input akan masuk kedalam menu ini, serta bisa melakukan <b>edit</b> dan <b>cetak form</b>.
+									<li><strong>Penilaian Data </strong></li>Menu ini terdapat rekap dari hasil input, dan sudah di beri sistem penilaian, jadi pada menu ini yang layak dan tidak layak untuk mendapatkan bantuan akan terlihat.
+								</ul>
+
+								<hr>
 
 
-            <!-- Content Row -->
-            <div class="row">
 
-              <!-- tanggal -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tanggal</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <?php
-                            date_default_timezone_set('Asia/Jakarta');
-                            echo  date('d-m-Y');
-                            // echo '<br>' . date('H:i:s');
-                          ?>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Proses data -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Diproses</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            <?php
-                            include '../koneksi.php';
-                            $query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
-                            $hasil_id_responden = mysqli_query($koneksi,$query_jumlah_data);
-                            $total_id_responden = mysqli_num_rows($hasil_id_responden);
-                            echo $total_id_responden;
-                            ?>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- kelayakan -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Layak</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            <?php
-                            echo $total_id_responden;
-                            ?>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Ketidak Layakan -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-bottom-danger shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Data Kurang Layak</div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                            <?php
-                            echo $total_id_responden;
-                            ?>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="progress progress-sm mr-2">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              </div>
-
-</div>
-<!-- End of Main Content -->
+							</div>
+							<br><br><br><br>
+						</div>
+						<!-- /.container-fluid -->
 
 
 

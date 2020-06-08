@@ -117,7 +117,7 @@
 							<i class="fa fa-bars"></i>
 						</button>
 						<a target="_blank" href="export_excel.php" class="btn btn-success btn-icon-split btn-sm">
-						<span class="text">EXPORT KE EXCEL</span>
+						<span class="text">EXPORT DATA KE EXCEL</span>
 						</a>
 
 
@@ -157,10 +157,14 @@
 						<!-- DataTales -->
 						<div class="card shadow mb-4">
 							<div class="card-body">
+							<div class="card-header py-3">
+								<h1 class="h3 mb-2 text-gray-800">Data Hasil Surve</h1>
+							</div><br>
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
+												<th style="text-align:center">No</th>
 												<th style="text-align:center">Nama_Responden</th>
 												<th style="text-align:center">Waktu_Surve</th>
 												<th style="text-align:center">NIK</th>
@@ -189,7 +193,7 @@
 												<th style="text-align:center">Aset_Tanah_Lain</th>
 												<th style="text-align:center">Menerima_Bantuan_Lain</th>
 												<th style="text-align:center">Nama_Bantuan_Lain</th>
-												<th style="text-align:center">Jenis_Kawasan_Rumah</th>
+												<th style="text-align:center">Jenis/Daerah_Kawasan_Rumah</th>
 												<th style="text-align:center">Luas_Rumah</th>
 												<th style="text-align:center">Jumlah_Penghuni_Rumah</th>
 												<th style="text-align:center">Kusen_Rumah</th>
@@ -204,18 +208,18 @@
 												<th style="text-align:center">Jarak_Air_Minum</th>
 												<th style="text-align:center">Jarak_Sumber_Air_Minum</th>
 												<th style="text-align:center">Material_Atap</th>
-												<th style="text-align:center">Kondisi_Atap</th>
+												<th style="text-align:center">Kondisi_Atap_Rumah</th>
 												<th style="text-align:center">Material_Dinding</th>
-												<th style="text-align:center">Kondisi_Dinding</th>
+												<th style="text-align:center">Kondisi_Dinding_Rumah</th>
 												<th style="text-align:center">Material_Lantai</th>
-												<th style="text-align:center">Kondisi_Lantai</th>
+												<th style="text-align:center">Kondisi_Lantai_Rumah</th>
 												<th style="text-align:center">Struktur_Lantai</th>
 												<th style="text-align:center">Pondasi_Material</th>
-												<th style="text-align:center">Kondisi_Material</th>
+												<th style="text-align:center">Kondisi_Material_Rumah</th>
 												<th style="text-align:center">Sloof_Material</th>
-												<th style="text-align:center">Kondisi_Sloof</th>
+												<th style="text-align:center">Kondisi_Sloof_Rumah</th>
 												<th style="text-align:center">Material_Kolom</th>
-												<th style="text-align:center">Kondisi_Kolom</th>
+												<th style="text-align:center">Kondisi_Kolom_Rumah</th>
 												<th style="text-align:center">Material_Rangka_Atap</th>
 												<th style="text-align:center">Kondisi_Rangka_Atap</th>
 												<th style="text-align:center">Proteksi_Kebakaran</th>
@@ -228,6 +232,7 @@
 										</thead>
 										<tfoot>
 											<tr>
+												<th style="text-align:center">No</th>												
 												<th style="text-align:center">Nama_Responden</th>												
 												<th style="text-align:center">Waktu_Surve</th>
 												<th style="text-align:center">NIK</th>
@@ -295,18 +300,24 @@
 										</tfoot>
 										<tbody>
 											<?php
+											include 'function.php';
 											include '../koneksi.php';
 											$query = "SELECT * FROM tabel_identitas_responden 
 											JOIN tabel_aspek ON tabel_aspek.nik_aspek = tabel_identitas_responden.nik_responden 
 											JOIN tabel_waktu ON tabel_waktu.nik_waktu = tabel_identitas_responden.nik_responden
 											JOIN tabel_foto_ktp ON tabel_foto_ktp.nik_ktp = tabel_identitas_responden.nik_responden";
 
-										
+
+
+
+
+											$no = 1;
 											// $query_alamat = "SELECT * FROM tabel_alamat_responden";
 											$tampil = mysqli_query($koneksi, $query);
 											// $eks_alamat = mysqli_query($koneksi, $query_alamat);
 											while ($data  = mysqli_fetch_array($tampil)) {
 												echo "<tr>";
+												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $no. "</td>";
 												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $data['nama_lengkap'] . "</td>";
 												// echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . "<img src='../assets/img/ktp/".$data['nama']."'style='width:200px; height:100px;'>" . "</td>";
 												echo "<td style=\"text-align:center\">" . date('d-m-Y', strtotime($data["tanggal_surve"])) . "</td>";
@@ -387,6 +398,7 @@
 												<span class=\"text\">Print Data</span>
 												</a>" ."</td>";
 												echo "</tr>";
+												$no++;
 											};
 											?>
 										</tbody>
