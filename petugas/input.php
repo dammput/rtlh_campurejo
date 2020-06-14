@@ -82,9 +82,265 @@
 		//waktu
 		$tanggal_surve	= date('Y-m-d H:i:s');
 		
-		$hasil_vektor = hasil_vektor($_POST);
-		// echo $hasil_vektor;
+		if($jumlah_tabungan <=1200000){$jumlah_tabungan_value = 6;
+		}else if($jumlah_tabungan <=1800000){$jumlah_tabungan_value = 5;
+		}else if($jumlah_tabungan <=2100000){$jumlah_tabungan_value = 4;
+		}else if($jumlah_tabungan <=2600000){$jumlah_tabungan_value = 3;
+		}else if($jumlah_tabungan <=3100000){$jumlah_tabungan_value = 2;
+		}else{$jumlah_tabungan_value = 1;};
 
+		if($jumlah_penghasilan <=1200000){$jumlah_penghasilan_value = 6;
+		}else if($jumlah_penghasilan <=1800000){$jumlah_penghasilan_value = 5;
+		}else if($jumlah_penghasilan <=2100000){$jumlah_penghasilan_value = 4;
+		}else if($jumlah_penghasilan <=2600000){$jumlah_penghasilan_value = 3;
+		}else if($jumlah_penghasilan <=3100000){$jumlah_penghasilan_value = 2;
+		}else{$jumlah_penghasilan_value = 1;};
+
+		if($luas_rumah < 3){$luas_rumah_value = 3;
+		}else if($luas_rumah <= 5){$luas_rumah_value = 2;
+		}else{$luas_rumah_value = 1;};
+
+		if($penghuni < 3){$penghuni_value = 3;
+		}else if($penghuni <= 5){$penghuni_value = 2;
+		}else{$penghuni_value = 1;};
+
+		if($jumlah_kk === 1){$jumlah_kk_value = 1;
+		}else if($jumlah_kk === 2){$jumlah_kk_value = 2;
+		}else{$jumlah_kk_value = 3;};
+		
+		// TABUNGAN PERBULAN
+		if($tabungan_perbulan === '0 - 1.2 Juta'){$tabungan_perbulan_value = 6;
+		}else if($tabungan_perbulan === '1.3 - 1.8 Juta'){$tabungan_perbulan_value = 5;
+		}else if($tabungan_perbulan === '1.9 - 2.1 Juta'){$tabungan_perbulan_value = 4;
+		}else if($tabungan_perbulan === '2.2 - 2.6 Juta'){$tabungan_perbulan_value = 3;
+		}else if($tabungan_perbulan === '2.7 - 3.1 Juta'){$tabungan_perbulan_value = 2;
+		}else{$tabungan_perbulan_value = 1;};
+		
+		// PEKERJAAN UTAMA
+		if($pekerjaan_utama === 'TNI/Polri'){$pekerjaan_utama_value = 4;
+		}else if($pekerjaan_utama === 'Tidak Bekerja'){$pekerjaan_utama_value = 7;
+		}else if($pekerjaan_utama === 'Wirausaha'){$pekerjaan_utama_value = 6;
+		}else if($pekerjaan_utama === 'Petani'){$pekerjaan_utama_value = 14;	
+		}else if($pekerjaan_utama === 'Tukang/Montir'){$pekerjaan_utama_value = 2;	
+		}else if($pekerjaan_utama === 'Buruh harian'){$pekerjaan_utama_value = 8;	
+		}else if($pekerjaan_utama === 'Karyawan'){$pekerjaan_utama_value = 9;	
+		}else if($pekerjaan_utama === 'Honorer'){$pekerjaan_utama_value = 15;	
+		}else if($pekerjaan_utama === 'Ojek/Supir'){$pekerjaan_utama_value = 12;	
+		}else if($pekerjaan_utama === 'Pramuwiswa'){$pekerjaan_utama_value = 10;	
+		}else if($pekerjaan_utama === 'Nelayan'){$pekerjaan_utama_value = 13;	
+		}else if($pekerjaan_utama === 'PNS'){$pekerjaan_utama_value = 5;	
+		}else if($pekerjaan_utama === 'Pensiunan'){$pekerjaan_utama_value = 11;	
+		}else if($pekerjaan_utama === 'BUMN/D'){$pekerjaan_utama_value = 3;	
+		}else{$pekerjaan_utama_value = 1;};	
+		// RANGE PENGHASILAN
+		if($range_penghasilan === '0 - 1.2 Juta'){$range_penghasilan_value = 6;
+		}else if($range_penghasilan === '1.3 - 1.8 Juta'){$range_penghasilan_value = 5;
+		}else if($range_penghasilan === '1.9 - 2.1 Juta'){$range_penghasilan_value = 4;
+		}else if($range_penghasilan === '2.2 - 2.6 Juta'){$range_penghasilan_value = 3;
+		}else if($range_penghasilan === '2.7 - 3.1 Juta'){$range_penghasilan_value = 2;
+		}else{$range_penghasilan_value = 1;};
+		// PENDIDIKAN TERAKHIR
+		if($pendidikan_terakhir === 'Tidak Punya Ijazah'){$pendidikan_terakhir_value = 6;
+		}else if($pendidikan_terakhir === 'SD/Sederajat'){$pendidikan_terakhir_value = 5;
+		}else if($pendidikan_terakhir === 'SMP/Sederajat'){$pendidikan_terakhir_value = 4;
+		}else if($pendidikan_terakhir === 'SMA/Sederajat'){$pendidikan_terakhir_value = 3;
+		}else if($pendidikan_terakhir === 'D1/D2/D3'){$pendidikan_terakhir_value = 2;
+		}else{$pendidikan_terakhir_value = 1;};
+		// STATUS PERKAWINAN
+		if($status_perkawinan === 'Belum Menikah'){$status_perkawinan_value = 1;
+		}else if($status_perkawinan === 'Menikah'){$status_perkawinan_value = 2;
+		}else{$status_perkawinan_value = 3;};
+		// STATUS FISIK
+		if($status_fisik === 'Sehat'){$status_fisik_value = 1;
+		}else if($status_fisik === 'Sakit'){$status_fisik_value = 2;
+		}else {$status_fisik_value = 3;};
+		// STATUS KEPEMILIKAN TANAH
+		if($status_kepemilikan_tanah === 'Milik Sendiri'){$status_kepemilikan_tanah_value = 3;
+		}else if($status_kepemilikan_tanah === 'Bukan Milik Sendiri'){$status_kepemilikan_tanah_value = 2;
+		}else{$status_kepemilikan_tanah_value = 1;};
+		// STATUS KEPEMILIKAN RUMAH
+		if($status_kepemilikan_rumah === 'Milik Sendiri'){$status_kepemilikan_rumah_value = 3;
+		}else if($status_kepemilikan_rumah === 'Bukan Milik Sendiri'){$status_kepemilikan_rumah_value = 2;
+		}else{$status_kepemilikan_rumah_value = 1;};
+		// ASET RUMAH LAIN
+		if($aset_rumah_lain === 'Ada'){$aset_rumah_lain_value = 1;
+		}else{$aset_rumah_lain_value = 2;};
+		// ASET TANAH LAIN
+		if($aset_tanah_lain === 'Ada'){$aset_tanah_lain_value = 1;
+		}else{$aset_tanah_lain_value = 2;};
+		// BANTUAN LAIN
+		if($bantuan_lain === 'Ya > 5 Tahun Yang Lalu'){$bantuan_lain_value = 2;
+		}else if($bantuan_lain === 'Ya < 5 Tahun Yang Lalu'){$bantuan_lain_value = 1;
+		}else{$bantuan_lain_value = 3;};
+		// JENIS KAWASAN RUMAH
+		if($jenis_kawasan_rumah === 'Kawasan Kumuh'){$jenis_kawasan_rumah_value = 5;
+		}else if($jenis_kawasan_rumah === 'Kawasan Rawan Air'){$jenis_kawasan_rumah_value = 4;
+		}else if($jenis_kawasan_rumah === 'Kawasan Pesisir/Nelayan'){$jenis_kawasan_rumah_value = 3;
+		}else if($jenis_kawasan_rumah === 'Kawasan Perbatasan'){$jenis_kawasan_rumah_value = 6;
+		}else if($jenis_kawasan_rumah === 'Daerah Tertinggal/Terpencil'){$jenis_kawasan_rumah_value = 7;
+		}else if($jenis_kawasan_rumah === 'Kawasan Ekonomi Khusus'){$jenis_kawasan_rumah_value = 2;
+		}else{$jenis_kawasan_rumah_value = 1;};
+		
+		
+		// ASPEK KESEHATAN
+		// KUSEN
+		if($kusen === 'Tidak Ada'){$kusen_value = 2;
+		}else{$kusen_value = 1;};
+		// JENDELA DAN VENTILASI
+		if($jendela === 'Tidak Ada'){$jendela_value = 5;
+		}else if($jendela === 'Memenuhi, Kondisi Baik'){$jendela_value = 1;
+		}else if($jendela === 'Memenuhi, Kondisi Rusak'){$jendela_value = 2;
+		}else if($jendela === 'Tidak Memenuhi Kondisi Baik'){$jendela_value = 3;
+		}else{$jendela_value = 4;};
+		// DAUN PINTU
+		if($pintu === 'Ada'){$pintu_value = 1;
+		}else{$pintu_value = 2;};
+		// KAMAR MANDI
+		if($kamar_mandi === 'Tidak Ada'){$kamar_mandi_value = 3;
+		}else if($kamar_mandi === 'Sendiri'){$kamar_mandi_value = 1;
+		}else{$kamar_mandi_value = 2;};
+		// SALURAN AIR
+		if($saluran_air === 'Tidak Ada'){$saluran_air_value = 3;
+		}else if($saluran_air === 'Sendiri'){$saluran_air_value = 1;
+		}else{$saluran_air_value = 2;};
+		// PEMBUANGAN AKHIR TINJA
+		if($pembuangan === 'Lainnya'){$pembuangan_value = 1;
+		}else if($pembuangan === 'Septictank'){$pembuangan_value = 2;
+		}else if($pembuangan === 'SPAL'){$pembuangan_value = 3;
+		}else if($pembuangan === 'Lubang Tanah'){$pembuangan_value = 4;
+		}else if($pembuangan === 'Kolam/Sawah/Sungai/Daun'){$pembuangan_value = 5;
+		}else{$pembuangan_value = 6;};
+		// DRAINASE
+		if($drainase === 'Ada, Kondisi Baik'){$drainase_value = 1;
+		}else if($drainase === 'Ada, Kondisi Rusak'){$drainase_value = 2;
+		}else{$drainase_value = 3;};
+		// TEMPAT SAMPAH
+		if($tempat_sampah === 'Ada'){$tempat_sampah_value = 1;
+		}else{$tempat_sampah_value = 2;};
+		// SUMBER AIR MINUM
+		if($sumber_air_minum === 'PDAM'){$sumber_air_minum_value = 3;
+		}else if($sumber_air_minum === 'Sumur'){$sumber_air_minum_value = 4;
+		}else if($sumber_air_minum === 'Mata Air'){$sumber_air_minum_value = 5;
+		}else if($sumber_air_minum === 'Air Kemasan/Isi Ulang'){$sumber_air_minum_value = 2;
+		}else{$sumber_air_minum_value = 1;};
+		// JARAK AIR MINUM
+		if($jarak_air_minum === '> 10m'){$jarak_air_minum_value = 2;
+		}else{$jarak_air_minum_value = 1;};
+		// SUMBER LISTRIK
+		if($sumber_listrik === 'Listrik PLN Dengan Meteran'){$sumber_listrik_value = 1;
+		}else if($sumber_listrik === 'Listrik PLN Tanpa Meteran'){$sumber_listrik_value = 2;
+		}else if($sumber_listrik === 'Listrik Non PLN'){$sumber_listrik_value = 3;
+		}else{$sumber_listrik_value = 4;};
+		
+		//ASPEK BANGUNAN
+		// MATERIAL ATAP
+		if($material_atap === 'Genteng'){$material_atap_value = 1;
+		}else if($material_atap === 'Esbes'){$material_atap_value = 5;
+		}else if($material_atap === 'Seng'){$material_atap_value = 4;
+		}else if($material_atap === 'Jerami/Rumbia'){$material_atap_value = 7;
+		}else if($material_atap === 'Metal Sheet'){$material_atap_value = 2;
+		}else if($material_atap === 'Sirap'){$material_atap_value = 3;
+		}else{$material_atap_value = 6;};
+		// KONDISI ATAP
+		if($kondisi_atap === 'Kondisi Baik'){$kondisi_atap_value = 4;
+		}else if($kondisi_atap === 'Rusak Ringan'){$kondisi_atap_value = 3;
+		}else if($kondisi_atap === 'Rusak Sedang/Sebagian'){$kondisi_atap_value = 2;
+		}else {$kondisi_atap_value = 1;};
+		// MATERIAL DINDING
+		if($material_dinding === 'Tembok'){$material_dinding_value = 1;
+		}else if($material_dinding === 'GRC(Esbes)'){$material_dinding_value = 2;
+		}else if($material_dinding === 'Papan/Tripleks'){$material_dinding_value = 3;
+		}else if($material_dinding === 'Anyaman Bambu'){$material_dinding_value = 5;
+		}else {$material_dinding_value = 4;};
+		// KONDISI MATERIAL DINDING
+		if($kondisi_dinding === 'Kondisi Baik'){$kondisi_dinding_value = 4;
+		}else if($kondisi_dinding === 'Rusak Ringan'){$kondisi_dinding_value = 3;
+		}else if($kondisi_dinding === 'Rusak Sedang/Sebagian'){$kondisi_dinding_value = 2;
+		}else {$kondisi_dinding_value = 1;};
+		// MATERIAL LANTAI
+		if($material_lantai === 'Keramik'){$material_lantai_value = 2;
+		}else if($material_lantai === 'Marmer/Granit'){$material_lantai_value = 1;
+		}else if($material_lantai === 'Ubin/Tegel'){$material_lantai_value = 3;
+		}else if($material_lantai === 'Plesteran'){$material_lantai_value = 4;
+		}else if($material_lantai === 'Bambu'){$material_lantai_value = 5;
+		}else if($material_lantai === 'Kayu'){$material_lantai_value = 6;
+		}else{$material_lantai_value = 7;};
+		// KONDISI PENUUTUP LANTAI
+		if($kondisi_penutup_lantai === 'Kondisi Baik'){$kondisi_penutup_lantai_value = 1;
+		}else if($kondisi_penutup_lantai === 'Rusak Ringan'){$kondisi_penutup_lantai_value = 2;
+		}else if($kondisi_penutup_lantai === 'Rusak Sedang/Sebagian'){$kondisi_penutup_lantai_value = 3;
+		}else {$kondisi_penutup_lantai_value = 4;};
+		// STRUKTUR LANTAI
+		if($struktur_lantai === 'Kondisi Baik'){$struktur_lantai_value = 1;
+		}else if($struktur_lantai === 'Rusak Ringan'){$struktur_lantai_value = 2;
+		}else if($struktur_lantai === 'Rusak Sedang/Sebagian'){$struktur_lantai_value = 3;
+		}else {$struktur_lantai_value = 4;};
+
+		
+		// ASPEK KESELAMATAN
+		// PONDASI MATERIAL
+		if($pondasi_material === 'Kayu'){$pondasi_material_value = 5;
+		}else if($pondasi_material === 'Batu Kali'){$pondasi_material_value = 4;
+		}else if($pondasi_material === 'Batu Kambung'){$pondasi_material_value = 3;
+		}else if($pondasi_material === 'Bambu'){$pondasi_material_value = 2;
+		}else if($pondasi_material === 'Beton'){$pondasi_material_value = 1;
+		}else{$pondasi_material_value = 6;};
+		// PONDASI KONDISI
+		if($pondasi_kondisi === 'Kondisi Baik'){$pondasi_kondisi_value = 1;
+		}else if($pondasi_kondisi === 'Rusak Ringan'){$pondasi_kondisi_value = 2;
+		}else if($pondasi_kondisi === 'Rusak Sedang/Sebagian'){$pondasi_kondisi_value = 3;
+		}else {$pondasi_kondisi_value = 4;};
+		// SLOOF MATERIAL
+		if($sloof_material === 'Kayu'){$sloof_material_value = 5;
+		}else if($sloof_material === 'Beton Bertulang'){$sloof_material_value = 4;
+		}else if($sloof_material === 'Batu Bata'){$sloof_material_value = 3;
+		}else if($sloof_material === 'Bambu'){$sloof_material_value = 2;
+		}else if($sloof_material === 'Semen'){$sloof_material_value = 1;
+		}else{$sloof_material_value = 6;};
+		// SLOOF KONDISI
+		if($sloof_kondisi === 'Kondisi Baik'){$sloof_kondisi_value = 1;
+		}else if($sloof_kondisi === 'Rusak Ringan'){$sloof_kondisi_value = 2;
+		}else if($sloof_kondisi === 'Rusak Sedang/Sebagian'){$sloof_kondisi_value = 3;
+		}else {$sloof_kondisi_value = 4;};
+		// MATERIAL KOLOM RING
+		if($material_kolom_ring === 'Kayu'){$material_kolom_ring_value = 3;
+		}else if($material_kolom_ring === 'Beton Bertulang'){$material_kolom_ring_value = 1;
+		}else if($material_kolom_ring === 'Baja Ringan'){$material_kolom_ring_value = 2;
+		}else if($material_kolom_ring === 'Bambu'){$material_kolom_ring_value = 4;
+		}else{$material_kolom_ring_value = 5;};
+		// KONDISI KOLOM RING
+		if($kondisi_kolom_ring === 'Kondisi Baik'){$kondisi_kolom_ring_value = 1;
+		}else if($kondisi_kolom_ring === 'Rusak Ringan'){$kondisi_kolom_ring_value = 2;
+		}else if($kondisi_kolom_ring === 'Rusak Sedang/Sebagian'){$kondisi_kolom_ring_value = 3;
+		}else {$kondisi_kolom_ring_value = 4;};
+		// MATERIAL RANGKA ATAP
+		if($material_rangka_atap === 'Kayu'){$material_rangka_atap_value = 3;
+		}else if($material_rangka_atap === 'Beton Bertulang'){$material_rangka_atap_value = 1;
+		}else if($material_rangka_atap === 'Baja Ringan'){$material_rangka_atap_value = 2;
+		}else if($material_rangka_atap === 'Bambu'){$material_rangka_atap_value = 4;
+		}else{$material_rangka_atap_value = 5;};
+		// KONDISI RANGKA ATAP
+		if($kondisi_rangka_atap === 'Kondisi Baik'){$kondisi_rangka_atap_value = 1;
+		}else if($kondisi_rangka_atap === 'Rusak Ringan'){$kondisi_rangka_atap_value = 2;
+		}else if($kondisi_rangka_atap === 'Rusak Sedang/Sebagian'){$kondisi_rangka_atap_value = 3;
+		}else {$kondisi_rangka_atap_value = 4;};
+		// PROTEKSI KEBAKARAN
+		if($proteksi_kebakaran === 'Tidak Ada'){$proteksi_kebakaran_value = 2;
+		}else{$proteksi_kebakaran_value = 1;};
+		// SARANA PROTEKSI
+		if($sarana_proteksi_kebakaran === 'PMK/APAR'){$sarana_proteksi_kebakaran_value = 3;
+		}else if($sarana_proteksi_kebakaran === 'Detektor Asap'){$sarana_proteksi_kebakaran_value = 2;
+		}else{$sarana_proteksi_kebakaran_value = 1;};
+		// PRASARANA PROTEKSI
+		if($prasarana_proteksi_kebakaran === 'Hidran/Tangki/Sumber Air'){$prasarana_proteksi_kebakaran_value = 3;
+		}else if($prasarana_proteksi_kebakaran === 'Jalan Untuk Damkar'){$prasarana_proteksi_kebakaran_value = 2;
+		}else{$prasarana_proteksi_kebakaran_value = 1;};
+
+
+
+
+		$hasil_vektor = hasil_vektor($_POST);
+		
 		// $query_vektor = "SELECT SUM(vektor_s) AS total_s FROM tabel_score";
 		// $hasil_vektor = mysqli_query($koneksi, $query_vektor);
 		// $total_fix = mysqli_fetch_array($hasil_vektor);
@@ -128,6 +384,10 @@
 															VALUE ( '$nik','$no', '$nama_lengkap', '$usia', '$no_telp', '$kordinat', '$sumber_data', '$jenis_kelamin', '$jalan', '$dusun', '$rt', '$rw', '$desa', '$kecamatan', '$jumlah_tabungan', '$tabungan_perbulan', '$jumlah_kk', '$pekerjaan_utama', '$jumlah_penghasilan', '$range_penghasilan', '$pendidikan_terakhir', '$status_perkawinan', '$status_fisik', '$status_kepemilikan_tanah', '$status_kepemilikan_rumah', '$aset_rumah_lain', '$aset_tanah_lain', '$bantuan_lain', '$nama_bantuan_lain', '$jenis_kawasan_rumah')";	
 								$query_aspek			= "INSERT INTO tabel_aspek ( nik_aspek, penghuni, luas_rumah, kusen, jendela, pintu, kamar_mandi, saluran_air, pembuangan, drainase, tempat_sampah, sumber_air_minum, jarak_air_minum, sumber_listrik, material_atap, kondisi_atap, material_dinding, kondisi_dinding, material_lantai, kondisi_penutup_lantai, struktur_lantai, pondasi_material, pondasi_kondisi, sloof_material, sloof_kondisi, material_kolom_ring, kondisi_kolom_ring, material_rangka_atap, kondisi_rangka_atap, proteksi_kebakaran, sarana_proteksi_kebakaran, prasarana_proteksi_kebakaran)
 															VALUE ( '$nik', '$penghuni', '$luas_rumah', '$kusen', '$jendela', '$pintu', '$kamar_mandi', '$saluran_air', '$pembuangan', '$drainase', '$tempat_sampah', '$sumber_air_minum', '$jarak_air_minum', '$sumber_listrik', '$material_atap', '$kondisi_atap', '$material_dinding', '$kondisi_dinding', '$material_lantai', '$kondisi_penutup_lantai', '$struktur_lantai', '$pondasi_material', '$pondasi_kondisi', '$sloof_material', '$sloof_kondisi', '$material_kolom_ring', '$kondisi_kolom_ring', '$material_rangka_atap', '$kondisi_rangka_atap', '$proteksi_kebakaran', '$sarana_proteksi_kebakaran', '$prasarana_proteksi_kebakaran' )";
+								$query_responden_score		= "INSERT INTO tabel_identitas_responden_score ( nik_responden, nomor_urut, nama_lengkap, usia, no_telp, kordinat, sumber_data, jenis_kelamin, jalan, dusun, rt, rw, desa, kecamatan, jumlah_tabungan, tabungan_perbulan, jumlah_kk, pekerjaan_utama, jumlah_penghasilan, range_penghasilan, pendidikan_terakhir, status_perkawinan, status_fisik, status_kepemilikan_tanah, status_kepemilikan_rumah, aset_rumah_lain, aset_tanah_lain, bantuan_lain, nama_bantuan_lain, jenis_kawasan_rumah )
+															VALUE ( '$nik','$no', '$nama_lengkap', '$usia', '$no_telp', '$kordinat', '$sumber_data', '$jenis_kelamin', '$jalan', '$dusun', '$rt', '$rw', '$desa', '$kecamatan', '$jumlah_tabungan_value', '$tabungan_perbulan_value', '$jumlah_kk_value', '$pekerjaan_utama_value', '$jumlah_penghasilan_value', '$range_penghasilan_value', '$pendidikan_terakhir_value', '$status_perkawinan_value', '$status_fisik_value', '$status_kepemilikan_tanah_value', '$status_kepemilikan_rumah_value', '$aset_rumah_lain_value', '$aset_tanah_lain_value', '$bantuan_lain_value', '$nama_bantuan_lain', '$jenis_kawasan_rumah_value')";	
+								$query_aspek_score			= "INSERT INTO tabel_aspek_score ( nik_aspek, penghuni, luas_rumah, kusen, jendela, pintu, kamar_mandi, saluran_air, pembuangan, drainase, tempat_sampah, sumber_air_minum, jarak_air_minum, sumber_listrik, material_atap, kondisi_atap, material_dinding, kondisi_dinding, material_lantai, kondisi_penutup_lantai, struktur_lantai, pondasi_material, pondasi_kondisi, sloof_material, sloof_kondisi, material_kolom_ring, kondisi_kolom_ring, material_rangka_atap, kondisi_rangka_atap, proteksi_kebakaran, sarana_proteksi_kebakaran, prasarana_proteksi_kebakaran)
+															VALUE ( '$nik', '$penghuni_value', '$luas_rumah_value', '$kusen_value', '$jendela_value', '$pintu_value', '$kamar_mandi_value', '$saluran_air_value', '$pembuangan_value', '$drainase_value', '$tempat_sampah_value', '$sumber_air_minum_value', '$jarak_air_minum_value', '$sumber_listrik_value', '$material_atap_value', '$kondisi_atap_value', '$material_dinding_value', '$kondisi_dinding_value', '$material_lantai_value', '$kondisi_penutup_lantai_value', '$struktur_lantai_value', '$pondasi_material_value', '$pondasi_kondisi_value', '$sloof_material_value', '$sloof_kondisi_value', '$material_kolom_ring_value', '$kondisi_kolom_ring_value', '$material_rangka_atap_value', '$kondisi_rangka_atap_value', '$proteksi_kebakaran_value', '$sarana_proteksi_kebakaran_value', '$prasarana_proteksi_kebakaran_value' )";
 								$query_score			= "INSERT INTO tabel_score ( nik_score, vektor_s )
 															VALUE ( '$nik', '$hasil_vektor' )";
 								$query_waktu			= "INSERT INTO tabel_waktu ( nik_waktu, tanggal_surve )
@@ -143,24 +403,29 @@
 								$query_rumah 			= "INSERT INTO tabel_foto_rumah ( nik_rumah, nama_rumah, ukuran, tipe )
 															VALUE ( '$nik', '$nama_file_rumah', '$ukuran_file_rumah', '$tipe_file_rumah'  )";
 								$hasil_responden 		= mysqli_query($koneksi, $query_responden); 
-								echo "responden : " . mysqli_error($hasil_responden);
+								// echo "responden : " . mysqli_error($hasil_responden);
 								$hasil_aspek	 		= mysqli_query($koneksi, $query_aspek);
-								echo "aspek : " . mysqli_error($hasil_aspek); 
+								// echo "aspek : " . mysqli_error($hasil_aspek); 
+								$hasil_responden_score 		= mysqli_query($koneksi, $query_responden_score); 
+								// echo "responden : " . mysqli_error($hasil_responden);
+								$hasil_aspek_score	 		= mysqli_query($koneksi, $query_aspek_score);
+								// echo "aspek : " . mysqli_error($hasil_aspek); 
 								$hasil_waktu	 		= mysqli_query($koneksi, $query_waktu); 
-								echo "aspek : " .  mysqli_error($hasil_waktu);
+								// echo "aspek : " .  mysqli_error($hasil_waktu);
 								$hasil_score	 		= mysqli_query($koneksi, $query_score); 
-								echo "score : " .  mysqli_error($hasil_score);
+								// echo "score : " .  mysqli_error($hasil_score);
 								$hasil_responden_update = mysqli_query($koneksi, $query_responden_update); 
-								echo "responden_update : " .  mysqli_error($hasil_responden_update);
+								// echo "responden_update : " .  mysqli_error($hasil_responden_update);
 								$hasil_aspek_update 	= mysqli_query($koneksi, $query_aspek_update); 
-								echo "aspek_update : " .  mysqli_error($hasil_aspek_update);
+								// echo "aspek_update : " .  mysqli_error($hasil_aspek_update);
 								$hasil_waktu_update 	= mysqli_query($koneksi,$query_waktu_update); 
-								echo "waktu_update : " .  mysqli_error($hasil_waktu_update);
+								// echo "waktu_update : " .  mysqli_error($hasil_waktu_update);
 								$sql_ktp 				= mysqli_query($koneksi, $query_ktp); 
 								$sql_rumah 				= mysqli_query($koneksi, $query_rumah); 
 								
 								if($sql_ktp && $sql_rumah && $hasil_responden && $hasil_aspek && $hasil_waktu && $hasil_waktu_update && $hasil_aspek_update && $hasil_responden_update){ 
 									echo "<script>alert('Input Data Berhasil');</script>";
+									// echo "hasil vektor s : ". $hasil_vektor;
 									echo '<meta http-equiv="refresh" content="0;url=view.php" />';
 								} else {
 									echo "<script>alert('Data Sudah pada Database, Coba Lagi');</script>";
@@ -323,7 +588,7 @@
 							<!-- Nav Item - User Information -->
 							<li class="nav-item dropdown no-arrow">
 								<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="mr-2 d-none d-lg-inline text-gray-600 small">PETUGAS</span>
+									<span class="mr-2 d-none d-lg-inline text-primary small">PETUGAS</span>
 									<img class="img-profile rounded-circle" src="../assets/img/60x60.png">
 								</a>
 								<!-- Dropdown - User Information -->
@@ -355,7 +620,7 @@
 									<!-- kuisioner pengisian -->
 									<div class="card shadow mb-1">
 										<!-- Card Header-->
-										<div class="card py-1 bg-gray-600 accordion">
+										<div class="card py-1 bg-primary accordion">
 											<h6 class="m-3 font-weight-bold text-white">IDENTITAS RESPONDEN</h6>
 										</div>
 									</div>
@@ -376,19 +641,19 @@
 											<div class="form-row">
 												<div class="form-group col-md-5">
 													<label>Nama Lengkap</label>
-													<input type="text" class="form-control" placeholder="nama responden.." name="nama_lengkap" required>
+													<input type="text" class="form-control" placeholder="nama lengkap.." name="nama_lengkap" required>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 												<div class="form-group col-md-4">
 													<label>NIK</label>
-													<input type="text" class="form-control" placeholder="01672.." name="nik" maxlength="16" required>
+													<input type="text" class="form-control" placeholder="3525031.." name="nik" maxlength="16" required>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 												<div class="form-group col-md-3">
 													<label>Gender</label>
 													<select class="form-control" name="jenis_kelamin" required>
 														<option value="laki-laki" selected="selected">LK</option>
-														<option value="perenpuan">PR</option>
+														<option value="perempuan">PR</option>
 													</select>
 												</div>
 											</div>
@@ -403,7 +668,7 @@
 												</div>
 												<div class="form-group col-md-4">
 													<label>Koordinat Rumah</label>
-													<input type="text" class="form-control" placeholder="isi jika ada.." name="kordinat">
+													<input type="text" class="form-control" placeholder="Lintang : , Bujur :" name="kordinat">
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 												<div class="form-group col-md-3">
@@ -439,7 +704,7 @@
 													<div class="custom-file" id="customFile" lang="es">
 													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='ktp' required> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
-													Select file ktp...
+													Select file ktp.
 													</label>
 													</label>
 													</div>
@@ -454,7 +719,7 @@
 													<div class="custom-file" id="customFile" lang="es">
 													<input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp" name='rumah' required> 
 													<label class="custom-file-label form-control-file" for="exampleInputFile">
-													Select file rumah...
+													Select file rumah.
 													</label>
 													</label>
 													</div>
@@ -485,7 +750,7 @@
 											<div class="form-row">
 												<div class="form-group col-md-1">
 													<label>Usia</label>
-													<input type="number" class="form-control" placeholder="..." name="usia" required>
+													<input type="number" class="form-control" placeholder="0" name="usia" required>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 												<div class="form-group col-md-4">
@@ -607,7 +872,7 @@
 													<label>Jumlah Tabungan</label>
 													<div class="input-group-prepend">
 														<span class="input-group-text">Rp.</span>
-														<input type="number" class="form-control" placeholder="1000000.." name="jumlah_tabungan" required>
+														<input type="number" class="form-control" placeholder="0" name="jumlah_tabungan" required>
 														<div class="invalid-feedback">Data harus diisi.</div>
 													</div>
 												</div>
@@ -628,7 +893,7 @@
 												<div class="form-group col-md-2">
 													<label>Jml KK dalam 1 rumah</label>
 													<div class="input-group-prerend">
-														<input type="number" class="form-control" name="jumlah_kk" placeholder="..." required>
+														<input type="number" class="form-control" name="jumlah_kk" placeholder="0" required>
 													</div>
 												</div>
 												<div class="form-group col-md-2">
@@ -672,7 +937,7 @@
 													<label>Jumlah Penghasilan</label>
 													<div class="input-group-prepend">
 														<span class="input-group-text">Rp.</span>
-														<input type="number" class="form-control" name="jumlah_penghasilan" placeholder="1000000.." required>
+														<input type="number" class="form-control" name="jumlah_penghasilan" placeholder="0" required>
 														<div class="invalid-feedback">Data harus diisi.</div>
 													</div>
 												</div>
@@ -738,8 +1003,8 @@
 													<label>Aset Rumah Lain</label>
 													<div class="input-group-prepend">
 														<select class="form-control" name="aset_rumah_lain" required>
-															<option value="Ada" selected="selected">Ada</option>
-															<option value="Tidak Ada">Tidak Ada</option>
+															<option value="Ada" >Ada</option>
+															<option value="Tidak Ada" selected="selected" >Tidak Ada</option>
 														</select>
 														<div class="invalid-feedback">Data harus diisi.</div>
 													</div>
@@ -748,8 +1013,8 @@
 													<label>Aset Tanah Lain</label>
 													<div class="input-group-prepend">
 														<select class="form-control" name="aset_tanah_lain" required>
-															<option value="Ada" selected="selected">Ada</option>
-															<option value="Tidak Ada">Tidak Ada</option>
+															<option value="Ada" >Ada</option>
+															<option value="Tidak Ada" selected="selected">Tidak Ada</option>
 														</select>
 														<div class="invalid-feedback">Data harus diisi.</div>
 													</div>
@@ -806,7 +1071,7 @@
 									<!-- kuisioner pengisian -->
 									<div class="card shadow mb-1">
 										<!-- Card Header-->
-										<div class="card py-1 bg-gray-600 accordion">
+										<div class="card py-1 bg-primary accordion">
 											<h6 class="m-3 font-weight-bold text-white ">KONDISI FISIK RUMAH</h6>
 										</div>
 									</div>
@@ -1019,17 +1284,17 @@
 												<div class="form-group col-md-2">
 													<label>Drainase</label>
 													<select class="form-control" name="drainase" required>
-														<option value="Ada, Kondisi Baik" selected="selected">Ada, Kondisi Baik</option>
+														<option value="Ada, Kondisi Baik" >Ada, Kondisi Baik</option>
 														<option value="Ada, Kondisi Rusak">Ada, Kondisi Rusak</option>
-														<option value="Tidak Ada">Tidak Ada</option>
+														<option value="Tidak Ada" selected="selected">Tidak Ada</option>
 													</select>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 												<div class="form-group col-md-2">
 													<label>Tempat Sampah</label>
 													<select class="form-control" name="tempat_sampah" required>
-														<option value="Tidak Ada">Tidak Ada</option>
-														<option value="Ada" selected="selected">Ada</option>
+														<option value="Tidak Ada" selected="selected">Tidak Ada</option>
+														<option value="Ada" >Ada</option>
 													</select>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
@@ -1085,13 +1350,13 @@
 													<label>Luas Rumah</label>
 													<div class="input-group-prepend">
 														<span class="input-group-text">M<sup>2</sup></span>
-														<input type="number" name="luas_rumah" class="form-control" required>
+														<input type="number" name="luas_rumah" placeholder="0" class="form-control" required>
 														<div class="invalid-feedback">Data harus diisi.</div>
 													</div>
 												</div>
 												<div class="form-group col-md-6	">
 													<label>Jumlah Penghuni Rumah</label>
-													<input type="number" name="jumlah_penghuni" class="form-control" required>
+													<input type="number" name="jumlah_penghuni" placeholder="0" class="form-control" required>
 													<div class="invalid-feedback">Data harus diisi.</div>
 												</div>
 											</div>

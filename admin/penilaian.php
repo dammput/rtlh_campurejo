@@ -120,7 +120,10 @@
 						</button>
 						<a target="_blank" href="export_excel_penilaian.php" class="btn btn-success btn-icon-split btn-sm">
 						<span class="text">EXPORT HASIL PENILAIAN KE EXCEL</span>
-						</a>	
+						</a> &nbsp;	
+						<a target="_blank" href="export_excel_score.php" class="btn btn-success btn-icon-split btn-sm">
+						<span class="text">EXPORT NILAI PENILAIAN</span>
+						</a>
 
 						<!-- Topbar Search -->
 						<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -172,7 +175,7 @@
 							</div><br>
 							
 								<div class="table-responsive">
-									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
 												<th style="text-align:center">NO</th>
@@ -208,11 +211,21 @@
 											$tampil = mysqli_query($koneksi, $query);
 											$no = 1;
 											$query_vektor = "SELECT SUM(vektor_s) AS hasil_vektor FROM tabel_score";
+											$query_jumlah_data = "SELECT COUNT(nik_responden) FROM tabel_identitas_responden";
 											$hasil_vektor = mysqli_query($koneksi, $query_vektor);
-											$array_vektor_v  = mysqli_fetch_array($hasil_vektor);
-											$sum_vektor_v = $array_vektor_v['hasil_vektor'];
-											//   print_r($sum_vektor_v);
-
+											$hasil_query_jumlah = mysqli_query($koneksi, $query_jumlah_data);
+											$array_vektor_s  = mysqli_fetch_array($hasil_vektor);
+											$jumlah_data_array = mysqli_fetch_array($hasil_query_jumlah);
+											$jumlah_data = $jumlah_data_array['COUNT(nik_responden)'];
+											$sum_vektor_s = $array_vektor_s['hasil_vektor'];
+											// print_r($sum_vektor_s);
+											
+											$nilai_bagi = round($sum_vektor_s);
+											
+											$c = 46;
+											$a = $c/($nilai_bagi*$jumlah_data);
+											
+			
 											//   $query_v = "SELECT `vektor_s` FROM `tabel_score`";
 											//   $hasil_v = mysqli_query($koneksi,$query_v);
 											//   $ar = mysqli_fetch_array($hasil_v);
@@ -229,8 +242,8 @@
 												echo "<td style=\"text-align:center\">" . $data['rt'] . "</td>";
 												echo "<td style=\"text-align:center\">" . $data['rw'] . "</td>";
 												// echo "<td style=\"text-align:center\">" . $data['vektor_s'] . "</td>";
-												echo "<td style=\"text-align:center\">" . $data['vektor_s'] / $sum_vektor_v . "</td>";
-												if ($data['vektor_s'] / $sum_vektor_v > 0.24) {
+												echo "<td style=\"text-align:center\">" . $data['vektor_s'] / $sum_vektor_s. "</td>";
+												if ($data['vektor_s'] / $sum_vektor_s > $a ) {
 													echo "<td style=\"text-align:center\">" . "<div class=\" btn-success btn-icon-split btn-sm\">
 													<span class=\"text\">Layak</span>
 													</div> " . "</td>";
@@ -244,7 +257,7 @@
 											};
 											?>
 										</tbody>
-									</table>
+									</table><?php echo "Index Penilaian kelayakan = " . $a; ?>
 								</div>
 							</div>
 						</div>

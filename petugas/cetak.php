@@ -210,10 +210,10 @@
 						<table rules="all" style="border: 1px black;" cellpadding="10" cellspacing="0" >
 							<tr>
 								<td class="foto" colspan="3">
-								<?php echo "<img src='../assets/img/ktp/".$nama_foto_ktp."'style='width:350px; height:350px;'>"; ?>
+								<?php echo "<img src='../assets/img/rumah/".$nama_foto_rumah."'style='width:350px; height:350px;'>"; ?>
 								</td>
 								<td class="foto" colspan="3">
-								<?php echo "<img src='../assets/img/rumah/".$nama_foto_rumah."'style='width:350px; height:350px;'>"; ?>
+								<?php echo "<img src='../assets/img/ktp/".$nama_foto_ktp."'style='width:350px; height:350px;'>"; ?>
 								</td>
 							</tr>
 						</table>

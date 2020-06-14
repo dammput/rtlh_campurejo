@@ -16,6 +16,7 @@
 						WHERE tabel_identitas_responden.nik_responden = $nik_update";				
 
 	$hasil          = mysqli_query($koneksi,$query_tampil);
+	
     while($data = mysqli_fetch_array($hasil))
     {	
 		$usia = $data['usia'];
@@ -209,11 +210,11 @@
 						</table>
 						<table rules="all" style="border: 1px black;" cellpadding="10" cellspacing="0" >
 							<tr>
-								<td class="foto" colspan="3">
-								<?php echo "<img src='../assets/img/ktp/".$nama_foto_ktp."'style='width:350px; height:350px;'>"; ?>
+							<td class="foto" colspan="3">
+								<?php echo "<img src='../assets/img/rumah/".$nama_foto_rumah."'style='width:350px; height:350px;'>"; ?>
 								</td>
 								<td class="foto" colspan="3">
-								<?php echo "<img src='../assets/img/rumah/".$nama_foto_rumah."'style='width:350px; height:350px;'>"; ?>
+								<?php echo "<img src='../assets/img/ktp/".$nama_foto_ktp."'style='width:350px; height:350px;'>"; ?>
 								</td>
 							</tr>
 						</table>

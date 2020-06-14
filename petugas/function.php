@@ -109,10 +109,10 @@ function hasil_vektor($post){
 		
 		// PEKERJAAN UTAMA
 		if($pekerjaan_utama === 'TNI/Polri'){$pekerjaan_utama_value = 4;
-		}else if($pekerjaan_utama === 'Tidak Bekerja'){$pekerjaan_utama_value = 2;
+		}else if($pekerjaan_utama === 'Tidak Bekerja'){$pekerjaan_utama_value = 7;
 		}else if($pekerjaan_utama === 'Wirausaha'){$pekerjaan_utama_value = 6;
 		}else if($pekerjaan_utama === 'Petani'){$pekerjaan_utama_value = 14;	
-		}else if($pekerjaan_utama === 'Tukang/Montir'){$pekerjaan_utama_value = 7;	
+		}else if($pekerjaan_utama === 'Tukang/Montir'){$pekerjaan_utama_value = 2;	
 		}else if($pekerjaan_utama === 'Buruh harian'){$pekerjaan_utama_value = 8;	
 		}else if($pekerjaan_utama === 'Karyawan'){$pekerjaan_utama_value = 9;	
 		}else if($pekerjaan_utama === 'Honorer'){$pekerjaan_utama_value = 15;	
@@ -330,6 +330,7 @@ function hasil_vektor($post){
 		$score_aspek			= $penghuni_value + $luas_rumah_value + $kusen_value + $jendela_value + $pintu_value + $kamar_mandi_value + $saluran_air_value + $pembuangan_value + $drainase_value + $tempat_sampah_value + $sumber_air_minum_value + $jarak_air_minum_value + $sumber_listrik_value + $material_atap_value + $kondisi_atap_value + $material_dinding_value + $kondisi_dinding_value + $material_lantai_value + $kondisi_penutup_lantai_value + $struktur_lantai_value + $pondasi_material_value + $pondasi_kondisi_value + $sloof_material_value + $sloof_kondisi_value + $material_kolom_ring_value + $kondisi_kolom_ring_value + $material_rangka_atap_value + $kondisi_rangka_atap_value + $proteksi_kebakaran_value + $sarana_proteksi_kebakaran_value + $prasarana_proteksi_kebakaran_value;
 		$score_responden		= $jumlah_tabungan_value + $tabungan_perbulan_value + $jumlah_kk_value + $pekerjaan_utama_value + $jumlah_penghasilan_value + $range_penghasilan_value + $pendidikan_terakhir_value + $status_perkawinan_value + $status_fisik_value + $status_kepemilikan_tanah_value + $status_kepemilikan_rumah_value + $aset_rumah_lain_value + $aset_tanah_lain_value + $bantuan_lain_value  + $jenis_kawasan_rumah_value;
 		//perhitungan metode
+		
 		$total_nilai			= $score_responden + $score_aspek;
 		//normalisasi bobot		Nilai Bobot dibagi Total Nilai Bobot
 		$bobot_penguni		= $penghuni_value/$total_nilai; 
@@ -420,7 +421,7 @@ function hasil_vektor($post){
 		$vektor_status_perkawinan  = pow($status_perkawinan_value, $bobot_status_perkawinan);
 		$vektor_status_fisik	   = pow($status_fisik_value, $bobot_status_fisik);
 		$vektor_kepemilikan_tanah  = pow($status_kepemilikan_tanah_value, $bobot_kepemilikan_tanah);
-		$vektor_kepemilikan_dirumah= pow($status_kepemilikan_rumah_value, $bobot_kepemilikan_tanah);
+		$vektor_kepemilikan_dirumah= pow($status_kepemilikan_rumah_value, $bobot_kepemilikan_dirumah);
 		$vektor_aset_rumah_lain	  = pow($aset_rumah_lain_value, $bobot_aset_rumah_lain);
 		$vektor_aset_tanah_lain	  = pow($aset_tanah_lain_value, $bobot_aset_tanah_lain);
 		$vektor_nilai 			  = pow($bantuan_lain_value, $bobot_nilai);

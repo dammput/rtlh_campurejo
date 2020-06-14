@@ -170,7 +170,7 @@
 												<th style="text-align:center">NIK</th>
 												<th style="text-align:center">No_Telp</th>
 												<th style="text-align:center">Sumber_Data</th>
-												<th style="text-align:center">Kordinat</th>
+												<th style="text-align:center">Kordinat_(LONG;LATT)</th>
 												<th style="text-align:center">Gender</th>
 												<th style="text-align:center">Kecamatan</th>
 												<th style="text-align:center">Desa</th>
@@ -236,7 +236,7 @@
 												<th style="text-align:center">NIK</th>
 												<th style="text-align:center">No_Telp</th>
 												<th style="text-align:center">Sumber_Data</th>
-												<th style="text-align:center">Kordinat</th>
+												<th style="text-align:center">Kordinat_(LONG;LATT)</th>
 												<th style="text-align:center">Gender</th>
 												<th style="text-align:center">Kecamatan</th>
 												<th style="text-align:center">Desa</th>

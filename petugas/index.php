@@ -143,30 +143,6 @@
 						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 							<i class="fa fa-bars"></i>
 						</button>
-						<!-- tanggal -->
-						<div class="col-xl-3 col-md-1 ">
-								<div class="card border-bottom-primary shadow h-100 py-2">
-									<div class="card-body">
-										<div class="row no-gutters align-items-center">
-											<div class="col mr-1"><br><br>
-												<div class="text-xs font-weight-bold text-primary text-uppercase mb-9">Tanggal</div>
-												<div class="h5 mb-0 font-weight-bold text-gray-800">
-													<?php
-													date_default_timezone_set('Asia/Jakarta');
-													echo  date('d-m-Y') ."<br>";
-													include '../koneksi.php';
-															$query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
-															$hasil_id_responden = mysqli_query($koneksi, $query_jumlah_data);
-															$total_id_responden = mysqli_num_rows($hasil_id_responden);
-															echo "Jumlah Data : ".$total_id_responden ;
-													// echo '<br>' . date('H:i:s');
-													?>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 
 
 
@@ -223,36 +199,71 @@
 					<!-- Begin Page Content -->
 					<div class="container-fluid">
 
-						<div class="container-fluid">
-
-							<div class="container">
-
-								<br><br><br>
-								<center>
-									<h3><b>PANDUAN SISTEM PENENTU PENERIMA BANTUAN</b></h3>
-								</center>
-								<hr>
-
-								<strong>Menu</strong> terdapat 4 (empat) menu, antara lain :
-								<ul class="list-unstyled">
-									<li><strong>Form Input</strong></li>Pada form input ini terdapat pengisian data, yang cara pengisiannya dengan melakukan beberapa pengimputan dan pemilihan kategori yang tepat sesuai keadaan lokasi yang disurve.
-									<li><strong>Lihat Data </strong></li>Hasil dari pada form input akan masuk kedalam menu ini, serta bisa melakukan <b>edit</b> dan <b>cetak form</b>.
-									<li><strong>Penilaian Data </strong></li>Menu ini terdapat rekap dari hasil input, dan sudah di beri sistem penilaian, jadi pada menu ini yang layak dan tidak layak untuk mendapatkan bantuan akan terlihat.
-								</ul>
-
-								<hr>
-
-
-
+						<div class="row">
+							<div class="col-xl-12 col-lg-5">
+								<!-- kuisioner pengisian -->
+								<div class="card shadow mb-4">
+									<!-- Card Header-->
+									<div class="card-header py-3">
+										<center>
+											<h3 class="m-0 font-weight-bold text-primary"><b>PANDUAN SISTEM PENENTU PENERIMA BANTUAN</b></h3>
+										</center>
+									</div>
+									<!-- isi kuisioner -->
+									<div class="card-body">
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<div class="m-0  text">
+													<strong>Menu</strong> terdapat 4 (empat) menu, antara lain :
+													<ul class="list-unstyled">
+														<li><strong>Form Input</strong></li>Pada form input ini terdapat pengisian data, yang cara pengisiannya dengan melakukan beberapa pengimputan dan pemilihan kategori yang tepat sesuai keadaan lokasi yang disurve.
+														<li><strong>Lihat Data </strong></li>Hasil dari pada form input akan masuk kedalam menu ini, serta bisa melakukan <b>edit</b> dan <b>cetak form</b>.
+														<li><strong>Penilaian Data </strong></li>Menu ini terdapat rekap dari hasil input, dan sudah di beri sistem penilaian, jadi pada menu ini yang layak dan tidak layak untuk mendapatkan bantuan akan terlihat.
+													</ul>
+													<hr>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<br><br><br><br>
+							<!-- end input-->
 						</div>
-						<!-- /.container-fluid -->
-
-
-					
-
-
+						<!-- end row 1 -->
+						<div class="row">
+							<div class="col-xl-4 col-lg-5">
+								<!-- kuisioner pengisian -->
+								<div class="card shadow mb-1">
+									<!-- Card Header-->
+									<div class="card py-1 bg-primary accordion">
+									<center>
+										<h6 class="m-3 font-weight-bold text-white"><?php echo "Tanggal&nbsp;:&nbsp;" . date('d-m-Y'); ?></h6>
+									</center>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-8 col-lg-5">
+								<!-- kuisioner pengisian -->
+								<div class="card shadow mb-1">
+									<!-- Card Header-->
+									<div class="card py-1 bg-success accordion">
+										<center>
+										<h6 class="m-3 font-weight-bold text-white">JUMLAH DATA SURVE : 
+											<?php 												
+											include '../koneksi.php';
+											$query_jumlah_data = "SELECT nik_responden FROM tabel_identitas_responden";
+											$hasil_id_responden = mysqli_query($koneksi, $query_jumlah_data);
+											$total_id_responden = mysqli_num_rows($hasil_id_responden);
+											echo $total_id_responden ;
+											// echo '<br>' . date('H:i:s');
+											?>
+										</h6>
+										</center>
+									</div>
+								</div>
+							</div>
+						</div>
+						
 
 					</div>
 					<!-- End of Content Wrapper -->

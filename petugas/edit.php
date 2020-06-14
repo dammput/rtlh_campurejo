@@ -407,7 +407,7 @@
 										jalan='$jalan', dusun='$dusun', rt='$rt', rw='$rw', desa='$desa', kecamatan='$kecamatan',
 										jumlah_tabungan=$jumlah_tabungan, tabungan_perbulan='$tabungan_perbulan', jumlah_kk=$jumlah_kk, pekerjaan_utama='$pekerjaan_utama', jumlah_penghasilan='$jumlah_penghasilan', range_penghasilan='$range_penghasilan', 
 										pendidikan_terakhir='$pendidikan_terakhir', status_perkawinan='$status_perkawinan', status_fisik='$status_fisik', status_kepemilikan_tanah='$status_kepemilikan_tanah', status_kepemilikan_rumah='$status_kepemilikan_rumah',aset_rumah_lain='$aset_rumah_lain',
-										aset_tanah_lain='$aset_tanah_lain', bantuan_lain='$bantuan_lain', nama_bantuan_lain='$nama_bantuan_lain', jenis_kawasan_rumah='$jenis_kawasan_rumah', score=''  
+										aset_tanah_lain='$aset_tanah_lain', bantuan_lain='$bantuan_lain', nama_bantuan_lain='$nama_bantuan_lain', jenis_kawasan_rumah='$jenis_kawasan_rumah' 
 									WHERE nik_responden=$nik_lama";	
 		$query_aspek			= "UPDATE tabel_aspek
 									SET nik_aspek=$nik, luas_rumah=$luas_rumah, penghuni=$penghuni, kusen='$kusen', jendela='$jendela', pintu='$pintu', kamar_mandi='$kamar_mandi', saluran_air='$saluran_air', pembuangan='$pembuangan', 
@@ -424,8 +424,11 @@
 									VALUES ('','$nik','$luas_rumah','$penghuni','$kusen','$jendela','$pintu','$kamar_mandi','$saluran_air','$pembuangan','$drainase','$tempat_sampah','$sumber_air_minum','$jarak_air_minum','$sumber_listrik','$material_atap','$kondisi_atap','$material_dinding','$kondisi_dinding','$material_lantai','$kondisi_penutup_lantai','$struktur_lantai','$pondasi_material','$pondasi_kondisi','$sloof_material','$sloof_kondisi','$material_kolom_ring','$kondisi_kolom_ring','$material_rangka_atap','$kondisi_rangka_atap','$proteksi_kebakaran','$sarana_proteksi_kebakaran','$prasarana_proteksi_kebakaran')";
 		$query_waktu_update		= "INSERT INTO tabel_waktu_update (`id_waktu` ,`nik_waktu`,`tanggal_surve`) VALUES ('','$nik','$nik_awal','$tanggal_surve')";
 		$hasil_responden 		= mysqli_query($koneksi, $query_responden);
+		echo "responden" . mysqli_error($koneksi);
 		$hasil_aspek	 		= mysqli_query($koneksi, $query_aspek);
+		echo "responden" . mysqli_error($koneksi);
 		$hasil_waktu	 		= mysqli_query($koneksi, $query_waktu);
+		echo "responden" . mysqli_error($koneksi);
 		// $hasil_responden_update = mysqli_query($koneksi, $query_responden_update);
 		// $hasil_aspek_update 	= mysqli_query($koneksi, $query_aspek_update);
 		// $hasil_waktu_update 	= mysqli_query($koneksi,$query_waktu_update);
@@ -772,7 +775,7 @@
 									<div class="form-row">
 									<div class="form-group col-md-1">
 											<label>Usia</label>
-											<input type="number" class="form-control" value="<?php echo $usia; ?>" name="usia" >
+											<input type="number" class="form-control" value="<?php echo $edit_usia; ?>" name="usia" >
 											<div class="invalid-feedback">Data harus diisi.</div>
 										</div>
 										<div class="form-group col-md-4">

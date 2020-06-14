@@ -170,7 +170,7 @@
 												<th style="text-align:center">NIK</th>
 												<th style="text-align:center">No_Telp</th>
 												<th style="text-align:center">Sumber_Data</th>
-												<th style="text-align:center">Kordinat</th>
+												<th style="text-align:center">Kordinat_(LONG;LATT)</th>
 												<th style="text-align:center">Gender</th>
 												<th style="text-align:center">Kecamatan</th>
 												<th style="text-align:center">Desa</th>
@@ -238,7 +238,7 @@
 												<th style="text-align:center">NIK</th>
 												<th style="text-align:center">No_Telp</th>
 												<th style="text-align:center">Sumber_Data</th>
-												<th style="text-align:center">Kordinat</th>
+												<th style="text-align:center">Kordinat_(LONG;LATT)</th>
 												<th style="text-align:center">Gender</th>
 												<th style="text-align:center">Kecamatan</th>
 												<th style="text-align:center">Desa</th>
@@ -390,11 +390,11 @@
 												echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . $data['nama_lengkap'] . "</td>";
 												// echo "<td bgcolor=\"#f4f4f4\" style=\"text-align:center\">" . "<img src='../assets/img/ktp/".$data['nama']."'style='width:200px; height:100px;'>" . "</td>";
 												echo "<td style=\"text-align:center\">" . 
-												"<a href=\"edit.php?nik=$data[nik_responden]\" class=\"btn btn-facebook btn-icon-split btn-sm\" target=\"_blank\">
+												"<a href=\"edit.php?nik=$data[nik_responden]\" class=\"btn btn-facebook btn-icon-split btn-sm\">
 												<span class=\"icon text-white-50\"><i class=\"fas fa-arrow-right\"></i></span>
 												<span class=\"text\">Edit</span>
 												</a>" ." ".
-												"<a href=\"cetak.php?nik=$data[nik_responden]\" class=\"btn btn-danger btn-icon-split btn-sm\" target=\"_blank\">
+												"<a href=\"cetak.php?nik=$data[nik_responden]\" class=\"btn btn-danger btn-icon-split btn-sm\">
 												<span class=\"text\">Print Data</span>
 												</a>" ."</td>";
 												echo "</tr>";
